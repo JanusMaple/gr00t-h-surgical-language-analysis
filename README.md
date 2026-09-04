@@ -3,7 +3,7 @@
 Training-mixture-weighted analysis of the language used by the Surgical portion
 of the GR00T-H N1.7 training recipe.
 
-**[Open the interactive report](extracted_language/visualizations/index.html)**
+**[Open the interactive report](https://janusmaple.github.io/gr00t-h-surgical-language-analysis/extracted_language/visualizations/)**
 
 The pipeline reconstructs VLA input from public Open-H data, removes audited
 template artifacts, normalizes the task text, and runs weighted NLTK analysis.
