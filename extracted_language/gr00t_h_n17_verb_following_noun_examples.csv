@@ -14,8 +14,8 @@ finish,knot,1,finish the knot tie on the plastic phantom,turin/mitic_lerobot_pla
 finish,knot,2,finish the knot tie on ex vivo tissue,turin/mitic_lerobot_ex_vivo,Surgical/Turin/mitic_lerobot_ex_vivo,0.007038633378867161,0.007038633378867161
 extract,needle,1,extract the needle from the plastic phantom,turin/mitic_lerobot_plastic_pad,Surgical/Turin/mitic_lerobot_plastic_pad,0.00894720194021148,0.0036127436170825785
 extract,needle,2,extract the needle from the tissue,turin/mitic_lerobot_ex_vivo,Surgical/Turin/mitic_lerobot_ex_vivo,0.0038311405531765257,0.0038311405531765257
-tie,ex,1,finish the knot tie on ex vivo tissue,turin/mitic_lerobot_ex_vivo,Surgical/Turin/mitic_lerobot_ex_vivo,0.007038633378867161,0.007038633378867161
-tie,ex,2,perform base knot tie on ex vivo tissue,turin/mitic_lerobot_ex_vivo,Surgical/Turin/mitic_lerobot_ex_vivo,0.00541734731571378,0.00541734731571378
+tie,tissue,1,finish the knot tie on ex vivo tissue,turin/mitic_lerobot_ex_vivo,Surgical/Turin/mitic_lerobot_ex_vivo,0.007038633378867161,0.007038633378867161
+tie,tissue,2,perform base knot tie on ex vivo tissue,turin/mitic_lerobot_ex_vivo,Surgical/Turin/mitic_lerobot_ex_vivo,0.00541734731571378,0.00541734731571378
 insert,needle,1,insert the needle into the plastic phantom,turin/mitic_lerobot_plastic_pad,Surgical/Turin/mitic_lerobot_plastic_pad,0.006650992962179686,0.0024461446984071714
 insert,needle,2,insert the needle into the tissue,turin/mitic_lerobot_ex_vivo,Surgical/Turin/mitic_lerobot_ex_vivo,0.005760431362667063,0.005760431362667063
 tie,plastic,1,finish the knot tie on the plastic phantom,turin/mitic_lerobot_plastic_pad_3dmed,Surgical/Turin/mitic_lerobot_plastic_pad_3DMED,0.007258020456510758,0.0038930244000295704
@@ -23,6 +23,9 @@ tie,plastic,2,perform base knot tie on the plastic phantom,turin/mitic_lerobot_p
 go,cut,1,go back from the cut left tube,jhu/imerse/srth_porcine_chole,Surgical/JHU/srth_porcine_chole_fix,0.004907184940012373,0.004907184940012373
 go,cut,2,go back from the cut right tube,jhu/imerse/srth_porcine_chole,Surgical/JHU/srth_porcine_chole_fix,0.0036799254806619257,0.0036799254806619257
 grab,gallbladder,1,grab gallbladder,jhu/imerse/srth_porcine_chole,Surgical/JHU/srth_porcine_chole_fix,0.007768058509268766,0.007768058509268766
+move,peg,1,move the orange triangular peg to right,hamlyn/peg_transfer,Surgical/Hamlyn/peg_transfer,0.0017125538214937408,0.0017125538214937408
+move,peg,2,move the black triangular peg to right,hamlyn/peg_transfer,Surgical/Hamlyn/peg_transfer,0.0016193011313363006,0.0016193011313363006
+move,peg,3,move the green cylinder peg to right,hamlyn/peg_transfer,Surgical/Hamlyn/peg_transfer,0.0014784858241106084,0.0014784858241106084
 resect,tissue,1,hemicolectomy. resect the lymphatic tissue around the mesenteric artery and vein,rob_surgical/all_merged_data,Surgical/Rob Surgical/all_merged_data,0.007128733886932761,0.003722914730311469
 resect,tissue,2,hemicolectomy. artery coagulation. resect the lymphatic tissue around the mesenteric artery and vein,rob_surgical/all_merged_data,Surgical/Rob Surgical/all_merged_data,2.995706884177405e-07,1.4978534420887024e-07
 resect,tissue,3,hemicolectomy. resect the lymphatic tissue around the mesenteric artery and vein. dissect and staple of the mesocolon while separate it from the retroperitoneum,rob_surgical/all_merged_data,Surgical/Rob Surgical/all_merged_data,2.995706884177405e-07,1.4978534420887024e-07
@@ -54,10 +57,6 @@ transfer,needle,1,"use the left-hand to grasp the needle from the table, then tr
 transfer,needle,2,transfer the needle from right to left arm,turin/mitic_lerobot_plastic_pad,Surgical/Turin/mitic_lerobot_plastic_pad,0.0005109837640151448,0.0005109837640151448
 transfer,needle,3,transfer the needle from left to right arm,turin/mitic_lerobot_plastic_pad,Surgical/Turin/mitic_lerobot_plastic_pad,0.00041854697791579614,0.00041854697791579614
 resect,home,1,resect home out,jhu/imerse/cao_cautery_combined,Surgical/JHU/cao_cautery_combined,0.003239007167265421,0.003239007167265421
-move,orange,1,move the orange triangular peg to right,hamlyn/peg_transfer,Surgical/Hamlyn/peg_transfer,0.0017125538214937408,0.0017125538214937408
-move,orange,2,move the orange cylinder peg to right,hamlyn/peg_transfer,Surgical/Hamlyn/peg_transfer,0.0014277773331575264,0.0014277773331575264
-move,peg,1,move the black triangular peg to right,hamlyn/peg_transfer,Surgical/Hamlyn/peg_transfer,0.0016193011313363006,0.0016193011313363006
-move,peg,2,move the white triangular peg to right,hamlyn/peg_transfer,Surgical/Hamlyn/peg_transfer,0.001415867953450673,0.001415867953450673
 suture,stump,1,hysterectomy. suture the uterus stump,rob_surgical/all_merged_data,Surgical/Rob Surgical/all_merged_data,0.002837683346037046,0.0022920902297562363
 create,hole,1,hemicolectomy. create the first penetrating hole inside the colon for anastomosis,rob_surgical/all_merged_data,Surgical/Rob Surgical/all_merged_data,0.001588174004646651,0.0008963154997458795
 create,hole,2,hemicolectomy. create the second penetrating hole inside the colon for anastomosis,rob_surgical/all_merged_data,Surgical/Rob Surgical/all_merged_data,0.001161285773651371,0.00035708826059394663
@@ -66,7 +65,6 @@ separate,retroperitoneum,1,hemicolectomy. dissect and staple of the mesocolon wh
 separate,retroperitoneum,2,hemicolectomy. resect the lymphatic tissue around the mesenteric artery and vein. dissect and staple of the mesocolon while separate it from the retroperitoneum,rob_surgical/all_merged_data,Surgical/Rob Surgical/all_merged_data,2.995706884177405e-07,1.4978534420887024e-07
 separate,retroperitoneum,3,hemicolectomy. dissect and staple of the mesocolon while separate it from the retroperitoneum. prepare the colon part for anastomosis,rob_surgical/all_merged_data,Surgical/Rob Surgical/all_merged_data,2.995706884177405e-07,1.4978534420887024e-07
 tie,knot,1,tie a surgical knot in the suture,hamlyn/knot_tying,Surgical/Hamlyn/knot_tying,0.002263680965412169,0.002263680965412169
-move,cylinder,1,move the green cylinder peg to right,hamlyn/peg_transfer,Surgical/Hamlyn/peg_transfer,0.0014784858241106084,0.0014784858241106084
 keep,position,1,close down on the small intestine for hold. keep position await surgeon's counterpart grasp,tud/260131_tundra_dataset/grasping_retraction,Surgical/TUD/260131_TUNDRA_dataset/grasping_retraction,0.0011296913491505942,0.0011296913491505942
 keep,position,2,close down on the colon for hold. keep position await surgeon's counterpart grasp,tud/260131_tundra_dataset/grasping_retraction,Surgical/TUD/260131_TUNDRA_dataset/grasping_retraction,8.481301281592207e-05,8.481301281592207e-05
 keep,position,3,close down on the gallbladder for hold. keep position await surgeon's counterpart grasp,tud/260131_tundra_dataset/grasping_retraction,Surgical/TUD/260131_TUNDRA_dataset/grasping_retraction,6.203637333178751e-05,6.203637333178751e-05

@@ -109,6 +109,8 @@ def format_rule_label(rule: str) -> str:
         "lowercase_semantic_text": "Lowercase task text",
         "drop_invalid_placeholder": "Drop invalid placeholder",
         "preserve_attributive_cutting_position": "Preserve 'cutting position' modifier",
+        "preserve_ex_vivo_modifier": "Preserve 'ex vivo' modifier",
+        "preserve_peg_attribute_modifiers": "Preserve peg color/shape modifiers",
     }
     if rule in labels:
         return labels[rule]
@@ -756,7 +758,7 @@ def draw_normalization_qa(
         body,
         width,
         height,
-        "POS is read before lemmatization: action cutting/clipping stay verbs, while 'cutting position' is adjectival.",
+        "Context rules keep 'ex vivo', peg colors/shapes, and 'cutting position' from becoming noun-head matches.",
     )
     output.write_text(svg_document(width, height, body), encoding="utf-8")
 
@@ -1101,6 +1103,16 @@ def render_normalization_examples(audit: list[dict[str, str]]) -> str:
             "Context-sensitive POS",
             "preserve_attributive_cutting_position",
             "POS is read before lemmatization: in ‘cutting position,’ cutting modifies the destination noun; other cutting and clipping uses count as verbs.",
+        ),
+        (
+            "Ex vivo",
+            "preserve_ex_vivo_modifier",
+            "Treat the audited phrase ‘ex vivo tissue’ as a two-word modifier so the noun head remains tissue.",
+        ),
+        (
+            "Peg attributes",
+            "preserve_peg_attribute_modifiers",
+            "Treat audited color and shape terms as object attributes so ‘orange triangular peg’ and ‘orange cylinder peg’ resolve to peg.",
         ),
         (
             "CMR state template",

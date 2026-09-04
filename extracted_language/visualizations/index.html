@@ -189,7 +189,7 @@
                 <span class="verb-name">tie</span>
                 <span>14.56% of verb tokens</span>
                 <span>40.9% matched to a following noun</span>
-                <span>top noun: <b>ex</b></span>
+                <span>top noun: <b>tissue</b></span>
               </div>
               
               <div class="relation-table-wrap">
@@ -203,7 +203,7 @@
                   </tr></thead>
                   <tbody>
                 <tr>
-                  <td><b>ex</b></td>
+                  <td><b>tissue</b></td>
                   <td>18.8%</td>
                   <td>46.1%</td>
                   <td>0.01246</td>
@@ -713,7 +713,7 @@
                 <span class="verb-name">move</span>
                 <span>1.69% of verb tokens</span>
                 <span>100.0% matched to a following noun</span>
-                <span>top noun: <b>orange</b></span>
+                <span>top noun: <b>peg</b></span>
               </div>
               
               <div class="relation-table-wrap">
@@ -727,27 +727,11 @@
                   </tr></thead>
                   <tbody>
                 <tr>
-                  <td><b>orange</b></td>
-                  <td>41.0%</td>
-                  <td>41.0%</td>
-                  <td>0.00314</td>
-                  <td><ul class="relation-examples"><li><b>hamlyn/peg_transfer</b> — move the orange triangular peg to right</li><li><b>hamlyn/peg_transfer</b> — move the orange cylinder peg to right</li></ul></td>
-                </tr>
-                
-                <tr>
                   <td><b>peg</b></td>
-                  <td>39.7%</td>
-                  <td>39.7%</td>
-                  <td>0.00304</td>
-                  <td><ul class="relation-examples"><li><b>hamlyn/peg_transfer</b> — move the black triangular peg to right</li><li><b>hamlyn/peg_transfer</b> — move the white triangular peg to right</li></ul></td>
-                </tr>
-                
-                <tr>
-                  <td><b>cylinder</b></td>
-                  <td>19.3%</td>
-                  <td>19.3%</td>
-                  <td>0.00148</td>
-                  <td><ul class="relation-examples"><li><b>hamlyn/peg_transfer</b> — move the green cylinder peg to right</li></ul></td>
+                  <td>100.0%</td>
+                  <td>100.0%</td>
+                  <td>0.00765</td>
+                  <td><ul class="relation-examples"><li><b>hamlyn/peg_transfer</b> — move the orange triangular peg to right</li><li><b>hamlyn/peg_transfer</b> — move the black triangular peg to right</li><li><b>hamlyn/peg_transfer</b> — move the green cylinder peg to right</li></ul></td>
                 </tr>
                 </tbody>
                 </table>
@@ -2883,7 +2867,7 @@
       <div class="normalization-examples">
         <h3>Representative cleaning examples</h3>
         <p>Select an example to compare the same instruction across all three text stages.</p>
-        <div class="normalization-buttons" role="group" aria-label="Select a cleaning example"><button type="button" class="normalization-button" data-normalization-target="normalization-example-1" aria-controls="normalization-example-1" aria-expanded="true">Context-sensitive POS</button><button type="button" class="normalization-button" data-normalization-target="normalization-example-2" aria-controls="normalization-example-2" aria-expanded="false">CMR state template</button><button type="button" class="normalization-button" data-normalization-target="normalization-example-3" aria-controls="normalization-example-3" aria-expanded="false">Rob tool template</button><button type="button" class="normalization-button" data-normalization-target="normalization-example-4" aria-controls="normalization-example-4" aria-expanded="false">Joined task name</button><button type="button" class="normalization-button" data-normalization-target="normalization-example-5" aria-controls="normalization-example-5" aria-expanded="false">Action wording</button><button type="button" class="normalization-button" data-normalization-target="normalization-example-6" aria-controls="normalization-example-6" aria-expanded="false">Underscore repair</button></div>
+        <div class="normalization-buttons" role="group" aria-label="Select a cleaning example"><button type="button" class="normalization-button" data-normalization-target="normalization-example-1" aria-controls="normalization-example-1" aria-expanded="true">Context-sensitive POS</button><button type="button" class="normalization-button" data-normalization-target="normalization-example-2" aria-controls="normalization-example-2" aria-expanded="false">Ex vivo</button><button type="button" class="normalization-button" data-normalization-target="normalization-example-3" aria-controls="normalization-example-3" aria-expanded="false">Peg attributes</button><button type="button" class="normalization-button" data-normalization-target="normalization-example-4" aria-controls="normalization-example-4" aria-expanded="false">CMR state template</button><button type="button" class="normalization-button" data-normalization-target="normalization-example-5" aria-controls="normalization-example-5" aria-expanded="false">Rob tool template</button><button type="button" class="normalization-button" data-normalization-target="normalization-example-6" aria-controls="normalization-example-6" aria-expanded="false">Joined task name</button><button type="button" class="normalization-button" data-normalization-target="normalization-example-7" aria-controls="normalization-example-7" aria-expanded="false">Action wording</button><button type="button" class="normalization-button" data-normalization-target="normalization-example-8" aria-controls="normalization-example-8" aria-expanded="false">Underscore repair</button></div>
         <div class="normalization-example-panels">
             <article class="normalization-example" id="normalization-example-1">
               <div class="normalization-example-heading">
@@ -2900,6 +2884,32 @@
             
             <article class="normalization-example" id="normalization-example-2" hidden>
               <div class="normalization-example-heading">
+                <div><b>Ex vivo</b><p>Treat the audited phrase ‘ex vivo tissue’ as a two-word modifier so the noun head remains tissue.</p></div>
+                <span class="dataset">Dataset · turin/mitic_lerobot_ex_vivo</span>
+              </div>
+              <div class="normalization-stages">
+                <div><span>VLA input</span><code>finish the knot tying on ex vivo tissue</code></div>
+                <div><span>Clean task text</span><code>Finish the knot tying on ex vivo tissue</code></div>
+                <div><span>Normalized task text</span><code>finish the knot tie on ex vivo tissue</code></div>
+              </div>
+              <div class="normalization-rules"><b>Rules applied</b><span>Lowercase task text</span><span>Lemmatize tying → tie</span><span>Preserve &#x27;ex vivo&#x27; modifier</span></div>
+            </article>
+            
+            <article class="normalization-example" id="normalization-example-3" hidden>
+              <div class="normalization-example-heading">
+                <div><b>Peg attributes</b><p>Treat audited color and shape terms as object attributes so ‘orange triangular peg’ and ‘orange cylinder peg’ resolve to peg.</p></div>
+                <span class="dataset">Dataset · hamlyn/peg_transfer</span>
+              </div>
+              <div class="normalization-stages">
+                <div><span>VLA input</span><code>move the orange triangular peg to right</code></div>
+                <div><span>Clean task text</span><code>Move the orange triangular peg to right.</code></div>
+                <div><span>Normalized task text</span><code>move the orange triangular peg to right</code></div>
+              </div>
+              <div class="normalization-rules"><b>Rules applied</b><span>Lowercase task text</span><span>Preserve peg color/shape modifiers</span><span>Remove terminal punctuation</span></div>
+            </article>
+            
+            <article class="normalization-example" id="normalization-example-4" hidden>
+              <div class="normalization-example-heading">
                 <div><b>CMR state template</b><p>Remove structured arm and instrument state plus the ‘do a/an’ carrier.</p></div>
                 <span class="dataset">Dataset · cmr_surgical/cholecystectomy</span>
               </div>
@@ -2911,7 +2921,7 @@
               <div class="normalization-rules"><b>Rules applied</b><span>Remove CMR state template</span><span>Remove CMR &#x27;do a/an&#x27; carrier</span></div>
             </article>
             
-            <article class="normalization-example" id="normalization-example-3" hidden>
+            <article class="normalization-example" id="normalization-example-5" hidden>
               <div class="normalization-example-heading">
                 <div><b>Rob tool template</b><p>Remove structured tool metadata and the surgery-process carrier.</p></div>
                 <span class="dataset">Dataset · rob_surgical/all_merged_data</span>
@@ -2924,7 +2934,7 @@
               <div class="normalization-rules"><b>Rules applied</b><span>Remove Rob tool template</span><span>Remove Rob process carrier</span><span>Repair punctuation spacing</span><span>Lowercase task text</span><span>Lemmatize suturing → suture</span></div>
             </article>
             
-            <article class="normalization-example" id="normalization-example-4" hidden>
+            <article class="normalization-example" id="normalization-example-6" hidden>
               <div class="normalization-example-heading">
                 <div><b>Joined task name</b><p>Split task labels such as NeedleThreading before morphology normalization.</p></div>
                 <span class="dataset">Dataset · obuda/needlethreading_1</span>
@@ -2937,7 +2947,7 @@
               <div class="normalization-rules"><b>Rules applied</b><span>Split CamelCase</span><span>Lowercase task text</span><span>Lemmatize threading → thread</span></div>
             </article>
             
-            <article class="normalization-example" id="normalization-example-5" hidden>
+            <article class="normalization-example" id="normalization-example-7" hidden>
               <div class="normalization-example-heading">
                 <div><b>Action wording</b><p>Map audited nominal action forms to one comparable action term.</p></div>
                 <span class="dataset">Dataset · ucsd/surgical_learning_dataset</span>
@@ -2950,7 +2960,7 @@
               <div class="normalization-rules"><b>Rules applied</b><span>Action alias dissection → dissect</span></div>
             </article>
             
-            <article class="normalization-example" id="normalization-example-6" hidden>
+            <article class="normalization-example" id="normalization-example-8" hidden>
               <div class="normalization-example-heading">
                 <div><b>Underscore repair</b><p>Convert machine-style separators into readable word boundaries.</p></div>
                 <span class="dataset">Dataset · ucberkeley/debridement_lerobot</span>

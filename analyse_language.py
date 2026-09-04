@@ -190,14 +190,33 @@ def tag_semantic_sentence(
     ]
     initial_tags = pos_tag(tokens)
     for index, (word, nltk_tag) in enumerate(initial_tags):
+        previous_word = initial_tags[index - 1][0] if index else None
         next_word = (
             initial_tags[index + 1][0]
             if index + 1 < len(initial_tags)
             else None
         )
-        tag, correction_rule = correct_pos_tag(word, nltk_tag, next_word)
+        next_next_word = (
+            initial_tags[index + 2][0]
+            if index + 2 < len(initial_tags)
+            else None
+        )
+        tag, correction_rule = correct_pos_tag(
+            word,
+            nltk_tag,
+            next_word=next_word,
+            previous_word=previous_word,
+            next_next_word=next_next_word,
+        )
         lemma = (
-            canonicalize_word(word, nltk_tag, [], next_word)
+            canonicalize_word(
+                word,
+                nltk_tag,
+                [],
+                next_word=next_word,
+                previous_word=previous_word,
+                next_next_word=next_next_word,
+            )
             if word.isalpha()
             else word.lower()
         )

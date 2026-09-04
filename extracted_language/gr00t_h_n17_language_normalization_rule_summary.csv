@@ -31,8 +31,10 @@ lemmatize_inflection:instruments->instrument,4,0.00389431541786658
 lemmatize_inflection:ovaries->ovary,4,0.00017525769938824985
 lemmatize_inflection:traces->trace,3,0.003735661728010981
 canonicalize_action_nominalization:retraction->retract,3,0.030603341659783904
+preserve_peg_attribute_modifiers,3,0.004617077029483954
 preserve_attributive_cutting_position,2,0.02089102811935545
 lemmatize_inflection:threading->thread,2,0.015365403908007922
+preserve_ex_vivo_modifier,2,0.012451288416295184
 lemmatize_inflection:arms->arm,2,0.0009291805794649535
 drop_invalid_placeholder,1,0.00037670885984945397
 lemmatize_inflection:grabbing->grab,1,0.007765132212804498

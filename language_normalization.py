@@ -102,6 +102,12 @@ ADJECTIVAL_POS_OVERRIDES = {
     "underlying": "JJ",
 }
 
+# Contexts observed in the public Surgical corpus. ``ex vivo`` modifies tissue,
+# while color and shape terms modify the head noun in ``<color> <shape> peg``.
+EX_VIVO_HEAD_NOUNS = frozenset({"tissue"})
+PEG_COLOR_MODIFIERS = frozenset({"black", "green", "orange", "white"})
+PEG_SHAPE_MODIFIERS = frozenset({"cylinder", "triangular"})
+
 
 @dataclass(frozen=True)
 class NormalizedLanguage:
@@ -118,6 +124,8 @@ def correct_pos_tag(
     word: str,
     nltk_tag: str,
     next_word: str | None = None,
+    previous_word: str | None = None,
+    next_next_word: str | None = None,
 ) -> tuple[str, str | None]:
     """Apply narrowly scoped, corpus-audited POS corrections.
 
@@ -126,9 +134,38 @@ def correct_pos_tag(
     """
 
     lowered = word.lower()
+    previous = (previous_word or "").lower()
+    following = (next_word or "").lower()
+    following_after = (next_next_word or "").lower()
+
+    # Both tokens in the audited phrase "ex vivo tissue" modify ``tissue``.
+    if (
+        lowered == "ex"
+        and following == "vivo"
+        and following_after in EX_VIVO_HEAD_NOUNS
+    ) or (
+        lowered == "vivo"
+        and previous == "ex"
+        and following in EX_VIVO_HEAD_NOUNS
+    ):
+        if nltk_tag != "JJ":
+            return "JJ", "pos_override_ex_vivo_modifier"
+        return nltk_tag, None
+
+    # NLTK treats ``orange`` and ``cylinder`` as nouns in the audited peg
+    # instructions. They are attributes of the object whose head noun is peg.
+    if lowered in PEG_COLOR_MODIFIERS and following in PEG_SHAPE_MODIFIERS:
+        if nltk_tag != "JJ":
+            return "JJ", "pos_override_peg_color_modifier"
+        return nltk_tag, None
+    if lowered in PEG_SHAPE_MODIFIERS and following == "peg":
+        if nltk_tag != "JJ":
+            return "JJ", "pos_override_peg_shape_modifier"
+        return nltk_tag, None
+
     # Audited JHU prompts use "cutting position" as a destination noun phrase.
     # Other cutting/clipping forms retain their ordinary action interpretation.
-    if lowered == "cutting" and (next_word or "").lower() == "position":
+    if lowered == "cutting" and following == "position":
         if nltk_tag != "JJ":
             return "JJ", "pos_override_attributive_cutting_position"
         return nltk_tag, None
@@ -157,18 +194,33 @@ def canonicalize_word(
     nltk_tag: str,
     rules: list[str],
     next_word: str | None = None,
+    previous_word: str | None = None,
+    next_next_word: str | None = None,
 ) -> str:
     """Return a readable base form while recording every transformation."""
     lowered = word.lower()
     if lowered != word:
         _append_rule_once(rules, "lowercase_semantic_text")
 
-    corrected_tag, correction_rule = correct_pos_tag(lowered, nltk_tag, next_word)
+    corrected_tag, correction_rule = correct_pos_tag(
+        lowered,
+        nltk_tag,
+        next_word=next_word,
+        previous_word=previous_word,
+        next_next_word=next_next_word,
+    )
     preserve_attributive_form = (
         correction_rule == "pos_override_attributive_cutting_position"
     )
     if preserve_attributive_form:
         _append_rule_once(rules, "preserve_attributive_cutting_position")
+    elif correction_rule == "pos_override_ex_vivo_modifier":
+        _append_rule_once(rules, "preserve_ex_vivo_modifier")
+    elif correction_rule in {
+        "pos_override_peg_color_modifier",
+        "pos_override_peg_shape_modifier",
+    }:
+        _append_rule_once(rules, "preserve_peg_attribute_modifiers")
 
     if lowered in INFLECTION_LEMMA_EXCEPTIONS:
         lemma = lowered
@@ -210,13 +262,26 @@ def _canonicalize_semantic_text(text: str, rules: list[str]) -> str:
         tagged_tokens = pos_tag(tokens)
         canonical_tokens = []
         for index, (token, tag) in enumerate(tagged_tokens):
+            previous_word = tagged_tokens[index - 1][0] if index else None
             next_word = (
                 tagged_tokens[index + 1][0]
                 if index + 1 < len(tagged_tokens)
                 else None
             )
+            next_next_word = (
+                tagged_tokens[index + 2][0]
+                if index + 2 < len(tagged_tokens)
+                else None
+            )
             canonical_tokens.append(
-                canonicalize_word(token, tag, rules, next_word)
+                canonicalize_word(
+                    token,
+                    tag,
+                    rules,
+                    next_word=next_word,
+                    previous_word=previous_word,
+                    next_next_word=next_next_word,
+                )
                 if token.isalpha()
                 else token.lower()
             )

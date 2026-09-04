@@ -120,19 +120,19 @@ text { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sa
 <text x="267.00" y="639.08" class="label" text-anchor="end">wound</text>
 <rect x="279.00" y="629.28" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
 <rect x="279.00" y="629.28" width="412.00" height="11.60" rx="6.00" fill="#477EA8"/>
-<text x="701.00" y="639.08" class="value" text-anchor="start">7.6%</text>
+<text x="701.00" y="639.08" class="value" text-anchor="start">7.7%</text>
 <text x="267.00" y="663.25" class="label" text-anchor="end">closure</text>
 <rect x="279.00" y="653.45" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
 <rect x="279.00" y="653.45" width="412.00" height="11.60" rx="6.00" fill="#477EA8"/>
-<text x="701.00" y="663.25" class="value" text-anchor="start">7.6%</text>
+<text x="701.00" y="663.25" class="value" text-anchor="start">7.7%</text>
 <text x="267.00" y="687.42" class="label" text-anchor="end">tube</text>
 <rect x="279.00" y="677.62" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
 <rect x="279.00" y="677.62" width="386.94" height="11.60" rx="6.00" fill="#477EA8"/>
-<text x="701.00" y="687.42" class="value" text-anchor="start">7.1%</text>
+<text x="701.00" y="687.42" class="value" text-anchor="start">7.2%</text>
 <text x="267.00" y="711.58" class="label" text-anchor="end">clip</text>
 <rect x="279.00" y="701.78" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
 <rect x="279.00" y="701.78" width="296.46" height="11.60" rx="6.00" fill="#477EA8"/>
-<text x="701.00" y="711.58" class="value" text-anchor="start">5.4%</text>
+<text x="701.00" y="711.58" class="value" text-anchor="start">5.5%</text>
 <text x="267.00" y="735.75" class="label" text-anchor="end">prostatectomy</text>
 <rect x="279.00" y="725.95" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
 <rect x="279.00" y="725.95" width="211.45" height="11.60" rx="6.00" fill="#477EA8"/>
@@ -140,11 +140,11 @@ text { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sa
 <text x="267.00" y="759.92" class="label" text-anchor="end">knot</text>
 <rect x="279.00" y="750.12" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
 <rect x="279.00" y="750.12" width="208.20" height="11.60" rx="6.00" fill="#477EA8"/>
-<text x="701.00" y="759.92" class="value" text-anchor="start">3.8%</text>
+<text x="701.00" y="759.92" class="value" text-anchor="start">3.9%</text>
 <text x="267.00" y="784.08" class="label" text-anchor="end">hemicolectomy</text>
 <rect x="279.00" y="774.28" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
 <rect x="279.00" y="774.28" width="198.05" height="11.60" rx="6.00" fill="#477EA8"/>
-<text x="701.00" y="784.08" class="value" text-anchor="start">3.6%</text>
+<text x="701.00" y="784.08" class="value" text-anchor="start">3.7%</text>
 <text x="267.00" y="808.25" class="label" text-anchor="end">tissue</text>
 <rect x="279.00" y="798.45" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
 <rect x="279.00" y="798.45" width="195.22" height="11.60" rx="6.00" fill="#477EA8"/>
@@ -152,7 +152,7 @@ text { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sa
 <text x="267.00" y="832.42" class="label" text-anchor="end">hysterectomy</text>
 <rect x="279.00" y="822.62" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
 <rect x="279.00" y="822.62" width="185.40" height="11.60" rx="6.00" fill="#477EA8"/>
-<text x="701.00" y="832.42" class="value" text-anchor="start">3.4%</text>
+<text x="701.00" y="832.42" class="value" text-anchor="start">3.5%</text>
 <text x="267.00" y="856.58" class="label" text-anchor="end">transfer</text>
 <rect x="279.00" y="846.78" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
 <rect x="279.00" y="846.78" width="182.82" height="11.60" rx="6.00" fill="#477EA8"/>
@@ -164,7 +164,7 @@ text { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sa
 <text x="267.00" y="904.92" class="label" text-anchor="end">suture</text>
 <rect x="279.00" y="895.12" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
 <rect x="279.00" y="895.12" width="175.25" height="11.60" rx="6.00" fill="#477EA8"/>
-<text x="701.00" y="904.92" class="value" text-anchor="start">3.2%</text>
+<text x="701.00" y="904.92" class="value" text-anchor="start">3.3%</text>
 <rect x="805.00" y="545.00" width="725.00" height="390.00" rx="14.00" fill="#FFFEFB" stroke="#DCE3E1"/>
 <text x="829.00" y="580.00" class="panel-title" text-anchor="start">Adjacent bigrams</text>
 <text x="829.00" y="602.00" class="small" text-anchor="start">No stopword, punctuation, or sentence bridging</text>
