@@ -114,7 +114,11 @@ class NormalizedLanguage:
     rules_applied: tuple[str, ...]
 
 
-def correct_pos_tag(word: str, nltk_tag: str) -> tuple[str, str | None]:
+def correct_pos_tag(
+    word: str,
+    nltk_tag: str,
+    next_word: str | None = None,
+) -> tuple[str, str | None]:
     """Apply narrowly scoped, corpus-audited POS corrections.
 
     Returns the corrected tag and the audit rule name, or ``None`` when the
@@ -122,6 +126,13 @@ def correct_pos_tag(word: str, nltk_tag: str) -> tuple[str, str | None]:
     """
 
     lowered = word.lower()
+    # Audited JHU prompts use "cutting position" as a destination noun phrase.
+    # Other cutting/clipping forms retain their ordinary action interpretation.
+    if lowered == "cutting" and (next_word or "").lower() == "position":
+        if nltk_tag != "JJ":
+            return "JJ", "pos_override_attributive_cutting_position"
+        return nltk_tag, None
+
     corrected = DIRECTIONAL_POS_OVERRIDES.get(lowered)
     rule = "pos_override_directional_left_right"
     if corrected is None:
@@ -141,13 +152,24 @@ def _append_rule_once(rules: list[str], rule: str) -> None:
         rules.append(rule)
 
 
-def _canonicalize_word(word: str, nltk_tag: str, rules: list[str]) -> str:
+def canonicalize_word(
+    word: str,
+    nltk_tag: str,
+    rules: list[str],
+    next_word: str | None = None,
+) -> str:
     """Return a readable base form while recording every transformation."""
     lowered = word.lower()
     if lowered != word:
         _append_rule_once(rules, "lowercase_semantic_text")
 
-    corrected_tag, _ = correct_pos_tag(lowered, nltk_tag)
+    corrected_tag, correction_rule = correct_pos_tag(lowered, nltk_tag, next_word)
+    preserve_attributive_form = (
+        correction_rule == "pos_override_attributive_cutting_position"
+    )
+    if preserve_attributive_form:
+        _append_rule_once(rules, "preserve_attributive_cutting_position")
+
     if lowered in INFLECTION_LEMMA_EXCEPTIONS:
         lemma = lowered
     elif corrected_tag.startswith("VB"):
@@ -161,6 +183,7 @@ def _canonicalize_word(word: str, nltk_tag: str, rules: list[str]) -> str:
     # tagged as nouns or adjectives.
     if (
         lowered not in INFLECTION_LEMMA_EXCEPTIONS
+        and not preserve_attributive_form
         and lowered.endswith(("ing", "ed"))
     ):
         verb_lemma = _LEMMATIZER.lemmatize(lowered, "v")
@@ -184,10 +207,19 @@ def _canonicalize_semantic_text(text: str, rules: list[str]) -> str:
     canonical_sentences: list[str] = []
     for sentence in sent_tokenize(text):
         tokens = word_tokenize(sentence)
-        canonical_tokens = [
-            _canonicalize_word(token, tag, rules) if token.isalpha() else token.lower()
-            for token, tag in pos_tag(tokens)
-        ]
+        tagged_tokens = pos_tag(tokens)
+        canonical_tokens = []
+        for index, (token, tag) in enumerate(tagged_tokens):
+            next_word = (
+                tagged_tokens[index + 1][0]
+                if index + 1 < len(tagged_tokens)
+                else None
+            )
+            canonical_tokens.append(
+                canonicalize_word(token, tag, rules, next_word)
+                if token.isalpha()
+                else token.lower()
+            )
         canonical_sentences.append(_DETOKENIZER.detokenize(canonical_tokens))
 
     canonical = " ".join(canonical_sentences).strip()

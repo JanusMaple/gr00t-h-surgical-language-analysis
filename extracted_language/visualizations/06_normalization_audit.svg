@@ -2,183 +2,91 @@
 <rect width="1580" height="980" fill="#F3F0E8"/>
 <style>
 text { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif; fill: #18323E; }
-.title { font-size: 29px; font-weight: 750; letter-spacing: -0.4px; }
-.subtitle { font-size: 14px; fill: #667780; }
-.panel-title { font-size: 17px; font-weight: 700; }
-.label { font-size: 12px; }
-.small { font-size: 10.5px; fill: #667780; }
-.value { font-size: 11.5px; font-weight: 650; }
+.title { font-size: 36px; font-weight: 750; letter-spacing: -0.6px; }
+.subtitle { font-size: 18px; fill: #667780; }
+.panel-title { font-size: 22px; font-weight: 700; }
+.label { font-size: 16px; }
+.small { font-size: 14px; fill: #667780; }
+.value { font-size: 15px; font-weight: 650; }
 </style>
 <text x="58.00" y="62.00" class="title" text-anchor="start">Data cleaning pipeline audit</text>
 <text x="58.00" y="90.00" class="subtitle" text-anchor="start">Rule reach is measured against VLA-input mixture weight; overlapping rules are not additive.</text>
 <line x1="58.00" y1="112.00" x2="1522.00" y2="112.00" stroke="#DCE3E1" stroke-width="1"/>
 <rect x="48.00" y="132.00" width="910.00" height="790.00" rx="14.00" fill="#FFFEFB" stroke="#DCE3E1"/>
-<text x="72.00" y="167.00" class="panel-title" text-anchor="start">Cleaning-rule reach</text>
-<text x="72.00" y="189.00" class="small" text-anchor="start">VLA-input probability affected by each rule</text>
-<text x="355.00" y="222.41" class="label" text-anchor="end">Remove CMR state template (1,341 rows)</text>
-<rect x="367.00" y="214.38" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="214.38" width="213.64" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="222.41" class="value" text-anchor="start">19.94%</text>
-<text x="355.00" y="239.24" class="label" text-anchor="end">Remove CMR &#x27;do a/an&#x27; carrier (1,341 rows)</text>
-<rect x="367.00" y="231.20" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="231.20" width="213.64" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="239.24" class="value" text-anchor="start">19.94%</text>
-<text x="355.00" y="256.07" class="label" text-anchor="end">Lowercase task text (198 rows)</text>
-<rect x="367.00" y="248.03" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="248.03" width="507.00" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="256.07" class="value" text-anchor="start">47.32%</text>
-<text x="355.00" y="272.90" class="label" text-anchor="end">Remove Rob tool template (122 rows)</text>
-<rect x="367.00" y="264.86" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="264.86" width="80.53" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="272.90" class="value" text-anchor="start">7.52%</text>
-<text x="355.00" y="289.73" class="label" text-anchor="end">Remove Rob process carrier (122 rows)</text>
-<rect x="367.00" y="281.69" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="281.69" width="80.53" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="289.73" class="value" text-anchor="start">7.52%</text>
-<text x="355.00" y="306.56" class="label" text-anchor="end">Repair punctuation spacing (107 rows)</text>
-<rect x="367.00" y="298.52" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="298.52" width="75.08" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="306.56" class="value" text-anchor="start">7.01%</text>
-<text x="355.00" y="323.39" class="label" text-anchor="end">Remove terminal punctuation (61 rows)</text>
-<rect x="367.00" y="315.35" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="315.35" width="52.56" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="323.39" class="value" text-anchor="start">4.91%</text>
-<text x="355.00" y="340.22" class="label" text-anchor="end">Remove Rob run identifier (49 rows)</text>
-<rect x="367.00" y="332.18" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="332.18" width="23.37" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="340.22" class="value" text-anchor="start">2.18%</text>
-<text x="355.00" y="357.05" class="label" text-anchor="end">Split joined Rob phases (33 rows)</text>
-<rect x="367.00" y="349.01" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="349.01" width="4.17" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="357.05" class="value" text-anchor="start">0.39%</text>
-<text x="355.00" y="373.88" class="label" text-anchor="end">Lemmatize suturing → suture (30 rows)</text>
-<rect x="367.00" y="365.84" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="365.84" width="64.27" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="373.88" class="value" text-anchor="start">6.00%</text>
-<text x="355.00" y="390.71" class="label" text-anchor="end">Action alias dissection → dissect (30 row…</text>
-<rect x="367.00" y="382.67" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="382.67" width="38.81" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="390.71" class="value" text-anchor="start">3.62%</text>
-<text x="355.00" y="407.54" class="label" text-anchor="end">Lemmatize using → use (20 rows)</text>
-<rect x="367.00" y="399.50" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="399.50" width="6.11" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="407.54" class="value" text-anchor="start">0.57%</text>
-<text x="355.00" y="424.37" class="label" text-anchor="end">Lemmatize preparing → prepare (15 rows)</text>
-<rect x="367.00" y="416.33" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="416.33" width="4.39" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="424.37" class="value" text-anchor="start">0.41%</text>
-<text x="355.00" y="441.20" class="label" text-anchor="end">Lemmatize separating → separate (12 rows)</text>
-<rect x="367.00" y="433.16" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="433.16" width="2.77" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="441.20" class="value" text-anchor="start">0.26%</text>
-<text x="355.00" y="458.02" class="label" text-anchor="end">Lemmatize tying → tie (9 rows)</text>
-<rect x="367.00" y="449.99" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="449.99" width="68.39" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="458.02" class="value" text-anchor="start">6.38%</text>
-<text x="355.00" y="474.85" class="label" text-anchor="end">Lemmatize cutting → cut (8 rows)</text>
-<rect x="367.00" y="466.81" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="466.81" width="30.48" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="474.85" class="value" text-anchor="start">2.84%</text>
-<text x="355.00" y="491.68" class="label" text-anchor="end">Lemmatize vessels → vessel (8 rows)</text>
-<rect x="367.00" y="483.64" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="483.64" width="1.79" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="491.68" class="value" text-anchor="start">0.17%</text>
-<text x="355.00" y="508.51" class="label" text-anchor="end">Lemmatize dissected → dissect (8 rows)</text>
-<rect x="367.00" y="500.47" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="500.47" width="0.84" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="508.51" class="value" text-anchor="start">0.08%</text>
-<text x="355.00" y="525.34" class="label" text-anchor="end">Split CamelCase (7 rows)</text>
-<rect x="367.00" y="517.30" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="517.30" width="26.10" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="525.34" class="value" text-anchor="start">2.44%</text>
-<text x="355.00" y="542.17" class="label" text-anchor="end">Lemmatize clipping → clip (6 rows)</text>
-<rect x="367.00" y="534.13" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="534.13" width="72.35" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="542.17" class="value" text-anchor="start">6.75%</text>
-<text x="355.00" y="559.00" class="label" text-anchor="end">Lemmatize going → go (6 rows)</text>
-<rect x="367.00" y="550.96" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="550.96" width="31.13" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="559.00" class="value" text-anchor="start">2.90%</text>
-<text x="355.00" y="575.83" class="label" text-anchor="end">Lemmatize positioned → position (5 rows)</text>
-<rect x="367.00" y="567.79" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="567.79" width="0.71" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="575.83" class="value" text-anchor="start">0.07%</text>
-<text x="355.00" y="592.66" class="label" text-anchor="end">Lemmatize picks → pick (5 rows)</text>
-<rect x="367.00" y="584.62" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="584.62" width="0.71" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="592.66" class="value" text-anchor="start">0.07%</text>
-<text x="355.00" y="609.49" class="label" text-anchor="end">Lemmatize positions → position (5 rows)</text>
-<rect x="367.00" y="601.45" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="601.45" width="0.71" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="609.49" class="value" text-anchor="start">0.07%</text>
-<text x="355.00" y="626.32" class="label" text-anchor="end">Normalize whitespace (5 rows)</text>
-<rect x="367.00" y="618.28" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="618.28" width="0.54" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="626.32" class="value" text-anchor="start">0.05%</text>
-<text x="355.00" y="643.15" class="label" text-anchor="end">Lemmatize grasped → grasp (5 rows)</text>
-<rect x="367.00" y="635.11" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="635.11" width="0.54" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="643.15" class="value" text-anchor="start">0.05%</text>
-<text x="355.00" y="659.98" class="label" text-anchor="end">Lemmatize awaiting → await (5 rows)</text>
-<rect x="367.00" y="651.94" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="651.94" width="1.44" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="659.98" class="value" text-anchor="start">0.13%</text>
-<text x="355.00" y="676.80" class="label" text-anchor="end">Lemmatize continuing → continue (5 rows)</text>
-<rect x="367.00" y="668.77" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="668.77" width="0.63" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="676.80" class="value" text-anchor="start">0.06%</text>
-<text x="355.00" y="693.63" class="label" text-anchor="end">Lemmatize instruments → instrument (4 row…</text>
-<rect x="367.00" y="685.60" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="685.60" width="4.17" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="693.63" class="value" text-anchor="start">0.39%</text>
-<text x="355.00" y="710.46" class="label" text-anchor="end">Lemmatize ovaries → ovary (4 rows)</text>
-<rect x="367.00" y="702.42" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="702.42" width="0.19" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="710.46" class="value" text-anchor="start">0.02%</text>
-<text x="355.00" y="727.29" class="label" text-anchor="end">Lemmatize traces → trace (3 rows)</text>
-<rect x="367.00" y="719.25" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="719.25" width="4.00" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="727.29" class="value" text-anchor="start">0.37%</text>
-<text x="355.00" y="744.12" class="label" text-anchor="end">Action alias retraction → retract (3 rows)</text>
-<rect x="367.00" y="736.08" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="736.08" width="32.79" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="744.12" class="value" text-anchor="start">3.06%</text>
-<text x="355.00" y="760.95" class="label" text-anchor="end">Lemmatize threading → thread (2 rows)</text>
-<rect x="367.00" y="752.91" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="752.91" width="16.46" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="760.95" class="value" text-anchor="start">1.54%</text>
-<text x="355.00" y="777.78" class="label" text-anchor="end">Lemmatize arms → arm (2 rows)</text>
-<rect x="367.00" y="769.74" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="769.74" width="1.00" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="777.78" class="value" text-anchor="start">0.09%</text>
-<text x="355.00" y="794.61" class="label" text-anchor="end">Drop invalid placeholder (1 rows)</text>
-<rect x="367.00" y="786.57" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="786.57" width="0.40" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="794.61" class="value" text-anchor="start">0.04%</text>
-<text x="355.00" y="811.44" class="label" text-anchor="end">Lemmatize grabbing → grab (1 rows)</text>
-<rect x="367.00" y="803.40" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="803.40" width="8.32" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="811.44" class="value" text-anchor="start">0.78%</text>
-<text x="355.00" y="828.27" class="label" text-anchor="end">Lemmatize placing → place (1 rows)</text>
-<rect x="367.00" y="820.23" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="820.23" width="13.47" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="828.27" class="value" text-anchor="start">1.26%</text>
-<text x="355.00" y="845.10" class="label" text-anchor="end">Action alias insertion → insert (1 rows)</text>
-<rect x="367.00" y="837.06" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="837.06" width="0.75" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="845.10" class="value" text-anchor="start">0.07%</text>
-<text x="355.00" y="861.93" class="label" text-anchor="end">Lemmatize pulling → pull (1 rows)</text>
-<rect x="367.00" y="853.89" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="853.89" width="0.76" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="861.93" class="value" text-anchor="start">0.07%</text>
-<text x="355.00" y="878.76" class="label" text-anchor="end">Lemmatize layers → layer (1 rows)</text>
-<rect x="367.00" y="870.72" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="870.72" width="8.03" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="878.76" class="value" text-anchor="start">0.75%</text>
-<text x="355.00" y="895.59" class="label" text-anchor="end">Replace underscores (1 rows)</text>
-<rect x="367.00" y="887.55" width="507.00" height="8.08" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="887.55" width="17.80" height="8.08" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="895.59" class="value" text-anchor="start">1.66%</text>
+<text x="72.00" y="167.00" class="panel-title" text-anchor="start">Most influential cleaning rules</text>
+<text x="72.00" y="189.00" class="small" text-anchor="start">VLA-input probability affected; complete list remains in the audit CSV</text>
+<text x="355.00" y="233.17" class="label" text-anchor="end">Lowercase task text (198 rows)</text>
+<rect x="367.00" y="221.67" width="507.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
+<rect x="367.00" y="221.67" width="507.00" height="15.00" rx="6.00" fill="#17736D"/>
+<text x="884.00" y="233.17" class="value" text-anchor="start">47.32%</text>
+<text x="355.00" y="271.50" class="label" text-anchor="end">Remove CMR state template (1,341 rows)</text>
+<rect x="367.00" y="260.00" width="507.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
+<rect x="367.00" y="260.00" width="213.64" height="15.00" rx="6.00" fill="#17736D"/>
+<text x="884.00" y="271.50" class="value" text-anchor="start">19.94%</text>
+<text x="355.00" y="309.83" class="label" text-anchor="end">Remove CMR &#x27;do a/an&#x27; carrier (1,341 rows)</text>
+<rect x="367.00" y="298.33" width="507.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
+<rect x="367.00" y="298.33" width="213.64" height="15.00" rx="6.00" fill="#17736D"/>
+<text x="884.00" y="309.83" class="value" text-anchor="start">19.94%</text>
+<text x="355.00" y="348.17" class="label" text-anchor="end">Remove Rob tool template (122 rows)</text>
+<rect x="367.00" y="336.67" width="507.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
+<rect x="367.00" y="336.67" width="80.53" height="15.00" rx="6.00" fill="#17736D"/>
+<text x="884.00" y="348.17" class="value" text-anchor="start">7.52%</text>
+<text x="355.00" y="386.50" class="label" text-anchor="end">Remove Rob process carrier (122 rows)</text>
+<rect x="367.00" y="375.00" width="507.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
+<rect x="367.00" y="375.00" width="80.53" height="15.00" rx="6.00" fill="#17736D"/>
+<text x="884.00" y="386.50" class="value" text-anchor="start">7.52%</text>
+<text x="355.00" y="424.83" class="label" text-anchor="end">Repair punctuation spacing (107 rows)</text>
+<rect x="367.00" y="413.33" width="507.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
+<rect x="367.00" y="413.33" width="75.08" height="15.00" rx="6.00" fill="#17736D"/>
+<text x="884.00" y="424.83" class="value" text-anchor="start">7.01%</text>
+<text x="355.00" y="463.17" class="label" text-anchor="end">Lemmatize clipping → clip (6 rows)</text>
+<rect x="367.00" y="451.67" width="507.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
+<rect x="367.00" y="451.67" width="72.35" height="15.00" rx="6.00" fill="#17736D"/>
+<text x="884.00" y="463.17" class="value" text-anchor="start">6.75%</text>
+<text x="355.00" y="501.50" class="label" text-anchor="end">Lemmatize tying → tie (9 rows)</text>
+<rect x="367.00" y="490.00" width="507.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
+<rect x="367.00" y="490.00" width="68.39" height="15.00" rx="6.00" fill="#17736D"/>
+<text x="884.00" y="501.50" class="value" text-anchor="start">6.38%</text>
+<text x="355.00" y="539.83" class="label" text-anchor="end">Lemmatize suturing → suture (30 rows)</text>
+<rect x="367.00" y="528.33" width="507.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
+<rect x="367.00" y="528.33" width="64.27" height="15.00" rx="6.00" fill="#17736D"/>
+<text x="884.00" y="539.83" class="value" text-anchor="start">6.00%</text>
+<text x="355.00" y="578.17" class="label" text-anchor="end">Remove terminal punctuation (61 rows)</text>
+<rect x="367.00" y="566.67" width="507.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
+<rect x="367.00" y="566.67" width="52.56" height="15.00" rx="6.00" fill="#17736D"/>
+<text x="884.00" y="578.17" class="value" text-anchor="start">4.91%</text>
+<text x="355.00" y="616.50" class="label" text-anchor="end">Action alias dissection → dissect (30 row…</text>
+<rect x="367.00" y="605.00" width="507.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
+<rect x="367.00" y="605.00" width="38.81" height="15.00" rx="6.00" fill="#17736D"/>
+<text x="884.00" y="616.50" class="value" text-anchor="start">3.62%</text>
+<text x="355.00" y="654.83" class="label" text-anchor="end">Action alias retraction → retract (3 rows)</text>
+<rect x="367.00" y="643.33" width="507.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
+<rect x="367.00" y="643.33" width="32.79" height="15.00" rx="6.00" fill="#17736D"/>
+<text x="884.00" y="654.83" class="value" text-anchor="start">3.06%</text>
+<text x="355.00" y="693.17" class="label" text-anchor="end">Lemmatize going → go (6 rows)</text>
+<rect x="367.00" y="681.67" width="507.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
+<rect x="367.00" y="681.67" width="31.13" height="15.00" rx="6.00" fill="#17736D"/>
+<text x="884.00" y="693.17" class="value" text-anchor="start">2.90%</text>
+<text x="355.00" y="731.50" class="label" text-anchor="end">Split CamelCase (7 rows)</text>
+<rect x="367.00" y="720.00" width="507.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
+<rect x="367.00" y="720.00" width="26.10" height="15.00" rx="6.00" fill="#17736D"/>
+<text x="884.00" y="731.50" class="value" text-anchor="start">2.44%</text>
+<text x="355.00" y="769.83" class="label" text-anchor="end">Remove Rob run identifier (49 rows)</text>
+<rect x="367.00" y="758.33" width="507.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
+<rect x="367.00" y="758.33" width="23.37" height="15.00" rx="6.00" fill="#17736D"/>
+<text x="884.00" y="769.83" class="value" text-anchor="start">2.18%</text>
+<text x="355.00" y="808.17" class="label" text-anchor="end">Preserve &#x27;cutting position&#x27; modifier (2 r…</text>
+<rect x="367.00" y="796.67" width="507.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
+<rect x="367.00" y="796.67" width="22.38" height="15.00" rx="6.00" fill="#17736D"/>
+<text x="884.00" y="808.17" class="value" text-anchor="start">2.09%</text>
+<text x="355.00" y="846.50" class="label" text-anchor="end">Replace underscores (1 rows)</text>
+<rect x="367.00" y="835.00" width="507.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
+<rect x="367.00" y="835.00" width="17.80" height="15.00" rx="6.00" fill="#17736D"/>
+<text x="884.00" y="846.50" class="value" text-anchor="start">1.66%</text>
+<text x="355.00" y="884.83" class="label" text-anchor="end">Lemmatize threading → thread (2 rows)</text>
+<rect x="367.00" y="873.33" width="507.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
+<rect x="367.00" y="873.33" width="16.46" height="15.00" rx="6.00" fill="#17736D"/>
+<text x="884.00" y="884.83" class="value" text-anchor="start">1.54%</text>
 <rect x="982.00" y="132.00" width="550.00" height="455.00" rx="14.00" fill="#FFFEFB" stroke="#DCE3E1"/>
 <text x="1006.00" y="167.00" class="panel-title" text-anchor="start">Audited POS corrections</text>
 <text x="1006.00" y="189.00" class="small" text-anchor="start">NLTK tag → corrected analysis tag</text>
@@ -188,16 +96,16 @@ text { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sa
 <text x="1458.00" y="231.75" class="value" text-anchor="start">0.0722</text>
 <text x="1159.00" y="267.25" class="label" text-anchor="end">right: NN → JJ</text>
 <rect x="1171.00" y="255.75" width="277.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
-<rect x="1171.00" y="255.75" width="122.10" height="15.00" rx="6.00" fill="#DC765F"/>
-<text x="1458.00" y="267.25" class="value" text-anchor="start">0.0318</text>
-<text x="1159.00" y="302.75" class="label" text-anchor="end">right: RB → JJ</text>
+<rect x="1171.00" y="255.75" width="189.44" height="15.00" rx="6.00" fill="#DC765F"/>
+<text x="1458.00" y="267.25" class="value" text-anchor="start">0.0494</text>
+<text x="1159.00" y="302.75" class="label" text-anchor="end">cutting: VBG → JJ</text>
 <rect x="1171.00" y="291.25" width="277.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
-<rect x="1171.00" y="291.25" width="34.52" height="15.00" rx="6.00" fill="#DC765F"/>
-<text x="1458.00" y="302.75" class="value" text-anchor="start">0.0090</text>
-<text x="1159.00" y="338.25" class="label" text-anchor="end">right: VB → JJ</text>
+<rect x="1171.00" y="291.25" width="80.18" height="15.00" rx="6.00" fill="#DC765F"/>
+<text x="1458.00" y="302.75" class="value" text-anchor="start">0.0209</text>
+<text x="1159.00" y="338.25" class="label" text-anchor="end">right: RB → JJ</text>
 <rect x="1171.00" y="326.75" width="277.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
-<rect x="1171.00" y="326.75" width="30.97" height="15.00" rx="6.00" fill="#DC765F"/>
-<text x="1458.00" y="338.25" class="value" text-anchor="start">0.0081</text>
+<rect x="1171.00" y="326.75" width="34.52" height="15.00" rx="6.00" fill="#DC765F"/>
+<text x="1458.00" y="338.25" class="value" text-anchor="start">0.0090</text>
 <text x="1159.00" y="373.75" class="label" text-anchor="end">training: VBG → JJ</text>
 <rect x="1171.00" y="362.25" width="277.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
 <rect x="1171.00" y="362.25" width="14.66" height="15.00" rx="6.00" fill="#DC765F"/>
@@ -210,11 +118,11 @@ text { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sa
 <rect x="1171.00" y="433.25" width="277.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
 <rect x="1171.00" y="433.25" width="1.96" height="15.00" rx="6.00" fill="#DC765F"/>
 <text x="1458.00" y="444.75" class="value" text-anchor="start">0.0005</text>
-<text x="1159.00" y="480.25" class="label" text-anchor="end">left: NN → JJ</text>
+<text x="1159.00" y="480.25" class="label" text-anchor="end">left: VBN → JJ</text>
 <rect x="1171.00" y="468.75" width="277.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
-<rect x="1171.00" y="468.75" width="1.86" height="15.00" rx="6.00" fill="#DC765F"/>
-<text x="1458.00" y="480.25" class="value" text-anchor="start">0.0005</text>
-<text x="1159.00" y="515.75" class="label" text-anchor="end">left: VBN → JJ</text>
+<rect x="1171.00" y="468.75" width="1.61" height="15.00" rx="6.00" fill="#DC765F"/>
+<text x="1458.00" y="480.25" class="value" text-anchor="start">0.0004</text>
+<text x="1159.00" y="515.75" class="label" text-anchor="end">right: VB → JJ</text>
 <rect x="1171.00" y="504.25" width="277.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
 <rect x="1171.00" y="504.25" width="1.61" height="15.00" rx="6.00" fill="#DC765F"/>
 <text x="1458.00" y="515.75" class="value" text-anchor="start">0.0004</text>
@@ -238,6 +146,6 @@ text { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sa
 <rect x="1006.00" y="850.00" width="492.00" height="12.00" rx="5.00" fill="#E2E9E6"/>
 <rect x="1006.00" y="850.00" width="2.00" height="12.00" rx="5.00" fill="#DC765F"/>
 <line x1="58.00" y1="936.00" x2="1522.00" y2="936.00" stroke="#DCE3E1" stroke-width="1"/>
-<text x="58.00" y="960.00" class="small" text-anchor="start">The audit CSV retains VLA input, clean task text, normalized task text, rules, and weights.</text>
+<text x="58.00" y="960.00" class="small" text-anchor="start">POS is read before lemmatization: action cutting/clipping stay verbs, while &#x27;cutting position&#x27; is adjectival.</text>
 <text x="1522.00" y="960.00" class="small" text-anchor="end">GR00T-H N1.7 language report</text>
 </svg>

@@ -22,12 +22,12 @@ clip third clip left tube,0.013018243262175495
 position the needle for suture,0.012680530653161992
 scissors place,0.01257896405031578
 clip second clip left tube,0.012388899537332347
-go to the cut position left tube,0.011901231197495225
+go to the cutting position left tube,0.011901231197495225
 clip first clip right tube,0.009916849358716224
 rollercoaster,0.009753978550119396
 clip second clip right tube,0.00957050007746408
 clip third clip right tube,0.009549263022770019
-go to the cut position right tube,0.008997669722998085
+go to the cutting position right tube,0.008997669722998085
 extract the needle from the plastic phantom,0.00894720194021148
 suture throw,0.008776219708890259
 retract,0.00876053504863086

@@ -108,6 +108,7 @@ def format_rule_label(rule: str) -> str:
         "normalize_whitespace": "Normalize whitespace",
         "lowercase_semantic_text": "Lowercase task text",
         "drop_invalid_placeholder": "Drop invalid placeholder",
+        "preserve_attributive_cutting_position": "Preserve 'cutting position' modifier",
     }
     if rule in labels:
         return labels[rule]
@@ -154,12 +155,12 @@ def svg_document(width: int, height: int, body: list[str]) -> str:
         f'<rect width="{width}" height="{height}" fill="{BG}"/>\n'
         "<style>\n"
         f"text {{ font-family: {FONT}; fill: {INK}; }}\n"
-        ".title { font-size: 29px; font-weight: 750; letter-spacing: -0.4px; }\n"
-        ".subtitle { font-size: 14px; fill: #667780; }\n"
-        ".panel-title { font-size: 17px; font-weight: 700; }\n"
-        ".label { font-size: 12px; }\n"
-        ".small { font-size: 10.5px; fill: #667780; }\n"
-        ".value { font-size: 11.5px; font-weight: 650; }\n"
+        ".title { font-size: 36px; font-weight: 750; letter-spacing: -0.6px; }\n"
+        ".subtitle { font-size: 18px; fill: #667780; }\n"
+        ".panel-title { font-size: 22px; font-weight: 700; }\n"
+        ".label { font-size: 16px; }\n"
+        ".small { font-size: 14px; fill: #667780; }\n"
+        ".value { font-size: 15px; font-weight: 650; }\n"
         "</style>\n"
         + "\n".join(body)
         + "\n</svg>\n"
@@ -675,6 +676,11 @@ def draw_normalization_qa(
         width,
     )
 
+    ranked_rules = sorted(
+        rules,
+        key=lambda row: as_float(row, "source_mixture_weight_affected"),
+        reverse=True,
+    )[:18]
     rule_data = [
         (
             shorten(
@@ -684,7 +690,7 @@ def draw_normalization_qa(
             as_float(row, "source_mixture_weight_affected"),
             fmt_percent(as_float(row, "source_mixture_weight_affected"), 2),
         )
-        for row in rules
+        for row in ranked_rules
     ]
     add_bar_panel(
         body,
@@ -692,8 +698,8 @@ def draw_normalization_qa(
         y=132,
         width=910,
         height=790,
-        panel_title="Cleaning-rule reach",
-        panel_subtitle="VLA-input probability affected by each rule",
+        panel_title="Most influential cleaning rules",
+        panel_subtitle="VLA-input probability affected; complete list remains in the audit CSV",
         rows=rule_data,
         color=TEAL,
         label_width=295,
@@ -746,7 +752,12 @@ def draw_normalization_qa(
             visible_width = max(visible_width, 2)
         body.append(rect(1006, y + 12, visible_width, 12, color, 5))
 
-    add_footer(body, width, height, "The audit CSV retains VLA input, clean task text, normalized task text, rules, and weights.")
+    add_footer(
+        body,
+        width,
+        height,
+        "POS is read before lemmatization: action cutting/clipping stay verbs, while 'cutting position' is adjectival.",
+    )
     output.write_text(svg_document(width, height, body), encoding="utf-8")
 
 
@@ -764,6 +775,9 @@ def render_verb_noun_drilldown(
     relationships: list[dict[str, str]],
     examples: list[dict[str, str]],
 ) -> str:
+    default_verb = (
+        "go" if any(row["verb"] == "go" for row in verbs) else verbs[0]["verb"]
+    )
     relationships_by_verb: dict[str, list[dict[str, str]]] = defaultdict(list)
     for row in relationships:
         relationships_by_verb[row["verb"]].append(row)
@@ -798,11 +812,12 @@ def render_verb_noun_drilldown(
         )
         match_rate = min(1.0, matched / expected) if expected else 0.0
         top_noun = relation_rows[0]["following_noun"] if relation_rows else "none found"
+        selected = verb == default_verb
 
         verb_buttons.append(
             f'<button type="button" class="verb-button" '
             f'data-verb-target="{escape(verb_id)}" aria-controls="{escape(verb_id)}" '
-            f'aria-expanded="false">{escape(verb)}</button>'
+            f'aria-expanded="{str(selected).lower()}">{escape(verb)}</button>'
         )
 
         table_rows = []
@@ -849,9 +864,10 @@ def render_verb_noun_drilldown(
                 "another verb or hard clause boundary in the normalized task text.</p>"
             )
 
+        hidden_attribute = "" if selected else " hidden"
         verb_panels.append(
             f"""
-            <section class="verb-panel" id="{escape(verb_id)}" hidden>
+            <section class="verb-panel" id="{escape(verb_id)}"{hidden_attribute}>
               <div class="verb-panel-meta">
                 <span class="verb-name">{escape(verb)}</span>
                 <span>{escape(fmt_percent(token_share, 2))} of verb tokens</span>
@@ -1079,6 +1095,105 @@ def render_length_examples(rows: list[dict[str, str | int | float]]) -> str:
     """
 
 
+def render_normalization_examples(audit: list[dict[str, str]]) -> str:
+    specs = [
+        (
+            "Context-sensitive POS",
+            "preserve_attributive_cutting_position",
+            "POS is read before lemmatization: in ‘cutting position,’ cutting modifies the destination noun; other cutting and clipping uses count as verbs.",
+        ),
+        (
+            "CMR state template",
+            "strip_cmr_state_template",
+            "Remove structured arm and instrument state plus the ‘do a/an’ carrier.",
+        ),
+        (
+            "Rob tool template",
+            "strip_rob_tool_template",
+            "Remove structured tool metadata and the surgery-process carrier.",
+        ),
+        (
+            "Joined task name",
+            "split_camel_case",
+            "Split task labels such as NeedleThreading before morphology normalization.",
+        ),
+        (
+            "Action wording",
+            "canonicalize_action_nominalization:dissection->dissect",
+            "Map audited nominal action forms to one comparable action term.",
+        ),
+        (
+            "Underscore repair",
+            "replace_underscores",
+            "Convert machine-style separators into readable word boundaries.",
+        ),
+    ]
+
+    selected_examples = []
+    for label, rule, explanation in specs:
+        matches = [
+            row
+            for row in audit
+            if rule in row["rules_applied"].split(" | ")
+        ]
+        if not matches:
+            continue
+        representative = max(
+            matches,
+            key=lambda row: as_float(row, "source_training_mixture_weight"),
+        )
+        selected_examples.append((label, rule, explanation, representative))
+
+    if not selected_examples:
+        return ""
+
+    buttons = []
+    panels = []
+    for index, (label, _, explanation, row) in enumerate(selected_examples):
+        panel_id = f"normalization-example-{index + 1}"
+        selected = index == 0
+        buttons.append(
+            f'<button type="button" class="normalization-button" '
+            f'data-normalization-target="{panel_id}" aria-controls="{panel_id}" '
+            f'aria-expanded="{str(selected).lower()}">{escape(label)}</button>'
+        )
+
+        rule_labels = [
+            format_rule_label(rule_name)
+            for rule_name in row["rules_applied"].split(" | ")
+            if rule_name
+        ]
+        rule_chips = "".join(
+            f"<span>{escape(rule_label)}</span>" for rule_label in rule_labels
+        )
+        hidden_attribute = "" if selected else " hidden"
+        panels.append(
+            f"""
+            <article class="normalization-example" id="{panel_id}"{hidden_attribute}>
+              <div class="normalization-example-heading">
+                <div><b>{escape(label)}</b><p>{escape(explanation)}</p></div>
+                <span class="dataset">Dataset · {escape(row['current_public_path'])}</span>
+              </div>
+              <div class="normalization-stages">
+                <div><span>VLA input</span><code>{escape(row['vlm_formalized_text'])}</code></div>
+                <div><span>Clean task text</span><code>{escape(row['semantic_surface_text'])}</code></div>
+                <div><span>Normalized task text</span><code>{escape(row['semantic_text'])}</code></div>
+              </div>
+              <div class="normalization-rules"><b>Rules applied</b>{rule_chips}</div>
+            </article>
+            """
+        )
+
+    return f"""
+      <div class="normalization-examples">
+        <h3>Representative cleaning examples</h3>
+        <p>Select an example to compare the same instruction across all three text stages.</p>
+        <div class="normalization-buttons" role="group" aria-label="Select a cleaning example">{''.join(buttons)}</div>
+        <div class="normalization-example-panels">{''.join(panels)}</div>
+      </div>
+    """
+
+
 # -----------------------------------------------------------------------------
 # HTML gallery
 # -----------------------------------------------------------------------------
@@ -1087,11 +1202,13 @@ def write_gallery(
     output_dir: Path,
     figures: list[tuple[str, str, str]],
     length_examples: list[dict[str, str | int | float]],
+    audit: list[dict[str, str]],
     verbs: list[dict[str, str]],
     verb_relationships: list[dict[str, str]],
     verb_examples: list[dict[str, str]],
 ) -> None:
     length_examples_html = render_length_examples(length_examples)
+    normalization_examples_html = render_normalization_examples(audit)
     verb_drilldown_html = render_verb_noun_drilldown(
         verbs,
         verb_relationships,
@@ -1153,7 +1270,7 @@ def write_gallery(
           <div class="pipeline-stage">
             <span class="stage-number">3</span>
             <b>Normalized task text</b>
-            <p>Case and morphology are standardized, with explicit compound, action, and POS rules.</p>
+            <p>POS is resolved on clean task text before case, compounds, and action morphology are standardized.</p>
           </div>
           <div class="pipeline-stage">
             <span class="stage-number">4</span>
@@ -1202,7 +1319,7 @@ def write_gallery(
             "Data cleaning pipeline",
             "How VLA input becomes normalized task text before weighted language analysis.",
             ["06_normalization_audit.svg"],
-            before=cleaning_pipeline,
+            before=cleaning_pipeline + normalization_examples_html,
             secondary=True,
         ),
     ]
@@ -1216,10 +1333,10 @@ def write_gallery(
   <style>
     :root {{ color-scheme: light; --bg:#F3F0E8; --ink:#18323E; --muted:#667780; --card:#FFFEFB; }}
     * {{ box-sizing: border-box; }}
-    body {{ margin:0; background:var(--bg); color:var(--ink); font:15px/1.48 Inter,ui-sans-serif,system-ui,sans-serif; }}
+    body {{ margin:0; background:var(--bg); color:var(--ink); font:16px/1.5 Inter,ui-sans-serif,system-ui,sans-serif; }}
     header {{ max-width:1260px; margin:0 auto; padding:38px 22px 18px; }}
-    h1 {{ margin:0 0 8px; font-size:clamp(30px,4vw,48px); letter-spacing:-1.2px; line-height:1.05; }}
-    header p {{ color:var(--muted); max-width:800px; font-size:15px; }}
+    h1 {{ margin:0 0 8px; font-size:clamp(34px,4vw,52px); letter-spacing:-1.2px; line-height:1.05; }}
+    header p {{ color:var(--muted); max-width:800px; font-size:16px; }}
     main {{ max-width:1260px; margin:auto; padding:8px 22px 48px; display:grid; gap:14px; }}
     .card {{ background:var(--card); border:1px solid #DCE3E1; border-radius:12px; overflow:hidden; box-shadow:0 6px 20px rgba(24,50,62,.045); }}
     .card.secondary {{ background:#FAF9F5; }}
@@ -1227,32 +1344,32 @@ def write_gallery(
     .section-summary::-webkit-details-marker {{ display:none; }}
     .section-summary:hover {{ background:#F0F5F2; }}
     .summary-copy {{ display:grid; gap:3px; }}
-    .section-title {{ font-size:20px; font-weight:750; letter-spacing:-.15px; }}
-    .section-description {{ color:var(--muted); font-size:13.5px; }}
+    .section-title {{ font-size:22px; font-weight:750; letter-spacing:-.15px; }}
+    .section-description {{ color:var(--muted); font-size:14.5px; }}
     .section-toggle {{ flex:0 0 auto; width:24px; height:24px; border-radius:50%; border:1px solid #C9D7D3; position:relative; }}
     .section-toggle::before, .section-toggle::after {{ content:""; position:absolute; background:#176B66; left:6px; right:6px; top:11px; height:1.5px; }}
     .section-toggle::after {{ transform:rotate(90deg); transition:transform .15s ease; }}
     .card[open] > .section-summary .section-toggle::after {{ transform:rotate(0); }}
     .section-body {{ border-top:1px solid #E3E8E6; }}
-    h3 {{ margin:0 0 6px; font-size:18px; }}
+    h3 {{ margin:0 0 6px; font-size:20px; }}
     p {{ margin:0; color:var(--muted); line-height:1.45; }}
     img {{ width:100%; display:block; }}
     .section-body > img + img {{ border-top:1px solid #E3E8E6; }}
     a {{ color:#176B66; text-underline-offset:3px; }}
     .verb-drilldown {{ border-top:1px solid #DCE3E1; padding:20px 22px 24px; }}
     .verb-intro {{ max-width:950px; }}
-    .download {{ margin-top:6px; font-size:13px; }}
+    .download {{ margin-top:6px; font-size:14px; }}
     .verb-buttons {{ display:flex; flex-wrap:wrap; gap:6px; margin:14px 0 0; }}
-    .verb-button {{ appearance:none; border:1px solid #CDE0DB; color:#176B66; background:#E8F2EF; border-radius:999px; padding:5px 10px; font:650 13px/1.3 inherit; cursor:pointer; }}
+    .verb-button {{ appearance:none; border:1px solid #CDE0DB; color:#176B66; background:#E8F2EF; border-radius:999px; padding:6px 11px; font:650 14px/1.3 inherit; cursor:pointer; }}
     .verb-button:hover {{ background:#D9ECE7; }}
     .verb-button[aria-expanded="true"] {{ color:#fff; background:#176B66; border-color:#176B66; }}
     .verb-panel {{ border:1px solid #DCE3E1; border-radius:9px; background:#F9F8F3; margin-top:12px; overflow:hidden; }}
     .verb-panel[hidden] {{ display:none; }}
-    .verb-panel-meta {{ display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center; padding:11px 13px; color:var(--muted); font-size:13px; }}
-    .verb-name {{ font-size:16px; font-weight:750; color:#176B66; }}
+    .verb-panel-meta {{ display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center; padding:11px 13px; color:var(--muted); font-size:14px; }}
+    .verb-name {{ font-size:18px; font-weight:750; color:#176B66; }}
     .relation-table-wrap {{ overflow-x:auto; padding:0 10px 10px; }}
-    .relation-table {{ width:100%; border-collapse:collapse; background:var(--card); border:1px solid #E1E6E4; font-size:12.5px; }}
-    .relation-table th {{ color:var(--muted); font-size:10.5px; text-transform:uppercase; letter-spacing:.04em; text-align:left; background:#F0F4F2; }}
+    .relation-table {{ width:100%; border-collapse:collapse; background:var(--card); border:1px solid #E1E6E4; font-size:13.5px; }}
+    .relation-table th {{ color:var(--muted); font-size:11.5px; text-transform:uppercase; letter-spacing:.04em; text-align:left; background:#F0F4F2; }}
     .relation-table th, .relation-table td {{ padding:8px 9px; border-bottom:1px solid #E1E6E4; vertical-align:top; }}
     .relation-table th:nth-child(2), .relation-table th:nth-child(3), .relation-table th:nth-child(4), .relation-table td:nth-child(2), .relation-table td:nth-child(3), .relation-table td:nth-child(4) {{ white-space:nowrap; }}
     .relation-examples {{ margin:0; padding-left:15px; min-width:280px; }}
@@ -1265,38 +1382,60 @@ def write_gallery(
     .length-control-heading label {{ font-weight:700; }}
     .length-control-heading output {{ color:#176B66; font-weight:750; }}
     #length-selector {{ width:100%; margin:10px 0 2px; accent-color:#176B66; cursor:pointer; }}
-    .length-scale {{ display:flex; justify-content:space-between; gap:10px; color:var(--muted); font-size:11.5px; }}
+    .length-scale {{ display:flex; justify-content:space-between; gap:10px; color:var(--muted); font-size:12.5px; }}
     .length-panels {{ margin-top:12px; }}
     .length-panel {{ border:1px solid #DCE3E1; border-radius:9px; background:#F9F8F3; overflow:hidden; }}
     .length-panel[hidden] {{ display:none; }}
-    .length-result-meta {{ display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center; padding:11px 12px; color:var(--muted); font-size:13px; }}
-    .length-result-meta b {{ color:var(--ink); font-size:15px; }}
+    .length-result-meta {{ display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center; padding:11px 12px; color:var(--muted); font-size:14px; }}
+    .length-result-meta b {{ color:var(--ink); font-size:16px; }}
     .examples-grid {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:10px; padding:0 10px 10px; }}
     .example {{ background:var(--card); border:1px solid #E1E6E4; border-radius:8px; padding:11px; min-width:0; }}
     .example-meta {{ display:flex; flex-wrap:wrap; gap:5px; margin-bottom:9px; }}
-    .example-meta span {{ background:#EDF2EF; color:var(--muted); border-radius:999px; padding:3px 6px; font-size:11px; overflow-wrap:anywhere; }}
+    .example-meta span {{ background:#EDF2EF; color:var(--muted); border-radius:999px; padding:3px 6px; font-size:12px; overflow-wrap:anywhere; }}
     .example-meta .dataset {{ background:#D9ECE7; color:#175C58; font-weight:650; }}
     dl {{ margin:0; }}
-    dt {{ color:var(--muted); font-size:11px; font-weight:650; margin:8px 0 2px; text-transform:uppercase; letter-spacing:.04em; }}
+    dt {{ color:var(--muted); font-size:12px; font-weight:650; margin:8px 0 2px; text-transform:uppercase; letter-spacing:.04em; }}
     dd {{ margin:0; line-height:1.4; overflow-wrap:anywhere; }}
-    code {{ display:block; color:#663D34; background:#FAEAE5; border-radius:6px; padding:7px 8px; white-space:pre-wrap; overflow-wrap:anywhere; font-family:ui-monospace,SFMono-Regular,Consolas,monospace; font-size:12px; }}
-    .source-detail {{ margin-top:9px; color:var(--muted); font-size:12px; }}
+    code {{ display:block; color:#663D34; background:#FAEAE5; border-radius:6px; padding:7px 8px; white-space:pre-wrap; overflow-wrap:anywhere; font-family:ui-monospace,SFMono-Regular,Consolas,monospace; font-size:13px; }}
+    .source-detail {{ margin-top:9px; color:var(--muted); font-size:13px; }}
     .source-detail summary {{ cursor:pointer; }}
     .source-detail p {{ margin-top:5px; overflow-wrap:anywhere; }}
     .pipeline {{ padding:20px 22px 22px; background:#F7FAF8; }}
     .pipeline-grid {{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-top:12px; }}
     .pipeline-stage {{ min-width:0; border:1px solid #D8E3DF; border-radius:8px; background:var(--card); padding:11px; }}
-    .pipeline-stage b {{ display:block; margin:7px 0 4px; font-size:14px; }}
-    .pipeline-stage p {{ font-size:12.5px; }}
-    .stage-number {{ display:grid; place-items:center; width:22px; height:22px; border-radius:50%; color:#fff; background:#176B66; font-size:11px; font-weight:750; }}
-    .pipeline-note {{ margin-top:10px; font-size:12.5px; }}
+    .pipeline-stage b {{ display:block; margin:7px 0 4px; font-size:15px; }}
+    .pipeline-stage p {{ font-size:13.5px; }}
+    .stage-number {{ display:grid; place-items:center; width:24px; height:24px; border-radius:50%; color:#fff; background:#176B66; font-size:12px; font-weight:750; }}
+    .pipeline-note {{ margin-top:10px; font-size:13.5px; }}
+    .normalization-examples {{ border-top:1px solid #DCE3E1; padding:20px 22px 24px; }}
+    .normalization-examples > p {{ max-width:900px; }}
+    .normalization-buttons {{ display:flex; flex-wrap:wrap; gap:7px; margin-top:14px; }}
+    .normalization-button {{ appearance:none; border:1px solid #D8D3EA; color:#5D518B; background:#F0EDF7; border-radius:999px; padding:6px 11px; font:650 14px/1.3 inherit; cursor:pointer; }}
+    .normalization-button:hover {{ background:#E5E0F2; }}
+    .normalization-button[aria-expanded="true"] {{ color:#fff; background:#796DAA; border-color:#796DAA; }}
+    .normalization-example-panels {{ margin-top:12px; }}
+    .normalization-example {{ border:1px solid #DCE3E1; border-radius:9px; background:#F9F8F3; padding:14px; }}
+    .normalization-example[hidden] {{ display:none; }}
+    .normalization-example-heading {{ display:flex; align-items:flex-start; justify-content:space-between; gap:18px; }}
+    .normalization-example-heading > div {{ max-width:750px; }}
+    .normalization-example-heading > div > b {{ font-size:17px; }}
+    .normalization-example-heading p {{ margin-top:3px; }}
+    .normalization-example-heading .dataset {{ flex:0 1 auto; color:#175C58; background:#D9ECE7; border-radius:999px; padding:4px 8px; font-size:12px; font-weight:650; overflow-wrap:anywhere; }}
+    .normalization-stages {{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin-top:13px; }}
+    .normalization-stages > div > span {{ display:block; margin-bottom:4px; color:var(--muted); font-size:12px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }}
+    .normalization-stages code {{ height:calc(100% - 22px); }}
+    .normalization-rules {{ display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin-top:12px; }}
+    .normalization-rules > b {{ margin-right:2px; font-size:13px; }}
+    .normalization-rules span {{ color:#5D518B; background:#F0EDF7; border-radius:999px; padding:3px 7px; font-size:12px; }}
     @media (max-width:800px) {{
       header, main {{ padding-left:14px; padding-right:14px; }}
       .section-description {{ display:none; }}
       .pipeline-grid {{ grid-template-columns:1fr 1fr; }}
+      .normalization-stages {{ grid-template-columns:1fr; }}
+      .normalization-example-heading {{ flex-direction:column; gap:8px; }}
     }}
     @media (max-width:480px) {{ .pipeline-grid {{ grid-template-columns:1fr; }} }}
-    footer {{ max-width:1260px; margin:auto; padding:0 22px 32px; color:var(--muted); font-size:12px; }}
+    footer {{ max-width:1260px; margin:auto; padding:0 22px 32px; color:var(--muted); font-size:13px; }}
   </style>
 </head>
 <body>
@@ -1348,6 +1487,19 @@ def write_gallery(
       lengthSelector.addEventListener('input', showSelectedLength);
       showSelectedLength();
     }}
+    const normalizationButtons = [...document.querySelectorAll('.normalization-button')];
+    const normalizationPanels = [...document.querySelectorAll('.normalization-example')];
+    normalizationButtons.forEach((button) => {{
+      button.addEventListener('click', () => {{
+        normalizationButtons.forEach((item) => item.setAttribute('aria-expanded', 'false'));
+        normalizationPanels.forEach((panel) => {{ panel.hidden = true; }});
+        const target = document.getElementById(button.dataset.normalizationTarget);
+        if (target) {{
+          target.hidden = false;
+          button.setAttribute('aria-expanded', 'true');
+        }}
+      }});
+    }});
   </script>
 </body>
 </html>
@@ -1465,6 +1617,7 @@ def main() -> None:
         output_dir,
         figures,
         length_examples,
+        audit,
         verbs,
         verb_relationships,
         verb_examples,

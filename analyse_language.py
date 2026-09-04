@@ -14,9 +14,8 @@ import re
 import nltk
 from nltk import pos_tag, sent_tokenize, word_tokenize
 from nltk.corpus import stopwords
-from nltk.stem import WordNetLemmatizer
 
-from language_normalization import correct_pos_tag, normalize_language
+from language_normalization import canonicalize_word, correct_pos_tag, normalize_language
 
 
 INPUT_CSV = Path("extracted_language/gr00t_h_n17_public_language_counts.csv")
@@ -47,7 +46,6 @@ for resource, location in NLTK_RESOURCES.items():
             if not nltk.download(resource, quiet=True):
                 raise RuntimeError(f"Could not install required NLTK resource: {resource}")
 
-lemmatizer = WordNetLemmatizer()
 stop_words = set(stopwords.words("english"))
 
 
@@ -183,24 +181,32 @@ HARD_CLAUSE_BOUNDARIES = frozenset({".", "!", "?", ";", ":"})
 
 def tag_semantic_sentence(
     sentence: str,
-) -> list[tuple[str, str, str, str]]:
-    """Return token, original tag, corrected tag, and context lemma."""
+) -> list[tuple[str, str, str, str, str | None]]:
+    """Return source token, NLTK tag, corrected tag, lemma, and audit rule."""
     tagged_tokens = []
-    for word, nltk_tag in pos_tag(word_tokenize(sentence)):
-        tag, _ = correct_pos_tag(word, nltk_tag)
-        word_lower = word.lower()
-        if tag.startswith("VB"):
-            lemma = lemmatizer.lemmatize(word_lower, "v")
-        elif tag.startswith("NN"):
-            lemma = lemmatizer.lemmatize(word_lower, "n")
-        else:
-            lemma = word_lower
-        tagged_tokens.append((word, nltk_tag, tag, lemma))
+    tokens = [
+        token.lower() if token.isalpha() else token
+        for token in word_tokenize(sentence)
+    ]
+    initial_tags = pos_tag(tokens)
+    for index, (word, nltk_tag) in enumerate(initial_tags):
+        next_word = (
+            initial_tags[index + 1][0]
+            if index + 1 < len(initial_tags)
+            else None
+        )
+        tag, correction_rule = correct_pos_tag(word, nltk_tag, next_word)
+        lemma = (
+            canonicalize_word(word, nltk_tag, [], next_word)
+            if word.isalpha()
+            else word.lower()
+        )
+        tagged_tokens.append((word, nltk_tag, tag, lemma, correction_rule))
     return tagged_tokens
 
 
 def nearest_following_noun_pairs(
-    tagged_tokens: list[tuple[str, str, str, str]],
+    tagged_tokens: list[tuple[str, str, str, str, str | None]],
 ) -> list[tuple[str, str]]:
     """Pair each verb with the nearest following noun in its local clause.
 
@@ -208,10 +214,10 @@ def nearest_following_noun_pairs(
     another verb or a hard punctuation boundary.
     """
     pairs = []
-    for index, (word, _, tag, lemma) in enumerate(tagged_tokens):
+    for index, (word, _, tag, lemma, _) in enumerate(tagged_tokens):
         if not word.isalpha() or not tag.startswith("VB"):
             continue
-        for next_word, _, next_tag, next_lemma in tagged_tokens[index + 1 :]:
+        for next_word, _, next_tag, next_lemma, _ in tagged_tokens[index + 1 :]:
             if next_word in HARD_CLAUSE_BOUNDARIES or next_tag.startswith("VB"):
                 break
             if next_word.isalpha() and next_tag.startswith("NN"):
@@ -339,7 +345,7 @@ def write_verb_following_noun_outputs(
 def main() -> None:
     audit_rows, source_weight, retained_weight = load_weighted_prompts(INPUT_CSV)
 
-    # Collapse equivalent canonical prompts before NLTK processing.
+    # Aggregate canonical prompts for the prompt-distribution output.
     semantic_weights = Counter()
     for row in audit_rows:
         if row["semantic_text"]:
@@ -358,7 +364,12 @@ def main() -> None:
     verb_noun_counter = Counter()
     verb_noun_prompt_counter = Counter()
 
-    for text, weight in semantic_weights.items():
+    for row in audit_rows:
+        text = row["semantic_text"]
+        if not text:
+            continue
+        surface_text = row["semantic_surface_text"]
+        weight = row["semantic_analysis_weight"]
         tokens = word_tokenize(text)
         words = [word.lower() for word in tokens if word.isalpha()]
 
@@ -367,16 +378,12 @@ def main() -> None:
             if word not in stop_words:
                 word_counter[word] += weight
 
-        # Tag and form bigrams within sentence boundaries. Bigrams require both
-        # original adjacent words to be content words; stopword removal must not
-        # join words that were never adjacent in the prompt.
-        for sentence in sent_tokenize(text):
-            sentence_tokens = word_tokenize(sentence)
+        # POS-tag the clean task text before lemmatization changes its syntax.
+        for sentence in sent_tokenize(surface_text):
             tagged_tokens = tag_semantic_sentence(sentence)
-            for word, nltk_tag, tag, lemma in tagged_tokens:
+            for word, nltk_tag, tag, lemma, correction_rule in tagged_tokens:
                 if not word.isalpha():
                     continue
-                _, correction_rule = correct_pos_tag(word, nltk_tag)
                 if correction_rule is not None:
                     key = (correction_rule, word.lower(), nltk_tag, tag)
                     pos_correction_counts[key] += 1
@@ -390,6 +397,9 @@ def main() -> None:
                 verb_noun_counter[(verb, noun)] += weight
                 verb_noun_prompt_counter[(verb, noun, text)] += weight
 
+        # Bigrams use normalized task text and never cross sentence boundaries.
+        for sentence in sent_tokenize(text):
+            sentence_tokens = word_tokenize(sentence)
             for first, second in zip(sentence_tokens[:-1], sentence_tokens[1:]):
                 if not first.isalpha() or not second.isalpha():
                     continue
@@ -490,7 +500,7 @@ def main() -> None:
                 "word",
                 "nltk_tag",
                 "corrected_tag",
-                "unique_semantic_occurrences",
+                "source_row_occurrences",
                 "expected_corrections_per_training_sample",
             ]
         )

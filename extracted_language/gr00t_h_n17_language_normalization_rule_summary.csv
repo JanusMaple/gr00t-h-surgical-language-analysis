@@ -14,12 +14,12 @@ lemmatize_inflection:using->use,20,0.005703035596269952
 lemmatize_inflection:preparing->prepare,15,0.0040946367408547365
 lemmatize_inflection:separating->separate,12,0.002583123306147874
 lemmatize_inflection:tying->tie,9,0.06382516823768727
-lemmatize_inflection:cutting->cut,8,0.02844605843014785
 lemmatize_inflection:vessels->vessel,8,0.0016711244620865068
 lemmatize_inflection:dissected->dissect,8,0.0007811556741848067
 split_camel_case,7,0.024356075316107784
 lemmatize_inflection:clipping->clip,6,0.06752477817426286
 lemmatize_inflection:going->go,6,0.029048969078984816
+lemmatize_inflection:cutting->cut,6,0.007555030310792401
 lemmatize_inflection:positioned->position,5,0.000659824350753169
 lemmatize_inflection:picks->pick,5,0.000659824350753169
 lemmatize_inflection:positions->position,5,0.000659824350753169
@@ -31,6 +31,7 @@ lemmatize_inflection:instruments->instrument,4,0.00389431541786658
 lemmatize_inflection:ovaries->ovary,4,0.00017525769938824985
 lemmatize_inflection:traces->trace,3,0.003735661728010981
 canonicalize_action_nominalization:retraction->retract,3,0.030603341659783904
+preserve_attributive_cutting_position,2,0.02089102811935545
 lemmatize_inflection:threading->thread,2,0.015365403908007922
 lemmatize_inflection:arms->arm,2,0.0009291805794649535
 drop_invalid_placeholder,1,0.00037670885984945397
