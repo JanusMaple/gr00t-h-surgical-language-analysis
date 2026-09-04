@@ -224,24 +224,30 @@ def tag_semantic_sentence(
     return tagged_tokens
 
 
-def nearest_following_noun_pairs(
+def following_noun_head_pairs(
     tagged_tokens: list[tuple[str, str, str, str, str | None]],
 ) -> list[tuple[str, str]]:
-    """Pair each verb with the nearest following noun in its local clause.
+    """Pair each verb with the head of its first following noun phrase.
 
-    This is a proximity statistic, not a dependency parse. Scanning stops at
-    another verb or a hard punctuation boundary.
+    This is a local head-final noun-sequence heuristic, not a dependency parse.
+    Scanning stops at another verb or a hard punctuation boundary. Within the
+    first contiguous noun sequence, the final noun is treated as its head.
     """
     pairs = []
     for index, (word, _, tag, lemma, _) in enumerate(tagged_tokens):
         if not word.isalpha() or not tag.startswith("VB"):
             continue
+        noun_head = None
         for next_word, _, next_tag, next_lemma, _ in tagged_tokens[index + 1 :]:
             if next_word in HARD_CLAUSE_BOUNDARIES or next_tag.startswith("VB"):
                 break
             if next_word.isalpha() and next_tag.startswith("NN"):
-                pairs.append((lemma, next_lemma))
+                noun_head = next_lemma
+                continue
+            if noun_head is not None:
                 break
+        if noun_head is not None:
+            pairs.append((lemma, noun_head))
     return pairs
 
 
@@ -412,7 +418,7 @@ def main() -> None:
                 elif tag.startswith("NN"):
                     noun_counter[lemma] += weight
 
-            for verb, noun in nearest_following_noun_pairs(tagged_tokens):
+            for verb, noun in following_noun_head_pairs(tagged_tokens):
                 verb_noun_counter[(verb, noun)] += weight
                 verb_noun_prompt_counter[(verb, noun, text)] += weight
 

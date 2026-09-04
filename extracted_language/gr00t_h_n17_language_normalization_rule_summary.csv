@@ -12,10 +12,13 @@ lemmatize_inflection:suturing->suture,30,0.05998526819501115
 canonicalize_action_nominalization:dissection->dissect,30,0.036221841313217276
 lemmatize_inflection:using->use,20,0.005703035596269952
 lemmatize_inflection:preparing->prepare,15,0.0040946367408547365
+preserve_plastic_phantom_modifier,14,0.03289050395212219
 lemmatize_inflection:separating->separate,12,0.002583123306147874
+canonicalize_nominal_knot_tying,9,0.06382516823768727
 lemmatize_inflection:tying->tie,9,0.06382516823768727
 lemmatize_inflection:vessels->vessel,8,0.0016711244620865068
 lemmatize_inflection:dissected->dissect,8,0.0007811556741848067
+preserve_sentence_initial_imperative_verb,8,0.010964058372271946
 split_camel_case,7,0.024356075316107784
 lemmatize_inflection:clipping->clip,6,0.06752477817426286
 lemmatize_inflection:going->go,6,0.029048969078984816
@@ -24,6 +27,7 @@ lemmatize_inflection:positioned->position,5,0.000659824350753169
 lemmatize_inflection:picks->pick,5,0.000659824350753169
 lemmatize_inflection:positions->position,5,0.000659824350753169
 normalize_whitespace,5,0.0005040428922325569
+canonicalize_tundra_grasp_event_noun,5,0.0005040428922325569
 lemmatize_inflection:grasped->grasp,5,0.0005040428922325569
 lemmatize_inflection:awaiting->await,5,0.0013421920760326375
 lemmatize_inflection:continuing->continue,5,0.0005867268971396507

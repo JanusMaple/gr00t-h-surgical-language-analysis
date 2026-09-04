@@ -43,109 +43,129 @@ text { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sa
 <rect x="367.00" y="451.67" width="507.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
 <rect x="367.00" y="451.67" width="72.35" height="15.00" rx="6.00" fill="#17736D"/>
 <text x="884.00" y="463.17" class="value" text-anchor="start">6.75%</text>
-<text x="355.00" y="501.50" class="label" text-anchor="end">Lemmatize tying → tie (9 rows)</text>
+<text x="355.00" y="501.50" class="label" text-anchor="end">Treat &#x27;knot tying&#x27; as nominal (9 rows)</text>
 <rect x="367.00" y="490.00" width="507.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
 <rect x="367.00" y="490.00" width="68.39" height="15.00" rx="6.00" fill="#17736D"/>
 <text x="884.00" y="501.50" class="value" text-anchor="start">6.38%</text>
-<text x="355.00" y="539.83" class="label" text-anchor="end">Lemmatize suturing → suture (30 rows)</text>
+<text x="355.00" y="539.83" class="label" text-anchor="end">Lemmatize tying → tie (9 rows)</text>
 <rect x="367.00" y="528.33" width="507.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="528.33" width="64.27" height="15.00" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="539.83" class="value" text-anchor="start">6.00%</text>
-<text x="355.00" y="578.17" class="label" text-anchor="end">Remove terminal punctuation (61 rows)</text>
+<rect x="367.00" y="528.33" width="68.39" height="15.00" rx="6.00" fill="#17736D"/>
+<text x="884.00" y="539.83" class="value" text-anchor="start">6.38%</text>
+<text x="355.00" y="578.17" class="label" text-anchor="end">Lemmatize suturing → suture (30 rows)</text>
 <rect x="367.00" y="566.67" width="507.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="566.67" width="52.56" height="15.00" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="578.17" class="value" text-anchor="start">4.91%</text>
-<text x="355.00" y="616.50" class="label" text-anchor="end">Action alias dissection → dissect (30 row…</text>
+<rect x="367.00" y="566.67" width="64.27" height="15.00" rx="6.00" fill="#17736D"/>
+<text x="884.00" y="578.17" class="value" text-anchor="start">6.00%</text>
+<text x="355.00" y="616.50" class="label" text-anchor="end">Remove terminal punctuation (61 rows)</text>
 <rect x="367.00" y="605.00" width="507.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="605.00" width="38.81" height="15.00" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="616.50" class="value" text-anchor="start">3.62%</text>
-<text x="355.00" y="654.83" class="label" text-anchor="end">Action alias retraction → retract (3 rows)</text>
+<rect x="367.00" y="605.00" width="52.56" height="15.00" rx="6.00" fill="#17736D"/>
+<text x="884.00" y="616.50" class="value" text-anchor="start">4.91%</text>
+<text x="355.00" y="654.83" class="label" text-anchor="end">Action alias dissection → dissect (30 row…</text>
 <rect x="367.00" y="643.33" width="507.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="643.33" width="32.79" height="15.00" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="654.83" class="value" text-anchor="start">3.06%</text>
-<text x="355.00" y="693.17" class="label" text-anchor="end">Lemmatize going → go (6 rows)</text>
+<rect x="367.00" y="643.33" width="38.81" height="15.00" rx="6.00" fill="#17736D"/>
+<text x="884.00" y="654.83" class="value" text-anchor="start">3.62%</text>
+<text x="355.00" y="693.17" class="label" text-anchor="end">Preserve &#x27;plastic phantom&#x27; modifier (14 r…</text>
 <rect x="367.00" y="681.67" width="507.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="681.67" width="31.13" height="15.00" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="693.17" class="value" text-anchor="start">2.90%</text>
-<text x="355.00" y="731.50" class="label" text-anchor="end">Split CamelCase (7 rows)</text>
+<rect x="367.00" y="681.67" width="35.24" height="15.00" rx="6.00" fill="#17736D"/>
+<text x="884.00" y="693.17" class="value" text-anchor="start">3.29%</text>
+<text x="355.00" y="731.50" class="label" text-anchor="end">Action alias retraction → retract (3 rows)</text>
 <rect x="367.00" y="720.00" width="507.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="720.00" width="26.10" height="15.00" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="731.50" class="value" text-anchor="start">2.44%</text>
-<text x="355.00" y="769.83" class="label" text-anchor="end">Remove Rob run identifier (49 rows)</text>
+<rect x="367.00" y="720.00" width="32.79" height="15.00" rx="6.00" fill="#17736D"/>
+<text x="884.00" y="731.50" class="value" text-anchor="start">3.06%</text>
+<text x="355.00" y="769.83" class="label" text-anchor="end">Lemmatize going → go (6 rows)</text>
 <rect x="367.00" y="758.33" width="507.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="758.33" width="23.37" height="15.00" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="769.83" class="value" text-anchor="start">2.18%</text>
-<text x="355.00" y="808.17" class="label" text-anchor="end">Preserve &#x27;cutting position&#x27; modifier (2 r…</text>
+<rect x="367.00" y="758.33" width="31.13" height="15.00" rx="6.00" fill="#17736D"/>
+<text x="884.00" y="769.83" class="value" text-anchor="start">2.90%</text>
+<text x="355.00" y="808.17" class="label" text-anchor="end">Split CamelCase (7 rows)</text>
 <rect x="367.00" y="796.67" width="507.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="796.67" width="22.38" height="15.00" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="808.17" class="value" text-anchor="start">2.09%</text>
-<text x="355.00" y="846.50" class="label" text-anchor="end">Replace underscores (1 rows)</text>
+<rect x="367.00" y="796.67" width="26.10" height="15.00" rx="6.00" fill="#17736D"/>
+<text x="884.00" y="808.17" class="value" text-anchor="start">2.44%</text>
+<text x="355.00" y="846.50" class="label" text-anchor="end">Remove Rob run identifier (49 rows)</text>
 <rect x="367.00" y="835.00" width="507.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="835.00" width="17.80" height="15.00" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="846.50" class="value" text-anchor="start">1.66%</text>
-<text x="355.00" y="884.83" class="label" text-anchor="end">Lemmatize threading → thread (2 rows)</text>
+<rect x="367.00" y="835.00" width="23.37" height="15.00" rx="6.00" fill="#17736D"/>
+<text x="884.00" y="846.50" class="value" text-anchor="start">2.18%</text>
+<text x="355.00" y="884.83" class="label" text-anchor="end">Preserve &#x27;cutting position&#x27; modifier (2 r…</text>
 <rect x="367.00" y="873.33" width="507.00" height="15.00" rx="6.00" fill="#E9EEEC"/>
-<rect x="367.00" y="873.33" width="16.46" height="15.00" rx="6.00" fill="#17736D"/>
-<text x="884.00" y="884.83" class="value" text-anchor="start">1.54%</text>
+<rect x="367.00" y="873.33" width="22.38" height="15.00" rx="6.00" fill="#17736D"/>
+<text x="884.00" y="884.83" class="value" text-anchor="start">2.09%</text>
 <rect x="982.00" y="132.00" width="550.00" height="455.00" rx="14.00" fill="#FFFEFB" stroke="#DCE3E1"/>
 <text x="1006.00" y="167.00" class="panel-title" text-anchor="start">Audited POS corrections</text>
 <text x="1006.00" y="189.00" class="small" text-anchor="start">NLTK tag → corrected analysis tag</text>
-<text x="1159.00" y="226.68" class="label" text-anchor="end">left: VBD → JJ</text>
-<rect x="1171.00" y="216.59" width="277.00" height="12.17" rx="6.00" fill="#E9EEEC"/>
-<rect x="1171.00" y="216.59" width="277.00" height="12.17" rx="6.00" fill="#DC765F"/>
-<text x="1458.00" y="226.68" class="value" text-anchor="start">0.0722</text>
-<text x="1159.00" y="252.04" class="label" text-anchor="end">right: NN → JJ</text>
-<rect x="1171.00" y="241.95" width="277.00" height="12.17" rx="6.00" fill="#E9EEEC"/>
-<rect x="1171.00" y="241.95" width="189.44" height="12.17" rx="6.00" fill="#DC765F"/>
-<text x="1458.00" y="252.04" class="value" text-anchor="start">0.0494</text>
-<text x="1159.00" y="277.39" class="label" text-anchor="end">cutting: VBG → JJ</text>
-<rect x="1171.00" y="267.31" width="277.00" height="12.17" rx="6.00" fill="#E9EEEC"/>
-<rect x="1171.00" y="267.31" width="80.18" height="12.17" rx="6.00" fill="#DC765F"/>
-<text x="1458.00" y="277.39" class="value" text-anchor="start">0.0209</text>
-<text x="1159.00" y="302.75" class="label" text-anchor="end">ex: NN → JJ</text>
-<rect x="1171.00" y="292.66" width="277.00" height="12.17" rx="6.00" fill="#E9EEEC"/>
-<rect x="1171.00" y="292.66" width="47.79" height="12.17" rx="6.00" fill="#DC765F"/>
-<text x="1458.00" y="302.75" class="value" text-anchor="start">0.0125</text>
-<text x="1159.00" y="328.11" class="label" text-anchor="end">vivo: NN → JJ</text>
-<rect x="1171.00" y="318.02" width="277.00" height="12.17" rx="6.00" fill="#E9EEEC"/>
-<rect x="1171.00" y="318.02" width="47.79" height="12.17" rx="6.00" fill="#DC765F"/>
-<text x="1458.00" y="328.11" class="value" text-anchor="start">0.0125</text>
-<text x="1159.00" y="353.46" class="label" text-anchor="end">right: RB → JJ</text>
-<rect x="1171.00" y="343.38" width="277.00" height="12.17" rx="6.00" fill="#E9EEEC"/>
-<rect x="1171.00" y="343.38" width="34.52" height="12.17" rx="6.00" fill="#DC765F"/>
-<text x="1458.00" y="353.46" class="value" text-anchor="start">0.0090</text>
-<text x="1159.00" y="378.82" class="label" text-anchor="end">training: VBG → JJ</text>
-<rect x="1171.00" y="368.74" width="277.00" height="12.17" rx="6.00" fill="#E9EEEC"/>
-<rect x="1171.00" y="368.74" width="14.66" height="12.17" rx="6.00" fill="#DC765F"/>
-<text x="1458.00" y="378.82" class="value" text-anchor="start">0.0038</text>
-<text x="1159.00" y="404.18" class="label" text-anchor="end">orange: NN → JJ</text>
-<rect x="1171.00" y="394.09" width="277.00" height="12.17" rx="6.00" fill="#E9EEEC"/>
-<rect x="1171.00" y="394.09" width="12.05" height="12.17" rx="6.00" fill="#DC765F"/>
-<text x="1458.00" y="404.18" class="value" text-anchor="start">0.0031</text>
-<text x="1159.00" y="429.54" class="label" text-anchor="end">cylinder: NN → JJ</text>
-<rect x="1171.00" y="419.45" width="277.00" height="12.17" rx="6.00" fill="#E9EEEC"/>
-<rect x="1171.00" y="419.45" width="11.15" height="12.17" rx="6.00" fill="#DC765F"/>
-<text x="1458.00" y="429.54" class="value" text-anchor="start">0.0029</text>
-<text x="1159.00" y="454.89" class="label" text-anchor="end">penetrating: NN → JJ</text>
-<rect x="1171.00" y="444.81" width="277.00" height="12.17" rx="6.00" fill="#E9EEEC"/>
-<rect x="1171.00" y="444.81" width="10.55" height="12.17" rx="6.00" fill="#DC765F"/>
-<text x="1458.00" y="454.89" class="value" text-anchor="start">0.0028</text>
-<text x="1159.00" y="480.25" class="label" text-anchor="end">left: VB → JJ</text>
-<rect x="1171.00" y="470.16" width="277.00" height="12.17" rx="6.00" fill="#E9EEEC"/>
-<rect x="1171.00" y="470.16" width="1.96" height="12.17" rx="6.00" fill="#DC765F"/>
-<text x="1458.00" y="480.25" class="value" text-anchor="start">0.0005</text>
-<text x="1159.00" y="505.61" class="label" text-anchor="end">left: VBN → JJ</text>
-<rect x="1171.00" y="495.52" width="277.00" height="12.17" rx="6.00" fill="#E9EEEC"/>
-<rect x="1171.00" y="495.52" width="1.61" height="12.17" rx="6.00" fill="#DC765F"/>
-<text x="1458.00" y="505.61" class="value" text-anchor="start">0.0004</text>
-<text x="1159.00" y="530.96" class="label" text-anchor="end">right: VB → JJ</text>
-<rect x="1171.00" y="520.88" width="277.00" height="12.17" rx="6.00" fill="#E9EEEC"/>
-<rect x="1171.00" y="520.88" width="1.61" height="12.17" rx="6.00" fill="#DC765F"/>
-<text x="1458.00" y="530.96" class="value" text-anchor="start">0.0004</text>
-<text x="1159.00" y="556.32" class="label" text-anchor="end">underlying: VBG → JJ</text>
-<rect x="1171.00" y="546.24" width="277.00" height="12.17" rx="6.00" fill="#E9EEEC"/>
-<rect x="1171.00" y="546.24" width="0.61" height="12.17" rx="6.00" fill="#DC765F"/>
-<text x="1458.00" y="556.32" class="value" text-anchor="start">0.0002</text>
+<text x="1159.00" y="223.34" class="label" text-anchor="end">left: VBD → JJ</text>
+<rect x="1171.00" y="214.86" width="277.00" height="8.97" rx="6.00" fill="#E9EEEC"/>
+<rect x="1171.00" y="214.86" width="277.00" height="8.97" rx="6.00" fill="#DC765F"/>
+<text x="1458.00" y="223.34" class="value" text-anchor="start">0.0722</text>
+<text x="1159.00" y="242.03" class="label" text-anchor="end">tying: VBG → NN</text>
+<rect x="1171.00" y="233.54" width="277.00" height="8.97" rx="6.00" fill="#E9EEEC"/>
+<rect x="1171.00" y="233.54" width="244.95" height="8.97" rx="6.00" fill="#DC765F"/>
+<text x="1458.00" y="242.03" class="value" text-anchor="start">0.0638</text>
+<text x="1159.00" y="260.71" class="label" text-anchor="end">right: NN → JJ</text>
+<rect x="1171.00" y="252.23" width="277.00" height="8.97" rx="6.00" fill="#E9EEEC"/>
+<rect x="1171.00" y="252.23" width="189.44" height="8.97" rx="6.00" fill="#DC765F"/>
+<text x="1458.00" y="260.71" class="value" text-anchor="start">0.0494</text>
+<text x="1159.00" y="279.39" class="label" text-anchor="end">plastic: NN → JJ</text>
+<rect x="1171.00" y="270.91" width="277.00" height="8.97" rx="6.00" fill="#E9EEEC"/>
+<rect x="1171.00" y="270.91" width="126.23" height="8.97" rx="6.00" fill="#DC765F"/>
+<text x="1458.00" y="279.39" class="value" text-anchor="start">0.0329</text>
+<text x="1159.00" y="298.08" class="label" text-anchor="end">cutting: VBG → JJ</text>
+<rect x="1171.00" y="289.59" width="277.00" height="8.97" rx="6.00" fill="#E9EEEC"/>
+<rect x="1171.00" y="289.59" width="80.18" height="8.97" rx="6.00" fill="#DC765F"/>
+<text x="1458.00" y="298.08" class="value" text-anchor="start">0.0209</text>
+<text x="1159.00" y="316.76" class="label" text-anchor="end">ex: NN → JJ</text>
+<rect x="1171.00" y="308.28" width="277.00" height="8.97" rx="6.00" fill="#E9EEEC"/>
+<rect x="1171.00" y="308.28" width="47.79" height="8.97" rx="6.00" fill="#DC765F"/>
+<text x="1458.00" y="316.76" class="value" text-anchor="start">0.0125</text>
+<text x="1159.00" y="335.45" class="label" text-anchor="end">vivo: NN → JJ</text>
+<rect x="1171.00" y="326.96" width="277.00" height="8.97" rx="6.00" fill="#E9EEEC"/>
+<rect x="1171.00" y="326.96" width="47.79" height="8.97" rx="6.00" fill="#DC765F"/>
+<text x="1458.00" y="335.45" class="value" text-anchor="start">0.0125</text>
+<text x="1159.00" y="354.13" class="label" text-anchor="end">perform: NN → VB</text>
+<rect x="1171.00" y="345.65" width="277.00" height="8.97" rx="6.00" fill="#E9EEEC"/>
+<rect x="1171.00" y="345.65" width="40.14" height="8.97" rx="6.00" fill="#DC765F"/>
+<text x="1458.00" y="354.13" class="value" text-anchor="start">0.0105</text>
+<text x="1159.00" y="372.82" class="label" text-anchor="end">right: RB → JJ</text>
+<rect x="1171.00" y="364.33" width="277.00" height="8.97" rx="6.00" fill="#E9EEEC"/>
+<rect x="1171.00" y="364.33" width="34.52" height="8.97" rx="6.00" fill="#DC765F"/>
+<text x="1458.00" y="372.82" class="value" text-anchor="start">0.0090</text>
+<text x="1159.00" y="391.50" class="label" text-anchor="end">training: VBG → JJ</text>
+<rect x="1171.00" y="383.02" width="277.00" height="8.97" rx="6.00" fill="#E9EEEC"/>
+<rect x="1171.00" y="383.02" width="14.66" height="8.97" rx="6.00" fill="#DC765F"/>
+<text x="1458.00" y="391.50" class="value" text-anchor="start">0.0038</text>
+<text x="1159.00" y="410.18" class="label" text-anchor="end">orange: NN → JJ</text>
+<rect x="1171.00" y="401.70" width="277.00" height="8.97" rx="6.00" fill="#E9EEEC"/>
+<rect x="1171.00" y="401.70" width="12.05" height="8.97" rx="6.00" fill="#DC765F"/>
+<text x="1458.00" y="410.18" class="value" text-anchor="start">0.0031</text>
+<text x="1159.00" y="428.87" class="label" text-anchor="end">cylinder: NN → JJ</text>
+<rect x="1171.00" y="420.38" width="277.00" height="8.97" rx="6.00" fill="#E9EEEC"/>
+<rect x="1171.00" y="420.38" width="11.15" height="8.97" rx="6.00" fill="#DC765F"/>
+<text x="1458.00" y="428.87" class="value" text-anchor="start">0.0029</text>
+<text x="1159.00" y="447.55" class="label" text-anchor="end">penetrating: NN → JJ</text>
+<rect x="1171.00" y="439.07" width="277.00" height="8.97" rx="6.00" fill="#E9EEEC"/>
+<rect x="1171.00" y="439.07" width="10.55" height="8.97" rx="6.00" fill="#DC765F"/>
+<text x="1458.00" y="447.55" class="value" text-anchor="start">0.0028</text>
+<text x="1159.00" y="466.24" class="label" text-anchor="end">left: VB → JJ</text>
+<rect x="1171.00" y="457.75" width="277.00" height="8.97" rx="6.00" fill="#E9EEEC"/>
+<rect x="1171.00" y="457.75" width="1.96" height="8.97" rx="6.00" fill="#DC765F"/>
+<text x="1458.00" y="466.24" class="value" text-anchor="start">0.0005</text>
+<text x="1159.00" y="484.92" class="label" text-anchor="end">approach: NN → VB</text>
+<rect x="1171.00" y="476.44" width="277.00" height="8.97" rx="6.00" fill="#E9EEEC"/>
+<rect x="1171.00" y="476.44" width="1.93" height="8.97" rx="6.00" fill="#DC765F"/>
+<text x="1458.00" y="484.92" class="value" text-anchor="start">0.0005</text>
+<text x="1159.00" y="503.61" class="label" text-anchor="end">grasped: VBN → NN</text>
+<rect x="1171.00" y="495.12" width="277.00" height="8.97" rx="6.00" fill="#E9EEEC"/>
+<rect x="1171.00" y="495.12" width="1.93" height="8.97" rx="6.00" fill="#DC765F"/>
+<text x="1458.00" y="503.61" class="value" text-anchor="start">0.0005</text>
+<text x="1159.00" y="522.29" class="label" text-anchor="end">left: VBN → JJ</text>
+<rect x="1171.00" y="513.81" width="277.00" height="8.97" rx="6.00" fill="#E9EEEC"/>
+<rect x="1171.00" y="513.81" width="1.61" height="8.97" rx="6.00" fill="#DC765F"/>
+<text x="1458.00" y="522.29" class="value" text-anchor="start">0.0004</text>
+<text x="1159.00" y="540.97" class="label" text-anchor="end">right: VB → JJ</text>
+<rect x="1171.00" y="532.49" width="277.00" height="8.97" rx="6.00" fill="#E9EEEC"/>
+<rect x="1171.00" y="532.49" width="1.61" height="8.97" rx="6.00" fill="#DC765F"/>
+<text x="1458.00" y="540.97" class="value" text-anchor="start">0.0004</text>
+<text x="1159.00" y="559.66" class="label" text-anchor="end">underlying: VBG → JJ</text>
+<rect x="1171.00" y="551.17" width="277.00" height="8.97" rx="6.00" fill="#E9EEEC"/>
+<rect x="1171.00" y="551.17" width="0.61" height="8.97" rx="6.00" fill="#DC765F"/>
+<text x="1458.00" y="559.66" class="value" text-anchor="start">0.0002</text>
 <rect x="982.00" y="612.00" width="550.00" height="310.00" rx="14.00" fill="#FFFEFB" stroke="#DCE3E1"/>
 <text x="1006.00" y="648.00" class="panel-title" text-anchor="start">Weight conservation</text>
 <text x="1006.00" y="672.00" class="small" text-anchor="start">Original weights remain visible in the row-level audit</text>
@@ -162,6 +182,6 @@ text { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sa
 <rect x="1006.00" y="850.00" width="492.00" height="12.00" rx="5.00" fill="#E2E9E6"/>
 <rect x="1006.00" y="850.00" width="2.00" height="12.00" rx="5.00" fill="#DC765F"/>
 <line x1="58.00" y1="936.00" x2="1522.00" y2="936.00" stroke="#DCE3E1" stroke-width="1"/>
-<text x="58.00" y="960.00" class="small" text-anchor="start">Context rules keep &#x27;ex vivo&#x27;, peg colors/shapes, and &#x27;cutting position&#x27; from becoming noun-head matches.</text>
+<text x="58.00" y="960.00" class="small" text-anchor="start">Context rules separate action verbs, nominal events, modifiers, and local noun-phrase heads.</text>
 <text x="1522.00" y="960.00" class="small" text-anchor="end">GR00T-H N1.7 language report</text>
 </svg>

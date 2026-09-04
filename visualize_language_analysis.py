@@ -111,6 +111,10 @@ def format_rule_label(rule: str) -> str:
         "preserve_attributive_cutting_position": "Preserve 'cutting position' modifier",
         "preserve_ex_vivo_modifier": "Preserve 'ex vivo' modifier",
         "preserve_peg_attribute_modifiers": "Preserve peg color/shape modifiers",
+        "canonicalize_nominal_knot_tying": "Treat 'knot tying' as nominal",
+        "preserve_plastic_phantom_modifier": "Preserve 'plastic phantom' modifier",
+        "canonicalize_tundra_grasp_event_noun": "Treat TUNDRA grasp event as a noun",
+        "preserve_sentence_initial_imperative_verb": "Preserve sentence-initial imperative",
     }
     if rule in labels:
         return labels[rule]
@@ -758,7 +762,7 @@ def draw_normalization_qa(
         body,
         width,
         height,
-        "Context rules keep 'ex vivo', peg colors/shapes, and 'cutting position' from becoming noun-head matches.",
+        "Context rules separate action verbs, nominal events, modifiers, and local noun-phrase heads.",
     )
     output.write_text(svg_document(width, height, body), encoding="utf-8")
 
@@ -850,7 +854,7 @@ def render_verb_noun_drilldown(
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -885,7 +889,7 @@ def render_verb_noun_drilldown(
       <div class="verb-drilldown">
         <div class="verb-intro">
           <h3>What noun follows each verb?</h3>
-          <p>Select a verb to show its nearest following nouns in normalized task text. Matching stops at another verb or a hard clause boundary, so this answers questions such as “go where?” without claiming a grammatical dependency.</p>
+          <p>Select a verb to show the head of its first following noun phrase. Matching uses corrected POS on clean task text, selects the final noun in a contiguous noun sequence, and stops at another verb or hard clause boundary. It is a local semantic heuristic, not a dependency parse.</p>
           <p class="download"><a href="../gr00t_h_n17_verb_following_noun.csv">Download all verb–noun statistics</a></p>
         </div>
         <div class="verb-buttons" role="group" aria-label="Select a verb">{''.join(verb_buttons)}</div>
@@ -1113,6 +1117,21 @@ def render_normalization_examples(audit: list[dict[str, str]]) -> str:
             "Peg attributes",
             "preserve_peg_attribute_modifiers",
             "Treat audited color and shape terms as object attributes so ‘orange triangular peg’ and ‘orange cylinder peg’ resolve to peg.",
+        ),
+        (
+            "Knot tying",
+            "canonicalize_nominal_knot_tying",
+            "Treat ‘knot tying’ as a nominal action phrase: tying normalizes to tie but does not enter the verb count.",
+        ),
+        (
+            "Plastic phantom",
+            "preserve_plastic_phantom_modifier",
+            "Treat plastic as an attribute of the head noun phantom rather than as a noun itself.",
+        ),
+        (
+            "Grasp event",
+            "canonicalize_tundra_grasp_event_noun",
+            "For audited TUNDRA ‘object grasped by the surgeon’ prompts, expose grasp as the requested nominal event head after approach.",
         ),
         (
             "CMR state template",

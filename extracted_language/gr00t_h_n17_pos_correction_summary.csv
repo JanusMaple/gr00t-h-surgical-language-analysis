@@ -1,8 +1,13 @@
 rule,word,nltk_tag,corrected_tag,source_row_occurrences,expected_corrections_per_training_sample
 pos_override_corpus_adjective,penetrating,NN,JJ,23,0.0027506580610516915
+pos_override_plastic_phantom_modifier,plastic,NN,JJ,14,0.03290289876560191
 pos_override_directional_left_right,right,NN,JJ,12,0.0493803205007165
+pos_override_nominal_knot_tying,tying,VBG,NN,9,0.06384922080485894
 pos_override_directional_left_right,left,VBD,JJ,8,0.07220320661372498
+pos_override_sentence_initial_imperative,approach,NN,VB,5,0.000504232841211268
+pos_override_tundra_grasp_event_noun,grasped,VBN,NN,5,0.000504232841211268
 pos_override_corpus_adjective,training,VBG,JJ,3,0.003820807914974772
+pos_override_sentence_initial_imperative,perform,NN,VB,3,0.010463957345480515
 pos_override_attributive_cutting_position,cutting,VBG,JJ,2,0.02089890092049331
 pos_override_peg_color_modifier,orange,NN,JJ,2,0.003140331154651267
 pos_override_peg_shape_modifier,cylinder,NN,JJ,2,0.002906263157268135

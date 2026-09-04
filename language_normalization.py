@@ -107,6 +107,10 @@ ADJECTIVAL_POS_OVERRIDES = {
 EX_VIVO_HEAD_NOUNS = frozenset({"tissue"})
 PEG_COLOR_MODIFIERS = frozenset({"black", "green", "orange", "white"})
 PEG_SHAPE_MODIFIERS = frozenset({"cylinder", "triangular"})
+TUNDRA_GRASPED_OBJECTS = frozenset(
+    {"colon", "gallbladder", "intestine", "omentum", "stomach"}
+)
+SENTENCE_INITIAL_IMPERATIVE_VERBS = frozenset({"approach", "perform"})
 
 
 @dataclass(frozen=True)
@@ -161,6 +165,38 @@ def correct_pos_tag(
     if lowered in PEG_SHAPE_MODIFIERS and following == "peg":
         if nltk_tag != "JJ":
             return "JJ", "pos_override_peg_shape_modifier"
+        return nltk_tag, None
+
+    # ``knot tying`` names a task/action, so ``tying`` is nominal rather than
+    # an independent verb. This still canonicalizes to the readable base form
+    # ``tie`` while remaining a noun in POS-dependent statistics.
+    if lowered == "tying" and previous == "knot":
+        if nltk_tag != "NN":
+            return "NN", "pos_override_nominal_knot_tying"
+        return nltk_tag, None
+
+    if lowered == "plastic" and following == "phantom":
+        if nltk_tag != "JJ":
+            return "JJ", "pos_override_plastic_phantom_modifier"
+        return nltk_tag, None
+
+    # TUNDRA uses passive-like prompts such as ``the intestine grasped by the
+    # surgeon``. For this report, the requested semantic event head is
+    # canonicalized as the noun ``grasp`` following ``approach``.
+    if (
+        lowered == "grasped"
+        and previous in TUNDRA_GRASPED_OBJECTS
+        and following == "by"
+    ):
+        if nltk_tag != "NN":
+            return "NN", "pos_override_tundra_grasp_event_noun"
+        return nltk_tag, None
+
+    # NLTK sometimes tags sentence-initial imperatives as nouns after the
+    # casing normalization used for stable corpus-wide POS tagging.
+    if lowered in SENTENCE_INITIAL_IMPERATIVE_VERBS and not previous:
+        if nltk_tag != "VB":
+            return "VB", "pos_override_sentence_initial_imperative"
         return nltk_tag, None
 
     # Audited JHU prompts use "cutting position" as a destination noun phrase.
@@ -221,8 +257,24 @@ def canonicalize_word(
         "pos_override_peg_shape_modifier",
     }:
         _append_rule_once(rules, "preserve_peg_attribute_modifiers")
+    elif correction_rule == "pos_override_nominal_knot_tying":
+        _append_rule_once(rules, "canonicalize_nominal_knot_tying")
+    elif correction_rule == "pos_override_plastic_phantom_modifier":
+        _append_rule_once(rules, "preserve_plastic_phantom_modifier")
+    elif correction_rule == "pos_override_tundra_grasp_event_noun":
+        _append_rule_once(rules, "canonicalize_tundra_grasp_event_noun")
+    elif correction_rule == "pos_override_sentence_initial_imperative":
+        _append_rule_once(rules, "preserve_sentence_initial_imperative_verb")
 
-    if lowered in INFLECTION_LEMMA_EXCEPTIONS:
+    preserve_nominal_inflection = correction_rule in {
+        "pos_override_nominal_knot_tying",
+        "pos_override_tundra_grasp_event_noun",
+    }
+    if correction_rule == "pos_override_nominal_knot_tying":
+        lemma = "tie"
+    elif correction_rule == "pos_override_tundra_grasp_event_noun":
+        lemma = "grasp"
+    elif lowered in INFLECTION_LEMMA_EXCEPTIONS:
         lemma = lowered
     elif corrected_tag.startswith("VB"):
         lemma = _LEMMATIZER.lemmatize(lowered, "v")
@@ -236,6 +288,7 @@ def canonicalize_word(
     if (
         lowered not in INFLECTION_LEMMA_EXCEPTIONS
         and not preserve_attributive_form
+        and not preserve_nominal_inflection
         and lowered.endswith(("ing", "ed"))
     ):
         verb_lemma = _LEMMATIZER.lemmatize(lowered, "v")

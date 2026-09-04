@@ -148,15 +148,15 @@
       <div class="verb-drilldown">
         <div class="verb-intro">
           <h3>What noun follows each verb?</h3>
-          <p>Select a verb to show its nearest following nouns in normalized task text. Matching stops at another verb or a hard clause boundary, so this answers questions such as “go where?” without claiming a grammatical dependency.</p>
+          <p>Select a verb to show the head of its first following noun phrase. Matching uses corrected POS on clean task text, selects the final noun in a contiguous noun sequence, and stops at another verb or hard clause boundary. It is a local semantic heuristic, not a dependency parse.</p>
           <p class="download"><a href="../gr00t_h_n17_verb_following_noun.csv">Download all verb–noun statistics</a></p>
         </div>
-        <div class="verb-buttons" role="group" aria-label="Select a verb"><button type="button" class="verb-button" data-verb-target="verb-clip" aria-controls="verb-clip" aria-expanded="false">clip</button><button type="button" class="verb-button" data-verb-target="verb-tie" aria-controls="verb-tie" aria-expanded="false">tie</button><button type="button" class="verb-button" data-verb-target="verb-go" aria-controls="verb-go" aria-expanded="true">go</button><button type="button" class="verb-button" data-verb-target="verb-suture" aria-controls="verb-suture" aria-expanded="false">suture</button><button type="button" class="verb-button" data-verb-target="verb-create" aria-controls="verb-create" aria-expanded="false">create</button><button type="button" class="verb-button" data-verb-target="verb-make" aria-controls="verb-make" aria-expanded="false">make</button><button type="button" class="verb-button" data-verb-target="verb-shift" aria-controls="verb-shift" aria-expanded="false">shift</button><button type="button" class="verb-button" data-verb-target="verb-finish" aria-controls="verb-finish" aria-expanded="false">finish</button><button type="button" class="verb-button" data-verb-target="verb-extract" aria-controls="verb-extract" aria-expanded="false">extract</button><button type="button" class="verb-button" data-verb-target="verb-place" aria-controls="verb-place" aria-expanded="false">place</button><button type="button" class="verb-button" data-verb-target="verb-insert" aria-controls="verb-insert" aria-expanded="false">insert</button><button type="button" class="verb-button" data-verb-target="verb-resect" aria-controls="verb-resect" aria-expanded="false">resect</button><button type="button" class="verb-button" data-verb-target="verb-lift" aria-controls="verb-lift" aria-expanded="false">lift</button><button type="button" class="verb-button" data-verb-target="verb-cut" aria-controls="verb-cut" aria-expanded="false">cut</button><button type="button" class="verb-button" data-verb-target="verb-grab" aria-controls="verb-grab" aria-expanded="false">grab</button><button type="button" class="verb-button" data-verb-target="verb-perform" aria-controls="verb-perform" aria-expanded="false">perform</button><button type="button" class="verb-button" data-verb-target="verb-move" aria-controls="verb-move" aria-expanded="false">move</button><button type="button" class="verb-button" data-verb-target="verb-expose" aria-controls="verb-expose" aria-expanded="false">expose</button><button type="button" class="verb-button" data-verb-target="verb-use" aria-controls="verb-use" aria-expanded="false">use</button><button type="button" class="verb-button" data-verb-target="verb-grasp" aria-controls="verb-grasp" aria-expanded="false">grasp</button><button type="button" class="verb-button" data-verb-target="verb-identify" aria-controls="verb-identify" aria-expanded="false">identify</button><button type="button" class="verb-button" data-verb-target="verb-pick" aria-controls="verb-pick" aria-expanded="false">pick</button><button type="button" class="verb-button" data-verb-target="verb-prepare" aria-controls="verb-prepare" aria-expanded="false">prepare</button><button type="button" class="verb-button" data-verb-target="verb-transfer" aria-controls="verb-transfer" aria-expanded="false">transfer</button><button type="button" class="verb-button" data-verb-target="verb-separate" aria-controls="verb-separate" aria-expanded="false">separate</button><button type="button" class="verb-button" data-verb-target="verb-keep" aria-controls="verb-keep" aria-expanded="false">keep</button><button type="button" class="verb-button" data-verb-target="verb-await" aria-controls="verb-await" aria-expanded="false">await</button><button type="button" class="verb-button" data-verb-target="verb-retract" aria-controls="verb-retract" aria-expanded="false">retract</button><button type="button" class="verb-button" data-verb-target="verb-pull" aria-controls="verb-pull" aria-expanded="false">pull</button><button type="button" class="verb-button" data-verb-target="verb-position" aria-controls="verb-position" aria-expanded="false">position</button><button type="button" class="verb-button" data-verb-target="verb-remove" aria-controls="verb-remove" aria-expanded="false">remove</button><button type="button" class="verb-button" data-verb-target="verb-continue" aria-controls="verb-continue" aria-expanded="false">continue</button><button type="button" class="verb-button" data-verb-target="verb-straight" aria-controls="verb-straight" aria-expanded="false">straight</button><button type="button" class="verb-button" data-verb-target="verb-open" aria-controls="verb-open" aria-expanded="false">open</button><button type="button" class="verb-button" data-verb-target="verb-receive" aria-controls="verb-receive" aria-expanded="false">receive</button><button type="button" class="verb-button" data-verb-target="verb-take" aria-controls="verb-take" aria-expanded="false">take</button><button type="button" class="verb-button" data-verb-target="verb-peel" aria-controls="verb-peel" aria-expanded="false">peel</button><button type="button" class="verb-button" data-verb-target="verb-correct" aria-controls="verb-correct" aria-expanded="false">correct</button><button type="button" class="verb-button" data-verb-target="verb-stop" aria-controls="verb-stop" aria-expanded="false">stop</button><button type="button" class="verb-button" data-verb-target="verb-stay" aria-controls="verb-stay" aria-expanded="false">stay</button></div>
+        <div class="verb-buttons" role="group" aria-label="Select a verb"><button type="button" class="verb-button" data-verb-target="verb-clip" aria-controls="verb-clip" aria-expanded="false">clip</button><button type="button" class="verb-button" data-verb-target="verb-go" aria-controls="verb-go" aria-expanded="true">go</button><button type="button" class="verb-button" data-verb-target="verb-suture" aria-controls="verb-suture" aria-expanded="false">suture</button><button type="button" class="verb-button" data-verb-target="verb-create" aria-controls="verb-create" aria-expanded="false">create</button><button type="button" class="verb-button" data-verb-target="verb-make" aria-controls="verb-make" aria-expanded="false">make</button><button type="button" class="verb-button" data-verb-target="verb-shift" aria-controls="verb-shift" aria-expanded="false">shift</button><button type="button" class="verb-button" data-verb-target="verb-perform" aria-controls="verb-perform" aria-expanded="false">perform</button><button type="button" class="verb-button" data-verb-target="verb-finish" aria-controls="verb-finish" aria-expanded="false">finish</button><button type="button" class="verb-button" data-verb-target="verb-extract" aria-controls="verb-extract" aria-expanded="false">extract</button><button type="button" class="verb-button" data-verb-target="verb-place" aria-controls="verb-place" aria-expanded="false">place</button><button type="button" class="verb-button" data-verb-target="verb-insert" aria-controls="verb-insert" aria-expanded="false">insert</button><button type="button" class="verb-button" data-verb-target="verb-resect" aria-controls="verb-resect" aria-expanded="false">resect</button><button type="button" class="verb-button" data-verb-target="verb-lift" aria-controls="verb-lift" aria-expanded="false">lift</button><button type="button" class="verb-button" data-verb-target="verb-cut" aria-controls="verb-cut" aria-expanded="false">cut</button><button type="button" class="verb-button" data-verb-target="verb-grab" aria-controls="verb-grab" aria-expanded="false">grab</button><button type="button" class="verb-button" data-verb-target="verb-move" aria-controls="verb-move" aria-expanded="false">move</button><button type="button" class="verb-button" data-verb-target="verb-expose" aria-controls="verb-expose" aria-expanded="false">expose</button><button type="button" class="verb-button" data-verb-target="verb-use" aria-controls="verb-use" aria-expanded="false">use</button><button type="button" class="verb-button" data-verb-target="verb-identify" aria-controls="verb-identify" aria-expanded="false">identify</button><button type="button" class="verb-button" data-verb-target="verb-pick" aria-controls="verb-pick" aria-expanded="false">pick</button><button type="button" class="verb-button" data-verb-target="verb-grasp" aria-controls="verb-grasp" aria-expanded="false">grasp</button><button type="button" class="verb-button" data-verb-target="verb-prepare" aria-controls="verb-prepare" aria-expanded="false">prepare</button><button type="button" class="verb-button" data-verb-target="verb-transfer" aria-controls="verb-transfer" aria-expanded="false">transfer</button><button type="button" class="verb-button" data-verb-target="verb-separate" aria-controls="verb-separate" aria-expanded="false">separate</button><button type="button" class="verb-button" data-verb-target="verb-tie" aria-controls="verb-tie" aria-expanded="false">tie</button><button type="button" class="verb-button" data-verb-target="verb-keep" aria-controls="verb-keep" aria-expanded="false">keep</button><button type="button" class="verb-button" data-verb-target="verb-await" aria-controls="verb-await" aria-expanded="false">await</button><button type="button" class="verb-button" data-verb-target="verb-retract" aria-controls="verb-retract" aria-expanded="false">retract</button><button type="button" class="verb-button" data-verb-target="verb-pull" aria-controls="verb-pull" aria-expanded="false">pull</button><button type="button" class="verb-button" data-verb-target="verb-position" aria-controls="verb-position" aria-expanded="false">position</button><button type="button" class="verb-button" data-verb-target="verb-remove" aria-controls="verb-remove" aria-expanded="false">remove</button><button type="button" class="verb-button" data-verb-target="verb-continue" aria-controls="verb-continue" aria-expanded="false">continue</button><button type="button" class="verb-button" data-verb-target="verb-straight" aria-controls="verb-straight" aria-expanded="false">straight</button><button type="button" class="verb-button" data-verb-target="verb-approach" aria-controls="verb-approach" aria-expanded="false">approach</button><button type="button" class="verb-button" data-verb-target="verb-open" aria-controls="verb-open" aria-expanded="false">open</button><button type="button" class="verb-button" data-verb-target="verb-receive" aria-controls="verb-receive" aria-expanded="false">receive</button><button type="button" class="verb-button" data-verb-target="verb-take" aria-controls="verb-take" aria-expanded="false">take</button><button type="button" class="verb-button" data-verb-target="verb-peel" aria-controls="verb-peel" aria-expanded="false">peel</button><button type="button" class="verb-button" data-verb-target="verb-correct" aria-controls="verb-correct" aria-expanded="false">correct</button><button type="button" class="verb-button" data-verb-target="verb-stop" aria-controls="verb-stop" aria-expanded="false">stop</button><button type="button" class="verb-button" data-verb-target="verb-stay" aria-controls="verb-stay" aria-expanded="false">stay</button></div>
         <div class="verb-panels">
             <section class="verb-panel" id="verb-clip" hidden>
               <div class="verb-panel-meta">
                 <span class="verb-name">clip</span>
-                <span>14.87% of verb tokens</span>
+                <span>16.85% of verb tokens</span>
                 <span>100.0% matched to a following noun</span>
                 <span>top noun: <b>clip</b></span>
               </div>
@@ -164,7 +164,7 @@
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -184,57 +184,10 @@
             
             </section>
             
-            <section class="verb-panel" id="verb-tie" hidden>
-              <div class="verb-panel-meta">
-                <span class="verb-name">tie</span>
-                <span>14.56% of verb tokens</span>
-                <span>40.9% matched to a following noun</span>
-                <span>top noun: <b>tissue</b></span>
-              </div>
-              
-              <div class="relation-table-wrap">
-                <table class="relation-table">
-                  <thead><tr>
-                    <th>Nearest following noun</th>
-                    <th>All uses of verb</th>
-                    <th>Matched uses only</th>
-                    <th>Expected / sample</th>
-                    <th>Representative instructions and datasets</th>
-                  </tr></thead>
-                  <tbody>
-                <tr>
-                  <td><b>tissue</b></td>
-                  <td>18.8%</td>
-                  <td>46.1%</td>
-                  <td>0.01246</td>
-                  <td><ul class="relation-examples"><li><b>turin/mitic_lerobot_ex_vivo</b> — finish the knot tie on ex vivo tissue</li><li><b>turin/mitic_lerobot_ex_vivo</b> — perform base knot tie on ex vivo tissue</li></ul></td>
-                </tr>
-                
-                <tr>
-                  <td><b>plastic</b></td>
-                  <td>18.6%</td>
-                  <td>45.5%</td>
-                  <td>0.01230</td>
-                  <td><ul class="relation-examples"><li><b>turin/mitic_lerobot_plastic_pad_3dmed</b> — finish the knot tie on the plastic phantom</li><li><b>turin/mitic_lerobot_plastic_tube</b> — perform base knot tie on the plastic phantom</li></ul></td>
-                </tr>
-                
-                <tr>
-                  <td><b>knot</b></td>
-                  <td>3.4%</td>
-                  <td>8.4%</td>
-                  <td>0.00226</td>
-                  <td><ul class="relation-examples"><li><b>hamlyn/knot_tying</b> — tie a surgical knot in the suture</li></ul></td>
-                </tr>
-                </tbody>
-                </table>
-              </div>
-            
-            </section>
-            
             <section class="verb-panel" id="verb-go">
               <div class="verb-panel-meta">
                 <span class="verb-name">go</span>
-                <span>12.89% of verb tokens</span>
+                <span>14.61% of verb tokens</span>
                 <span>100.0% matched to a following noun</span>
                 <span>top noun: <b>clip</b></span>
               </div>
@@ -242,7 +195,7 @@
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -281,7 +234,7 @@
             <section class="verb-panel" id="verb-suture" hidden>
               <div class="verb-panel-meta">
                 <span class="verb-name">suture</span>
-                <span>12.36% of verb tokens</span>
+                <span>14.00% of verb tokens</span>
                 <span>11.9% matched to a following noun</span>
                 <span>top noun: <b>phantom</b></span>
               </div>
@@ -289,7 +242,7 @@
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -320,7 +273,7 @@
             <section class="verb-panel" id="verb-create" hidden>
               <div class="verb-panel-meta">
                 <span class="verb-name">create</span>
-                <span>4.75% of verb tokens</span>
+                <span>5.38% of verb tokens</span>
                 <span>100.0% matched to a following noun</span>
                 <span>top noun: <b>suture</b></span>
               </div>
@@ -328,7 +281,7 @@
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -359,7 +312,7 @@
             <section class="verb-panel" id="verb-make" hidden>
               <div class="verb-panel-meta">
                 <span class="verb-name">make</span>
-                <span>4.14% of verb tokens</span>
+                <span>4.70% of verb tokens</span>
                 <span>100.0% matched to a following noun</span>
                 <span>top noun: <b>suture</b></span>
               </div>
@@ -367,7 +320,7 @@
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -390,7 +343,7 @@
             <section class="verb-panel" id="verb-shift" hidden>
               <div class="verb-panel-meta">
                 <span class="verb-name">shift</span>
-                <span>4.14% of verb tokens</span>
+                <span>4.70% of verb tokens</span>
                 <span>100.0% matched to a following noun</span>
                 <span>top noun: <b>holder</b></span>
               </div>
@@ -398,7 +351,7 @@
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -418,18 +371,18 @@
             
             </section>
             
-            <section class="verb-panel" id="verb-finish" hidden>
+            <section class="verb-panel" id="verb-perform" hidden>
               <div class="verb-panel-meta">
-                <span class="verb-name">finish</span>
-                <span>3.15% of verb tokens</span>
+                <span class="verb-name">perform</span>
+                <span>4.54% of verb tokens</span>
                 <span>100.0% matched to a following noun</span>
-                <span>top noun: <b>knot</b></span>
+                <span>top noun: <b>tie</b></span>
               </div>
               
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -437,7 +390,54 @@
                   </tr></thead>
                   <tbody>
                 <tr>
-                  <td><b>knot</b></td>
+                  <td><b>tie</b></td>
+                  <td>57.6%</td>
+                  <td>57.6%</td>
+                  <td>0.01046</td>
+                  <td><ul class="relation-examples"><li><b>turin/mitic_lerobot_ex_vivo</b> — perform base knot tie on ex vivo tissue</li><li><b>turin/mitic_lerobot_plastic_pad_3dmed</b> — perform base knot tie on the plastic phantom</li></ul></td>
+                </tr>
+                
+                <tr>
+                  <td><b>dissect</b></td>
+                  <td>21.4%</td>
+                  <td>21.4%</td>
+                  <td>0.00390</td>
+                  <td><ul class="relation-examples"><li><b>jhu/lcsr/smarts/SurgSync-stitch-coldcut/P1</b> — perform cold-cut dissect on ex-vivo tissue by cut along pre-defined trace use non-energy surigal instrument</li><li><b>jhu/lcsr/smarts/SurgSync-stitch-coldcut/P2</b> — perform cold-cut dissect to partially peel skin from the underlying fat layer use non-energy instrument</li></ul></td>
+                </tr>
+                
+                <tr>
+                  <td><b>stitch</b></td>
+                  <td>21.0%</td>
+                  <td>21.0%</td>
+                  <td>0.00382</td>
+                  <td><ul class="relation-examples"><li><b>jhu/lcsr/smarts/SurgSync-stitch-coldcut/P1</b> — perform a simple interrupted stitch on ex-vivo tissue (occasionally on silicon suture training phantom); without cut the suture thread tail at the end</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
+            <section class="verb-panel" id="verb-finish" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">finish</span>
+                <span>3.57% of verb tokens</span>
+                <span>100.0% matched to a following noun</span>
+                <span>top noun: <b>tie</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Following noun head</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>tie</b></td>
                   <td>100.0%</td>
                   <td>100.0%</td>
                   <td>0.01430</td>
@@ -452,7 +452,7 @@
             <section class="verb-panel" id="verb-extract" hidden>
               <div class="verb-panel-meta">
                 <span class="verb-name">extract</span>
-                <span>2.81% of verb tokens</span>
+                <span>3.19% of verb tokens</span>
                 <span>100.0% matched to a following noun</span>
                 <span>top noun: <b>needle</b></span>
               </div>
@@ -460,7 +460,7 @@
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -483,7 +483,7 @@
             <section class="verb-panel" id="verb-place" hidden>
               <div class="verb-panel-meta">
                 <span class="verb-name">place</span>
-                <span>2.77% of verb tokens</span>
+                <span>3.14% of verb tokens</span>
                 <span>0.0% matched to a following noun</span>
                 <span>top noun: <b>none found</b></span>
               </div>
@@ -493,7 +493,7 @@
             <section class="verb-panel" id="verb-insert" hidden>
               <div class="verb-panel-meta">
                 <span class="verb-name">insert</span>
-                <span>2.73% of verb tokens</span>
+                <span>3.10% of verb tokens</span>
                 <span>100.0% matched to a following noun</span>
                 <span>top noun: <b>needle</b></span>
               </div>
@@ -501,7 +501,7 @@
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -524,7 +524,7 @@
             <section class="verb-panel" id="verb-resect" hidden>
               <div class="verb-panel-meta">
                 <span class="verb-name">resect</span>
-                <span>2.28% of verb tokens</span>
+                <span>2.59% of verb tokens</span>
                 <span>100.0% matched to a following noun</span>
                 <span>top noun: <b>tissue</b></span>
               </div>
@@ -532,7 +532,7 @@
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -563,15 +563,15 @@
             <section class="verb-panel" id="verb-lift" hidden>
               <div class="verb-panel-meta">
                 <span class="verb-name">lift</span>
-                <span>1.76% of verb tokens</span>
+                <span>1.99% of verb tokens</span>
                 <span>100.0% matched to a following noun</span>
-                <span>top noun: <b>tissue</b></span>
+                <span>top noun: <b>phantom</b></span>
               </div>
               
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -579,19 +579,35 @@
                   </tr></thead>
                   <tbody>
                 <tr>
-                  <td><b>tissue</b></td>
-                  <td>52.9%</td>
-                  <td>52.9%</td>
-                  <td>0.00422</td>
-                  <td><ul class="relation-examples"><li><b>turin/mitic_lerobot_ex_vivo</b> — lift the tissue flap to expose the workspace</li><li><b>jhu/imerse/srt_tissue_lift</b> — lift the tissue</li><li><b>hamlyn/tissue_retraction</b> — lift the intact tissue block use the left instrument (center grasp)</li></ul></td>
-                </tr>
-                
-                <tr>
-                  <td><b>plastic</b></td>
+                  <td><b>phantom</b></td>
                   <td>47.1%</td>
                   <td>47.1%</td>
                   <td>0.00376</td>
                   <td><ul class="relation-examples"><li><b>turin/mitic_lerobot_plastic_tube</b> — lift the plastic phantom to expose the workspace</li></ul></td>
+                </tr>
+                
+                <tr>
+                  <td><b>flap</b></td>
+                  <td>25.2%</td>
+                  <td>25.2%</td>
+                  <td>0.00201</td>
+                  <td><ul class="relation-examples"><li><b>turin/mitic_lerobot_ex_vivo</b> — lift the tissue flap to expose the workspace</li></ul></td>
+                </tr>
+                
+                <tr>
+                  <td><b>tissue</b></td>
+                  <td>24.6%</td>
+                  <td>24.6%</td>
+                  <td>0.00196</td>
+                  <td><ul class="relation-examples"><li><b>jhu/imerse/srt_tissue_lift</b> — lift the tissue</li></ul></td>
+                </tr>
+                
+                <tr>
+                  <td><b>block</b></td>
+                  <td>3.1%</td>
+                  <td>3.1%</td>
+                  <td>0.00025</td>
+                  <td><ul class="relation-examples"><li><b>hamlyn/tissue_retraction</b> — lift the intact tissue block use the left instrument (center grasp)</li><li><b>hamlyn/tissue_retraction</b> — lift the intact tissue block use the right instrument (center grasp)</li><li><b>hamlyn/tissue_retraction</b> — lift the intact tissue block use the right instrument (right-side grasp)</li></ul></td>
                 </tr>
                 </tbody>
                 </table>
@@ -602,7 +618,7 @@
             <section class="verb-panel" id="verb-cut" hidden>
               <div class="verb-panel-meta">
                 <span class="verb-name">cut</span>
-                <span>1.73% of verb tokens</span>
+                <span>1.96% of verb tokens</span>
                 <span>96.1% matched to a following noun</span>
                 <span>top noun: <b>suture</b></span>
               </div>
@@ -610,7 +626,7 @@
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -641,7 +657,7 @@
             <section class="verb-panel" id="verb-grab" hidden>
               <div class="verb-panel-meta">
                 <span class="verb-name">grab</span>
-                <span>1.71% of verb tokens</span>
+                <span>1.94% of verb tokens</span>
                 <span>100.0% matched to a following noun</span>
                 <span>top noun: <b>gallbladder</b></span>
               </div>
@@ -649,7 +665,7 @@
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -669,49 +685,10 @@
             
             </section>
             
-            <section class="verb-panel" id="verb-perform" hidden>
-              <div class="verb-panel-meta">
-                <span class="verb-name">perform</span>
-                <span>1.70% of verb tokens</span>
-                <span>100.0% matched to a following noun</span>
-                <span>top noun: <b>dissect</b></span>
-              </div>
-              
-              <div class="relation-table-wrap">
-                <table class="relation-table">
-                  <thead><tr>
-                    <th>Nearest following noun</th>
-                    <th>All uses of verb</th>
-                    <th>Matched uses only</th>
-                    <th>Expected / sample</th>
-                    <th>Representative instructions and datasets</th>
-                  </tr></thead>
-                  <tbody>
-                <tr>
-                  <td><b>dissect</b></td>
-                  <td>50.5%</td>
-                  <td>50.5%</td>
-                  <td>0.00390</td>
-                  <td><ul class="relation-examples"><li><b>jhu/lcsr/smarts/SurgSync-stitch-coldcut/P1</b> — perform cold-cut dissect on ex-vivo tissue by cut along pre-defined trace use non-energy surigal instrument</li><li><b>jhu/lcsr/smarts/SurgSync-stitch-coldcut/P2</b> — perform cold-cut dissect to partially peel skin from the underlying fat layer use non-energy instrument</li></ul></td>
-                </tr>
-                
-                <tr>
-                  <td><b>stitch</b></td>
-                  <td>49.5%</td>
-                  <td>49.5%</td>
-                  <td>0.00382</td>
-                  <td><ul class="relation-examples"><li><b>jhu/lcsr/smarts/SurgSync-stitch-coldcut/P1</b> — perform a simple interrupted stitch on ex-vivo tissue (occasionally on silicon suture training phantom); without cut the suture thread tail at the end</li></ul></td>
-                </tr>
-                </tbody>
-                </table>
-              </div>
-            
-            </section>
-            
             <section class="verb-panel" id="verb-move" hidden>
               <div class="verb-panel-meta">
                 <span class="verb-name">move</span>
-                <span>1.69% of verb tokens</span>
+                <span>1.91% of verb tokens</span>
                 <span>100.0% matched to a following noun</span>
                 <span>top noun: <b>peg</b></span>
               </div>
@@ -719,7 +696,7 @@
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -742,7 +719,7 @@
             <section class="verb-panel" id="verb-expose" hidden>
               <div class="verb-panel-meta">
                 <span class="verb-name">expose</span>
-                <span>1.27% of verb tokens</span>
+                <span>1.44% of verb tokens</span>
                 <span>100.0% matched to a following noun</span>
                 <span>top noun: <b>workspace</b></span>
               </div>
@@ -750,7 +727,7 @@
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -773,7 +750,7 @@
             <section class="verb-panel" id="verb-use" hidden>
               <div class="verb-panel-meta">
                 <span class="verb-name">use</span>
-                <span>1.26% of verb tokens</span>
+                <span>1.42% of verb tokens</span>
                 <span>100.0% matched to a following noun</span>
                 <span>top noun: <b>instrument</b></span>
               </div>
@@ -781,7 +758,7 @@
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -790,65 +767,10 @@
                   <tbody>
                 <tr>
                   <td><b>instrument</b></td>
-                  <td>86.9%</td>
-                  <td>86.9%</td>
-                  <td>0.00496</td>
-                  <td><ul class="relation-examples"><li><b>jhu/lcsr/smarts/SurgSync-stitch-coldcut/P1</b> — perform cold-cut dissect on ex-vivo tissue by cut along pre-defined trace use non-energy surigal instrument</li><li><b>hamlyn/tissue_retraction</b> — retract the partially dissect tissue flap use the right instrument (center grasp)</li><li><b>hamlyn/tissue_retraction</b> — retract the partially dissect tissue flap use the left instrument (center grasp)</li></ul></td>
-                </tr>
-                
-                <tr>
-                  <td><b>hand</b></td>
-                  <td>13.1%</td>
-                  <td>13.1%</td>
-                  <td>0.00075</td>
-                  <td><ul class="relation-examples"><li><b>hamlyn/needle_grasp_and_handover</b> — use the right hand instrument to grasp the needle from the table</li></ul></td>
-                </tr>
-                </tbody>
-                </table>
-              </div>
-            
-            </section>
-            
-            <section class="verb-panel" id="verb-grasp" hidden>
-              <div class="verb-panel-meta">
-                <span class="verb-name">grasp</span>
-                <span>1.16% of verb tokens</span>
-                <span>100.0% matched to a following noun</span>
-                <span>top noun: <b>needle</b></span>
-              </div>
-              
-              <div class="relation-table-wrap">
-                <table class="relation-table">
-                  <thead><tr>
-                    <th>Nearest following noun</th>
-                    <th>All uses of verb</th>
-                    <th>Matched uses only</th>
-                    <th>Expected / sample</th>
-                    <th>Representative instructions and datasets</th>
-                  </tr></thead>
-                  <tbody>
-                <tr>
-                  <td><b>needle</b></td>
-                  <td>89.8%</td>
-                  <td>89.8%</td>
-                  <td>0.00473</td>
-                  <td><ul class="relation-examples"><li><b>hamlyn/needle_grasp_and_handover</b> — use the left-hand to grasp the needle from the table, then transfer the needle to the right hand</li><li><b>turin/mitic_lerobot_plastic_pad</b> — grasp the needle from the plastic phantom</li><li><b>hamlyn/needle_grasp_and_handover</b> — use the right hand instrument to grasp the needle from the table</li></ul></td>
-                </tr>
-                
-                <tr>
-                  <td><b>surgeon</b></td>
-                  <td>9.6%</td>
-                  <td>9.6%</td>
-                  <td>0.00050</td>
-                  <td><ul class="relation-examples"><li><b>tud/260131_tundra_dataset/grasping_retraction</b> — approach the small intestine grasp by the surgeon and open your gripper to receive and take over the hold</li><li><b>tud/260131_tundra_dataset/grasping_retraction</b> — approach the gallbladder grasp by the surgeon and open your gripper to receive and take over the hold</li><li><b>tud/260131_tundra_dataset/grasping_retraction</b> — approach the colon grasp by the surgeon and open your gripper to receive and take over the hold</li></ul></td>
-                </tr>
-                
-                <tr>
-                  <td><b>tissue</b></td>
-                  <td>0.6%</td>
-                  <td>0.6%</td>
-                  <td>0.00003</td>
-                  <td><ul class="relation-examples"><li><b>hamlyn/tissue_retraction</b> — re-orient and grasp the intact tissue block at the center use the right instrument</li><li><b>hamlyn/tissue_retraction</b> — re-orient and grasp the intact tissue block at the right region use the right instrument</li></ul></td>
+                  <td>100.0%</td>
+                  <td>100.0%</td>
+                  <td>0.00571</td>
+                  <td><ul class="relation-examples"><li><b>jhu/lcsr/smarts/SurgSync-stitch-coldcut/P1</b> — perform cold-cut dissect on ex-vivo tissue by cut along pre-defined trace use non-energy surigal instrument</li><li><b>hamlyn/needle_grasp_and_handover</b> — use the right hand instrument to grasp the needle from the table</li><li><b>hamlyn/tissue_retraction</b> — retract the partially dissect tissue flap use the right instrument (center grasp)</li></ul></td>
                 </tr>
                 </tbody>
                 </table>
@@ -859,7 +781,7 @@
             <section class="verb-panel" id="verb-identify" hidden>
               <div class="verb-panel-meta">
                 <span class="verb-name">identify</span>
-                <span>1.08% of verb tokens</span>
+                <span>1.22% of verb tokens</span>
                 <span>100.0% matched to a following noun</span>
                 <span>top noun: <b>artery</b></span>
               </div>
@@ -867,7 +789,7 @@
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -890,7 +812,7 @@
             <section class="verb-panel" id="verb-pick" hidden>
               <div class="verb-panel-meta">
                 <span class="verb-name">pick</span>
-                <span>1.06% of verb tokens</span>
+                <span>1.20% of verb tokens</span>
                 <span>100.0% matched to a following noun</span>
                 <span>top noun: <b>needle</b></span>
               </div>
@@ -898,7 +820,7 @@
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -958,18 +880,18 @@
             
             </section>
             
-            <section class="verb-panel" id="verb-prepare" hidden>
+            <section class="verb-panel" id="verb-grasp" hidden>
               <div class="verb-panel-meta">
-                <span class="verb-name">prepare</span>
-                <span>0.90% of verb tokens</span>
+                <span class="verb-name">grasp</span>
+                <span>1.19% of verb tokens</span>
                 <span>100.0% matched to a following noun</span>
-                <span>top noun: <b>colon</b></span>
+                <span>top noun: <b>needle</b></span>
               </div>
               
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -977,7 +899,46 @@
                   </tr></thead>
                   <tbody>
                 <tr>
-                  <td><b>colon</b></td>
+                  <td><b>needle</b></td>
+                  <td>99.3%</td>
+                  <td>99.3%</td>
+                  <td>0.00473</td>
+                  <td><ul class="relation-examples"><li><b>hamlyn/needle_grasp_and_handover</b> — use the left-hand to grasp the needle from the table, then transfer the needle to the right hand</li><li><b>turin/mitic_lerobot_plastic_pad</b> — grasp the needle from the plastic phantom</li><li><b>hamlyn/needle_grasp_and_handover</b> — use the right hand instrument to grasp the needle from the table</li></ul></td>
+                </tr>
+                
+                <tr>
+                  <td><b>block</b></td>
+                  <td>0.7%</td>
+                  <td>0.7%</td>
+                  <td>0.00003</td>
+                  <td><ul class="relation-examples"><li><b>hamlyn/tissue_retraction</b> — re-orient and grasp the intact tissue block at the center use the right instrument</li><li><b>hamlyn/tissue_retraction</b> — re-orient and grasp the intact tissue block at the right region use the right instrument</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
+            <section class="verb-panel" id="verb-prepare" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">prepare</span>
+                <span>1.02% of verb tokens</span>
+                <span>100.0% matched to a following noun</span>
+                <span>top noun: <b>part</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Following noun head</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>part</b></td>
                   <td>100.0%</td>
                   <td>100.0%</td>
                   <td>0.00410</td>
@@ -992,7 +953,7 @@
             <section class="verb-panel" id="verb-transfer" hidden>
               <div class="verb-panel-meta">
                 <span class="verb-name">transfer</span>
-                <span>0.81% of verb tokens</span>
+                <span>0.92% of verb tokens</span>
                 <span>100.0% matched to a following noun</span>
                 <span>top noun: <b>needle</b></span>
               </div>
@@ -1000,7 +961,7 @@
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -1023,7 +984,7 @@
             <section class="verb-panel" id="verb-separate" hidden>
               <div class="verb-panel-meta">
                 <span class="verb-name">separate</span>
-                <span>0.57% of verb tokens</span>
+                <span>0.64% of verb tokens</span>
                 <span>100.0% matched to a following noun</span>
                 <span>top noun: <b>retroperitoneum</b></span>
               </div>
@@ -1031,7 +992,7 @@
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -1051,10 +1012,41 @@
             
             </section>
             
+            <section class="verb-panel" id="verb-tie" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">tie</span>
+                <span>0.56% of verb tokens</span>
+                <span>100.0% matched to a following noun</span>
+                <span>top noun: <b>knot</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Following noun head</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>knot</b></td>
+                  <td>100.0%</td>
+                  <td>100.0%</td>
+                  <td>0.00226</td>
+                  <td><ul class="relation-examples"><li><b>hamlyn/knot_tying</b> — tie a surgical knot in the suture</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
             <section class="verb-panel" id="verb-keep" hidden>
               <div class="verb-panel-meta">
                 <span class="verb-name">keep</span>
-                <span>0.30% of verb tokens</span>
+                <span>0.33% of verb tokens</span>
                 <span>100.0% matched to a following noun</span>
                 <span>top noun: <b>position</b></span>
               </div>
@@ -1062,7 +1054,7 @@
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -1085,7 +1077,7 @@
             <section class="verb-panel" id="verb-await" hidden>
               <div class="verb-panel-meta">
                 <span class="verb-name">await</span>
-                <span>0.30% of verb tokens</span>
+                <span>0.33% of verb tokens</span>
                 <span>100.0% matched to a following noun</span>
                 <span>top noun: <b>surgeon</b></span>
               </div>
@@ -1093,7 +1085,7 @@
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -1116,15 +1108,15 @@
             <section class="verb-panel" id="verb-retract" hidden>
               <div class="verb-panel-meta">
                 <span class="verb-name">retract</span>
-                <span>0.17% of verb tokens</span>
+                <span>0.19% of verb tokens</span>
                 <span>100.0% matched to a following noun</span>
-                <span>top noun: <b>tissue</b></span>
+                <span>top noun: <b>flap</b></span>
               </div>
               
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -1132,7 +1124,7 @@
                   </tr></thead>
                   <tbody>
                 <tr>
-                  <td><b>tissue</b></td>
+                  <td><b>flap</b></td>
                   <td>100.0%</td>
                   <td>100.0%</td>
                   <td>0.00078</td>
@@ -1147,7 +1139,7 @@
             <section class="verb-panel" id="verb-pull" hidden>
               <div class="verb-panel-meta">
                 <span class="verb-name">pull</span>
-                <span>0.16% of verb tokens</span>
+                <span>0.18% of verb tokens</span>
                 <span>0.0% matched to a following noun</span>
                 <span>top noun: <b>none found</b></span>
               </div>
@@ -1157,7 +1149,7 @@
             <section class="verb-panel" id="verb-position" hidden>
               <div class="verb-panel-meta">
                 <span class="verb-name">position</span>
-                <span>0.15% of verb tokens</span>
+                <span>0.16% of verb tokens</span>
                 <span>100.0% matched to a following noun</span>
                 <span>top noun: <b>surgeon</b></span>
               </div>
@@ -1165,7 +1157,7 @@
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -1188,7 +1180,7 @@
             <section class="verb-panel" id="verb-remove" hidden>
               <div class="verb-panel-meta">
                 <span class="verb-name">remove</span>
-                <span>0.13% of verb tokens</span>
+                <span>0.15% of verb tokens</span>
                 <span>100.0% matched to a following noun</span>
                 <span>top noun: <b>cap</b></span>
               </div>
@@ -1196,7 +1188,7 @@
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -1219,7 +1211,7 @@
             <section class="verb-panel" id="verb-continue" hidden>
               <div class="verb-panel-meta">
                 <span class="verb-name">continue</span>
-                <span>0.13% of verb tokens</span>
+                <span>0.15% of verb tokens</span>
                 <span>100.0% matched to a following noun</span>
                 <span>top noun: <b>till</b></span>
               </div>
@@ -1227,7 +1219,7 @@
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -1250,7 +1242,7 @@
             <section class="verb-panel" id="verb-straight" hidden>
               <div class="verb-panel-meta">
                 <span class="verb-name">straight</span>
-                <span>0.13% of verb tokens</span>
+                <span>0.15% of verb tokens</span>
                 <span>100.0% matched to a following noun</span>
                 <span>top noun: <b>camera</b></span>
               </div>
@@ -1258,7 +1250,7 @@
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -1278,10 +1270,41 @@
             
             </section>
             
+            <section class="verb-panel" id="verb-approach" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">approach</span>
+                <span>0.13% of verb tokens</span>
+                <span>100.0% matched to a following noun</span>
+                <span>top noun: <b>grasp</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Following noun head</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>grasp</b></td>
+                  <td>100.0%</td>
+                  <td>100.0%</td>
+                  <td>0.00050</td>
+                  <td><ul class="relation-examples"><li><b>tud/260131_tundra_dataset/grasping_retraction</b> — approach the small intestine grasp by the surgeon and open your gripper to receive and take over the hold</li><li><b>tud/260131_tundra_dataset/grasping_retraction</b> — approach the gallbladder grasp by the surgeon and open your gripper to receive and take over the hold</li><li><b>tud/260131_tundra_dataset/grasping_retraction</b> — approach the colon grasp by the surgeon and open your gripper to receive and take over the hold</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
             <section class="verb-panel" id="verb-open" hidden>
               <div class="verb-panel-meta">
                 <span class="verb-name">open</span>
-                <span>0.11% of verb tokens</span>
+                <span>0.13% of verb tokens</span>
                 <span>100.0% matched to a following noun</span>
                 <span>top noun: <b>gripper</b></span>
               </div>
@@ -1289,7 +1312,7 @@
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -1312,7 +1335,7 @@
             <section class="verb-panel" id="verb-receive" hidden>
               <div class="verb-panel-meta">
                 <span class="verb-name">receive</span>
-                <span>0.11% of verb tokens</span>
+                <span>0.13% of verb tokens</span>
                 <span>0.0% matched to a following noun</span>
                 <span>top noun: <b>none found</b></span>
               </div>
@@ -1322,7 +1345,7 @@
             <section class="verb-panel" id="verb-take" hidden>
               <div class="verb-panel-meta">
                 <span class="verb-name">take</span>
-                <span>0.11% of verb tokens</span>
+                <span>0.13% of verb tokens</span>
                 <span>100.0% matched to a following noun</span>
                 <span>top noun: <b>hold</b></span>
               </div>
@@ -1330,7 +1353,7 @@
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -1353,7 +1376,7 @@
             <section class="verb-panel" id="verb-peel" hidden>
               <div class="verb-panel-meta">
                 <span class="verb-name">peel</span>
-                <span>0.03% of verb tokens</span>
+                <span>0.04% of verb tokens</span>
                 <span>100.0% matched to a following noun</span>
                 <span>top noun: <b>skin</b></span>
               </div>
@@ -1361,7 +1384,7 @@
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -1384,7 +1407,7 @@
             <section class="verb-panel" id="verb-correct" hidden>
               <div class="verb-panel-meta">
                 <span class="verb-name">correct</span>
-                <span>0.02% of verb tokens</span>
+                <span>0.03% of verb tokens</span>
                 <span>100.0% matched to a following noun</span>
                 <span>top noun: <b>movement</b></span>
               </div>
@@ -1392,7 +1415,7 @@
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -1423,7 +1446,7 @@
               <div class="relation-table-wrap">
                 <table class="relation-table">
                   <thead><tr>
-                    <th>Nearest following noun</th>
+                    <th>Following noun head</th>
                     <th>All uses of verb</th>
                     <th>Matched uses only</th>
                     <th>Expected / sample</th>
@@ -2867,7 +2890,7 @@
       <div class="normalization-examples">
         <h3>Representative cleaning examples</h3>
         <p>Select an example to compare the same instruction across all three text stages.</p>
-        <div class="normalization-buttons" role="group" aria-label="Select a cleaning example"><button type="button" class="normalization-button" data-normalization-target="normalization-example-1" aria-controls="normalization-example-1" aria-expanded="true">Context-sensitive POS</button><button type="button" class="normalization-button" data-normalization-target="normalization-example-2" aria-controls="normalization-example-2" aria-expanded="false">Ex vivo</button><button type="button" class="normalization-button" data-normalization-target="normalization-example-3" aria-controls="normalization-example-3" aria-expanded="false">Peg attributes</button><button type="button" class="normalization-button" data-normalization-target="normalization-example-4" aria-controls="normalization-example-4" aria-expanded="false">CMR state template</button><button type="button" class="normalization-button" data-normalization-target="normalization-example-5" aria-controls="normalization-example-5" aria-expanded="false">Rob tool template</button><button type="button" class="normalization-button" data-normalization-target="normalization-example-6" aria-controls="normalization-example-6" aria-expanded="false">Joined task name</button><button type="button" class="normalization-button" data-normalization-target="normalization-example-7" aria-controls="normalization-example-7" aria-expanded="false">Action wording</button><button type="button" class="normalization-button" data-normalization-target="normalization-example-8" aria-controls="normalization-example-8" aria-expanded="false">Underscore repair</button></div>
+        <div class="normalization-buttons" role="group" aria-label="Select a cleaning example"><button type="button" class="normalization-button" data-normalization-target="normalization-example-1" aria-controls="normalization-example-1" aria-expanded="true">Context-sensitive POS</button><button type="button" class="normalization-button" data-normalization-target="normalization-example-2" aria-controls="normalization-example-2" aria-expanded="false">Ex vivo</button><button type="button" class="normalization-button" data-normalization-target="normalization-example-3" aria-controls="normalization-example-3" aria-expanded="false">Peg attributes</button><button type="button" class="normalization-button" data-normalization-target="normalization-example-4" aria-controls="normalization-example-4" aria-expanded="false">Knot tying</button><button type="button" class="normalization-button" data-normalization-target="normalization-example-5" aria-controls="normalization-example-5" aria-expanded="false">Plastic phantom</button><button type="button" class="normalization-button" data-normalization-target="normalization-example-6" aria-controls="normalization-example-6" aria-expanded="false">Grasp event</button><button type="button" class="normalization-button" data-normalization-target="normalization-example-7" aria-controls="normalization-example-7" aria-expanded="false">CMR state template</button><button type="button" class="normalization-button" data-normalization-target="normalization-example-8" aria-controls="normalization-example-8" aria-expanded="false">Rob tool template</button><button type="button" class="normalization-button" data-normalization-target="normalization-example-9" aria-controls="normalization-example-9" aria-expanded="false">Joined task name</button><button type="button" class="normalization-button" data-normalization-target="normalization-example-10" aria-controls="normalization-example-10" aria-expanded="false">Action wording</button><button type="button" class="normalization-button" data-normalization-target="normalization-example-11" aria-controls="normalization-example-11" aria-expanded="false">Underscore repair</button></div>
         <div class="normalization-example-panels">
             <article class="normalization-example" id="normalization-example-1">
               <div class="normalization-example-heading">
@@ -2892,7 +2915,7 @@
                 <div><span>Clean task text</span><code>Finish the knot tying on ex vivo tissue</code></div>
                 <div><span>Normalized task text</span><code>finish the knot tie on ex vivo tissue</code></div>
               </div>
-              <div class="normalization-rules"><b>Rules applied</b><span>Lowercase task text</span><span>Lemmatize tying → tie</span><span>Preserve &#x27;ex vivo&#x27; modifier</span></div>
+              <div class="normalization-rules"><b>Rules applied</b><span>Lowercase task text</span><span>Treat &#x27;knot tying&#x27; as nominal</span><span>Lemmatize tying → tie</span><span>Preserve &#x27;ex vivo&#x27; modifier</span></div>
             </article>
             
             <article class="normalization-example" id="normalization-example-3" hidden>
@@ -2910,6 +2933,45 @@
             
             <article class="normalization-example" id="normalization-example-4" hidden>
               <div class="normalization-example-heading">
+                <div><b>Knot tying</b><p>Treat ‘knot tying’ as a nominal action phrase: tying normalizes to tie but does not enter the verb count.</p></div>
+                <span class="dataset">Dataset · jhu/imerse/suturebot</span>
+              </div>
+              <div class="normalization-stages">
+                <div><span>VLA input</span><code>knot tying</code></div>
+                <div><span>Clean task text</span><code>knot tying</code></div>
+                <div><span>Normalized task text</span><code>knot tie</code></div>
+              </div>
+              <div class="normalization-rules"><b>Rules applied</b><span>Treat &#x27;knot tying&#x27; as nominal</span><span>Lemmatize tying → tie</span></div>
+            </article>
+            
+            <article class="normalization-example" id="normalization-example-5" hidden>
+              <div class="normalization-example-heading">
+                <div><b>Plastic phantom</b><p>Treat plastic as an attribute of the head noun phantom rather than as a noun itself.</p></div>
+                <span class="dataset">Dataset · turin/mitic_lerobot_plastic_pad_3dmed</span>
+              </div>
+              <div class="normalization-stages">
+                <div><span>VLA input</span><code>finish the knot tying on the plastic phantom</code></div>
+                <div><span>Clean task text</span><code>Finish the knot tying on the plastic phantom</code></div>
+                <div><span>Normalized task text</span><code>finish the knot tie on the plastic phantom</code></div>
+              </div>
+              <div class="normalization-rules"><b>Rules applied</b><span>Lowercase task text</span><span>Treat &#x27;knot tying&#x27; as nominal</span><span>Lemmatize tying → tie</span><span>Preserve &#x27;plastic phantom&#x27; modifier</span></div>
+            </article>
+            
+            <article class="normalization-example" id="normalization-example-6" hidden>
+              <div class="normalization-example-heading">
+                <div><b>Grasp event</b><p>For audited TUNDRA ‘object grasped by the surgeon’ prompts, expose grasp as the requested nominal event head after approach.</p></div>
+                <span class="dataset">Dataset · tud/260131_tundra_dataset/grasping_retraction</span>
+              </div>
+              <div class="normalization-stages">
+                <div><span>VLA input</span><code>approach the small intestine grasped by the surgeon  and open your gripper to receive and take over the hold</code></div>
+                <div><span>Clean task text</span><code>Approach the small intestine grasped by the surgeon and open your gripper to receive and take over the hold.</code></div>
+                <div><span>Normalized task text</span><code>approach the small intestine grasp by the surgeon and open your gripper to receive and take over the hold</code></div>
+              </div>
+              <div class="normalization-rules"><b>Rules applied</b><span>Normalize whitespace</span><span>Lowercase task text</span><span>Preserve sentence-initial imperative</span><span>Treat TUNDRA grasp event as a noun</span><span>Lemmatize grasped → grasp</span><span>Remove terminal punctuation</span></div>
+            </article>
+            
+            <article class="normalization-example" id="normalization-example-7" hidden>
+              <div class="normalization-example-heading">
                 <div><b>CMR state template</b><p>Remove structured arm and instrument state plus the ‘do a/an’ carrier.</p></div>
                 <span class="dataset">Dataset · cmr_surgical/cholecystectomy</span>
               </div>
@@ -2921,7 +2983,7 @@
               <div class="normalization-rules"><b>Rules applied</b><span>Remove CMR state template</span><span>Remove CMR &#x27;do a/an&#x27; carrier</span></div>
             </article>
             
-            <article class="normalization-example" id="normalization-example-5" hidden>
+            <article class="normalization-example" id="normalization-example-8" hidden>
               <div class="normalization-example-heading">
                 <div><b>Rob tool template</b><p>Remove structured tool metadata and the surgery-process carrier.</p></div>
                 <span class="dataset">Dataset · rob_surgical/all_merged_data</span>
@@ -2934,7 +2996,7 @@
               <div class="normalization-rules"><b>Rules applied</b><span>Remove Rob tool template</span><span>Remove Rob process carrier</span><span>Repair punctuation spacing</span><span>Lowercase task text</span><span>Lemmatize suturing → suture</span></div>
             </article>
             
-            <article class="normalization-example" id="normalization-example-6" hidden>
+            <article class="normalization-example" id="normalization-example-9" hidden>
               <div class="normalization-example-heading">
                 <div><b>Joined task name</b><p>Split task labels such as NeedleThreading before morphology normalization.</p></div>
                 <span class="dataset">Dataset · obuda/needlethreading_1</span>
@@ -2947,7 +3009,7 @@
               <div class="normalization-rules"><b>Rules applied</b><span>Split CamelCase</span><span>Lowercase task text</span><span>Lemmatize threading → thread</span></div>
             </article>
             
-            <article class="normalization-example" id="normalization-example-7" hidden>
+            <article class="normalization-example" id="normalization-example-10" hidden>
               <div class="normalization-example-heading">
                 <div><b>Action wording</b><p>Map audited nominal action forms to one comparable action term.</p></div>
                 <span class="dataset">Dataset · ucsd/surgical_learning_dataset</span>
@@ -2960,7 +3022,7 @@
               <div class="normalization-rules"><b>Rules applied</b><span>Action alias dissection → dissect</span></div>
             </article>
             
-            <article class="normalization-example" id="normalization-example-8" hidden>
+            <article class="normalization-example" id="normalization-example-11" hidden>
               <div class="normalization-example-heading">
                 <div><b>Underscore repair</b><p>Convert machine-style separators into readable word boundaries.</p></div>
                 <span class="dataset">Dataset · ucberkeley/debridement_lerobot</span>
