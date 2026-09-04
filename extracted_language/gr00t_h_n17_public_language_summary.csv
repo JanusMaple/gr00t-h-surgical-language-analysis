@@ -1,0 +1,48 @@
+entry_id,group,historical_training_path,current_public_path,mechanism,source,raw_public_rows,unique_prompts,unresolved_task_index_rows,group_exclude_splits_in_training_yaml
+cmr_versius:00,cmr_versius,cmr-surgical-60hz/cholecystectomy_phase_gesture_prompts_v1,cmr_surgical/cholecystectomy,CMR_STATE_PROMPT,n17_counts_cache,16999777,146,0,
+cmr_versius:01,cmr_versius,cmr-surgical-60hz/hysterectomy_phase_prompts_v1,cmr_surgical/hysterectomy,CMR_STATE_PROMPT,n17_counts_cache,26374851,468,0,
+cmr_versius:02,cmr_versius,cmr-surgical-60hz/inguinal_hernia,cmr_surgical/inguinal_hernia,CMR_STATE_PROMPT,n17_counts_cache,25807467,343,0,
+cmr_versius:03,cmr_versius,cmr-surgical-60hz/prostatectomy,cmr_surgical/prostatectomy,CMR_STATE_PROMPT,n17_counts_cache,36516224,384,0,
+jhu_imerse_dvrk:00,jhu_imerse_dvrk,Surgical/JHU/LSCR/ARCADE/Cholecystectomy,jhu/lcsr/arcade/cholecystectomy,TASK_INDEX,n17_counts_cache,181021,2,0,missing_videos
+jhu_imerse_dvrk:01,jhu_imerse_dvrk,Surgical/JHU/LSCR/ARCADE/cautery,jhu/lcsr/arcade/cautery,TASK_INDEX,n17_counts_cache,5288,1,0,missing_videos
+jhu_imerse_dvrk:02,jhu_imerse_dvrk,Surgical/JHU/srth_porcine_chole_fix,jhu/imerse/srth_porcine_chole,TASK_INDEX,n17_counts_cache,1878393,17,0,missing_videos
+jhu_imerse_dvrk:03,jhu_imerse_dvrk,Surgical/JHU/cao_cautery_combined,jhu/imerse/cao_cautery_combined,TASK_INDEX,n17_counts_cache,52748,3,0,missing_videos
+jhu_imerse_dvrk:05,jhu_imerse_dvrk,Surgical/JHU/srt_needle_pickup+handover,jhu/imerse/srt_needle_pickup_handover,TASK_INDEX,n17_counts_cache,58305,1,0,missing_videos
+jhu_imerse_dvrk:07,jhu_imerse_dvrk,Surgical/JHU/srt_tissue_lift,jhu/imerse/srt_tissue_lift,TASK_INDEX,n17_counts_cache,27487,1,0,missing_videos
+jhu_imerse_dvrk:09,jhu_imerse_dvrk,Surgical/JHU/Imerse/Wound_Closure/point_labeled,jhu/imerse/wound_closure/point_labeled/fausto_0_1_jesse_0_1_2_labeled,TASK_INDEX,n17_counts_cache,1883971,1,0,missing_videos
+jhu_imerse_dvrk:10,jhu_imerse_dvrk,Surgical/JHU/suturebot,jhu/imerse/suturebot,TASK_INDEX,n17_counts_cache,516334,3,0,missing_videos
+jhu_imerse_dvrk:11,jhu_imerse_dvrk,Surgical/JHU/Imerse/NephFat_extracted/nephfat,jhu/imerse/nephfat/nephfat,TASK_INDEX,n17_counts_cache,494525,4,0,missing_videos
+jhu_imerse_dvrk_mono:00,jhu_imerse_dvrk_mono,Surgical/JHU/suturebot,jhu/imerse/suturebot,TASK_INDEX,n17_counts_cache,516334,3,0,
+jhu_lscr_dvrk_smarts:00,jhu_lscr_dvrk_smarts,Surgical/JHU/LSCR/SMARTS/offline_recorder_extracted/offline_data_part1,jhu/lcsr/smarts/SurgSync-stitch-coldcut/P1,TASK_INDEX,n17_counts_cache,53114,2,0,
+jhu_lscr_dvrk_smarts:01,jhu_lscr_dvrk_smarts,Surgical/JHU/LSCR/SMARTS/offline_recorder_extracted/offline_data_part2,jhu/lcsr/smarts/SurgSync-stitch-coldcut/P2,TASK_INDEX,n17_counts_cache,32426,3,0,
+jhu_lscr_dvrk_smarts:02,jhu_lscr_dvrk_smarts,Surgical/JHU/LSCR/SMARTS/offline_recorder_extracted/offline_data_part3,jhu/lcsr/smarts/SurgSync-stitch-coldcut/P3,TASK_INDEX,n17_counts_cache,17485,2,0,
+stanford_dvrk_real:00,stanford_dvrk_real,Surgical/Stanford/Collaborative Haptics and Robotics in Medicine Lab/Real Robot (dVRK)/Needle Transfer,stanford/collaborative_haptics_and_robotics_in_medicine_lab/real_robot_dvrk/needle_transfer,TASK_INDEX,n17_counts_cache,313882,1,0,fail | bad_frames
+stanford_dvrk_real:01,stanford_dvrk_real,Surgical/Stanford/Collaborative Haptics and Robotics in Medicine Lab/Real Robot (dVRK)/Tissue Retraction,stanford/collaborative_haptics_and_robotics_in_medicine_lab/real_robot_dvrk/tissue_retraction,TASK_INDEX,n17_counts_cache,291826,1,0,fail | bad_frames
+stanford_dvrk_real:02,stanford_dvrk_real,Surgical/Stanford/Collaborative Haptics and Robotics in Medicine Lab/Real Robot (dVRK)/Peg Transfer,stanford/collaborative_haptics_and_robotics_in_medicine_lab/real_robot_dvrk/peg_transfer,TASK_INDEX,n17_counts_cache,268729,1,0,fail | bad_frames
+obuda_dvrk:00,obuda_dvrk,Surgical/Obuda/FRS_Dome_1,obuda/frs_dome_1,TASK_INDEX,n17_counts_cache,141078,2,0,
+obuda_dvrk:01,obuda_dvrk,Surgical/Obuda/NeedleThreading_1,obuda/needlethreading_1,TASK_INDEX,n17_counts_cache,103067,1,0,
+obuda_dvrk:02,obuda_dvrk,Surgical/Obuda/PegTransfer_1,obuda/pegtransfer_1,TASK_INDEX,n17_counts_cache,134832,1,0,
+obuda_dvrk:03,obuda_dvrk,Surgical/Obuda/Rollercoaster_1,obuda/rollercoaster_1,TASK_INDEX,n17_counts_cache,130268,1,0,
+obuda_dvrk:04,obuda_dvrk,Surgical/Obuda/Seaspike_1,obuda/seaspike_1,TASK_INDEX,n17_counts_cache,89269,1,0,
+obuda_dvrk:05,obuda_dvrk,Surgical/Obuda/NeedleThreading_2,obuda/needlethreading_2,TASK_INDEX,n17_counts_cache,102221,1,0,
+obuda_dvrk:06,obuda_dvrk,Surgical/Obuda/PegTransfer_2,obuda/pegtransfer_2,TASK_INDEX,n17_counts_cache,78140,1,0,
+obuda_dvrk:07,obuda_dvrk,Surgical/Obuda/Pork_1,obuda/pork_1,TASK_INDEX,n17_counts_cache,165486,1,0,
+obuda_dvrk:08,obuda_dvrk,Surgical/Obuda/Seaspike_2,obuda/seaspike_2,TASK_INDEX,n17_counts_cache,67658,1,0,
+obuda_dvrk:09,obuda_dvrk,Surgical/Obuda/Seaspike_3,obuda/seaspike_3,TASK_INDEX,n17_counts_cache,102948,1,0,
+obuda_dvrk:10,obuda_dvrk,Surgical/Obuda/Skinphantom_1,obuda/skinphantom_1,TASK_INDEX,n17_counts_cache,41979,4,0,
+rob_surgical_bitrack:00,rob_surgical_bitrack,Surgical/Rob Surgical/all_merged_data,rob_surgical/all_merged_data,ROB_TOOL_PROMPT,n17_counts_cache,1003887,122,0,
+jhu_imerse_star_il:00,jhu_imerse_star_il,Surgical/JHU/Imerse/star_IL_extracted/star_IL,jhu/imerse/star_il/star_il,TASK_INDEX,n17_counts_cache,216140,1,0,MISSING_VIDEOS
+hamlyn_dvrk_30hz:00,hamlyn_dvrk_30hz,Surgical/Hamlyn/Suturing-2,hamlyn/suturing_2,TASK_INDEX,n17_counts_cache,251355,1,0,failure
+hamlyn_dvrk_30hz:01,hamlyn_dvrk_30hz,Surgical/Hamlyn/peg_transfer,hamlyn/peg_transfer,TASK_INDEX,n17_counts_cache,102187,5,0,failure
+hamlyn_dvrk_30hz:02,hamlyn_dvrk_30hz,Surgical/Hamlyn/Suturing-1,hamlyn/suturing_1,TASK_INDEX,n17_counts_cache,100067,1,0,failure
+hamlyn_dvrk_30hz:03,hamlyn_dvrk_30hz,Surgical/Hamlyn/needle_grasp_and_handover,hamlyn/needle_grasp_and_handover,TASK_INDEX,n17_counts_cache,46582,2,0,failure
+hamlyn_dvrk_30hz:04,hamlyn_dvrk_30hz,Surgical/Hamlyn/knot_tying,hamlyn/knot_tying,TASK_INDEX,n17_counts_cache,30222,1,0,failure
+hamlyn_dvrk_30hz:05,hamlyn_dvrk_30hz,Surgical/Hamlyn/Tissue_Retraction,hamlyn/tissue_retraction,TASK_INDEX,n17_counts_cache,14160,15,0,failure
+ucsd_dvrk:00,ucsd_dvrk,Surgical/UCSD/surgical_learning_dataset,ucsd/surgical_learning_dataset,TASK_INDEX,n17_counts_cache,288604,2,0,
+ucsd_dvrk:01,ucsd_dvrk,Surgical/UCSD/surgical_learning_dataset2,ucsd/surgical_learning_dataset2,TASK_INDEX,n17_counts_cache,26313,1,0,
+ucb_dvrk:00,ucb_dvrk,Surgical/UCBerkeley/debridement_lerobot,ucberkeley/debridement_lerobot,TASK_INDEX,n17_counts_cache,221950,1,0,
+turin_mitic_ex_vivo:00,turin_mitic_ex_vivo,Surgical/Turin/mitic_lerobot_ex_vivo,turin/mitic_lerobot_ex_vivo,DIRECT_TEXT:instruction.text,n17_counts_cache,388690,6,0,failure | MISSING_VIDEOS
+turin_mitic_ex_vivo:01,turin_mitic_ex_vivo,Surgical/Turin/mitic_lerobot_plastic_pad,turin/mitic_lerobot_plastic_pad,DIRECT_TEXT:instruction.text,n17_counts_cache,149846,7,0,failure | MISSING_VIDEOS
+turin_mitic_ex_vivo:02,turin_mitic_ex_vivo,Surgical/Turin/mitic_lerobot_plastic_pad_3DMED,turin/mitic_lerobot_plastic_pad_3dmed,DIRECT_TEXT:instruction.text,n17_counts_cache,243229,6,0,failure | MISSING_VIDEOS
+turin_mitic_ex_vivo:03,turin_mitic_ex_vivo,Surgical/Turin/mitic_lerobot_plastic_tube,turin/mitic_lerobot_plastic_tube,DIRECT_TEXT:instruction.text,n17_counts_cache,216070,6,0,failure | MISSING_VIDEOS
+tud_tundra_ur5e:00,tud_tundra_ur5e,Surgical/TUD/260131_TUNDRA_dataset/grasping_retraction,tud/260131_tundra_dataset/grasping_retraction,TASK_INDEX,n17_counts_cache,47753,23,0,

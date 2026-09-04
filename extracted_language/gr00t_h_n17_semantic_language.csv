@@ -1,0 +1,154 @@
+semantic_language,normalized_training_mixture_weight
+wound closure,0.13426172875511994
+prostatectomy,0.0689084676849048
+hysterectomy,0.050532626936610925
+inguinal hernia repair,0.04870035318544291
+knot tie,0.03908860962400051
+dissect,0.03858141419798222
+peg transfer,0.03607118894322295
+cholecystectomy,0.03207967461408628
+hemicolectomy. suture,0.030450386872925964
+needle throw,0.02384132452987838
+needle transfer,0.02350607482784107
+tissue retract,0.021854339505640804
+seaspike,0.019458463902971398
+"make first right-to-left suture, shift needle holder, create second parallel suture",0.018826931674315924
+needle pickup,0.01676897850426668
+surgical debridement,0.01661747282947545
+flap grasp,0.01566738767204915
+needle thread,0.015371194373114738
+clip first clip left tube,0.013106469684025322
+clip third clip left tube,0.013018243262175495
+position the needle for suture,0.012680530653161992
+scissors place,0.01257896405031578
+clip second clip left tube,0.012388899537332347
+go to the cut position left tube,0.011901231197495225
+clip first clip right tube,0.009916849358716224
+rollercoaster,0.009753978550119396
+clip second clip right tube,0.00957050007746408
+clip third clip right tube,0.009549263022770019
+go to the cut position right tube,0.008997669722998085
+extract the needle from the plastic phantom,0.00894720194021148
+suture throw,0.008776219708890259
+retract,0.00876053504863086
+grab gallbladder,0.007768058509268766
+drive needle from right edge through both layer to left side,0.007495194334124133
+finish the knot tie on the plastic phantom,0.007258020456510758
+hemicolectomy. resect the lymphatic tissue around the mesenteric artery and vein,0.007128733886932761
+finish the knot tie on ex vivo tissue,0.007038633378867161
+insert the needle into the plastic phantom,0.006650992962179686
+cut,0.006391141953080974
+suture,0.006331385438027726
+insert the needle into the tissue,0.005760431362667063
+go back first clip left tube,0.0057144780795235425
+go back second clip left tube,0.005626109127105301
+go back third clip left tube,0.005540590786055389
+perform base knot tie on ex vivo tissue,0.00541734731571378
+perform base knot tie on the plastic phantom,0.005046610029766736
+go back from the cut left tube,0.004907184940012373
+hemicolectomy. identify the inferior mesenteric artery and vein,0.004902474315956322
+hemicolectomy,0.004320258683016444
+go back second clip right tube,0.0042806918265375585
+pick up the needle and hand it to the other arm,0.004155122395762604
+hemicolectomy. prepare the colon part for anastomosis,0.004095580666703139
+go back third clip right tube,0.003984228244231196
+go back first clip right tube,0.003913818143433436
+hemicolectomy. suture. pause in the surgery,0.003886929682220182
+extract the needle from the tissue,0.0038311405531765257
+perform a simple interrupted stitch on ex-vivo tissue (occasionally on silicon suture training phantom); without cut the suture thread tail at the end,0.003820807914974772
+lift the plastic phantom to expose the workspace,0.003761547747115501
+perform cold-cut dissect on ex-vivo tissue by cut along pre-defined trace use non-energy surigal instrument,0.003737069515207231
+go back from the cut right tube,0.0036799254806619257
+resect home out,0.003239007167265421
+hysterectomy. suture the uterus stump,0.002837683346037046
+"use the left-hand to grasp the needle from the table, then transfer the needle to the right hand",0.0027402808589638075
+hysterectomy. pelvic lymphadenectomy,0.0026285830055214634
+hemicolectomy. dissect and staple of the mesocolon while separate it from the retroperitoneum,0.0025834976169145938
+tie a surgical knot in the suture,0.002263680965412169
+hemicolectomy. lateral to lateral approximation,0.002217422235668115
+hemicolectomy. artery coagulation,0.0022015449891819748
+lift the tissue flap to expose the workspace,0.0020107653141473473
+lift the tissue,0.001958868867032445
+move the orange triangular peg to right,0.0017125538214937408
+move the black triangular peg to right,0.0016193011313363006
+hemicolectomy. create the first penetrating hole inside the colon for anastomosis,0.001588174004646651
+grasp,0.0015356243441195883
+move the green cylinder peg to right,0.0014784858241106084
+move the orange cylinder peg to right,0.0014277773331575264
+move the white triangular peg to right,0.001415867953450673
+grasp the needle from the plastic phantom,0.001238525629817746
+hemicolectomy. create the second penetrating hole inside the colon for anastomosis,0.001161285773651371
+close down on the small intestine for hold. keep position await surgeon's counterpart grasp,0.0011296913491505942
+hysterectomy. coagulation of the utterine vessel,0.0011008473872630917
+hysterectomy. uterus neck dissect,0.0010469995560200029
+single knot,0.0009250211180656417
+double knot,0.0008104604647840785
+use the right hand instrument to grasp the needle from the table,0.0007487928863485359
+suture pull,0.0007085538967342696
+needle insert,0.00069919436623741
+hysterectomy. dissect of the broad ligament,0.0006964269578991422
+remove cap,0.0006049709976439199
+hysterectomy. coagulation and dissect of the ovarian vessel,0.0005706072687636911
+remain position until the surgeon pick up the small intestine and position it for your robotic grasp,0.0005239376312912924
+transfer the needle from right to left arm,0.0005109837640151448
+retract home in,0.0004517506365961607
+"pull back on small intestine post-surgeon's end grasp, continue till fully straight in camera",0.00043845031006958996
+transfer the needle from left to right arm,0.00041854697791579614
+approach the small intestine grasp by the surgeon and open your gripper to receive and take over the hold,0.0003649506938395374
+stay stationary with secure grip,0.00036322746124698774
+hysterectomy. error: surgeon cut an artery/vessel,0.000309980769840257
+hysterectomy. urinary bladder mobilization,0.000292081421207297
+hysterectomy. dissect of the vesicouterine fold,0.0002246031236412009
+retract the partially dissect tissue flap use the right instrument (center grasp),0.0001893516471630588
+retract the partially dissect tissue flap use the left instrument (center grasp),0.00017684305338290423
+hysterectomy. identification of uterus and ovary,0.00017517396005227372
+perform cold-cut dissect to partially peel skin from the underlying fat layer use non-energy instrument,0.0001587134786291763
+retract the partially dissect tissue flap use the left instrument (left-side grasp),0.00013931727204244044
+retract the partially dissect tissue flap use the right instrument (right-side grasp),0.0001160977267020337
+correct the previous movement or position of the grasper,0.00010474257236453978
+"pull back on gallbladder post-surgeon's end grasp, continue till fully straight in camera",9.545210099601122e-05
+close down on the colon for hold. keep position await surgeon's counterpart grasp,8.481301281592207e-05
+retract the partially dissect tissue flap use the right instrument (left-side grasp),7.115667120447226e-05
+resect home in,6.834340755572144e-05
+lift the intact tissue block use the left instrument (center grasp),6.673746741387871e-05
+close down on the gallbladder for hold. keep position await surgeon's counterpart grasp,6.203637333178751e-05
+retract the partially dissect tissue flap use the left instrument (right-side grasp),6.082022844003313e-05
+approach the gallbladder grasp by the surgeon and open your gripper to receive and take over the hold,5.8889600771479444e-05
+lift the intact tissue block use the right instrument (center grasp),5.4977891225350144e-05
+approach the colon grasp by the surgeon and open your gripper to receive and take over the hold,4.750128102941218e-05
+remain position until the surgeon pick up the colon and position it for your robotic grasp,4.682697262363188e-05
+remain position until the surgeon pick up the gallbladder and position it for your robotic grasp,4.3230661126136954e-05
+lift the intact tissue block use the right instrument (right-side grasp),4.246929744519555e-05
+lift the intact tissue block use the right instrument (left-side grasp),4.149557457608172e-05
+lift the intact tissue block use the left instrument (left-side grasp),4.127086929859391e-05
+close down on the stomach for hold. keep position await surgeon's counterpart grasp,3.311603503943247e-05
+close down on the omentum for hold. keep position await surgeon's counterpart grasp,3.3041111883234656e-05
+remain position until the surgeon pick up the stomach and position it for your robotic grasp,2.3975409983299524e-05
+remain position until the surgeon pick up the omentum and position it for your robotic grasp,2.2102331078354242e-05
+approach the stomach grasp by the surgeon and open your gripper to receive and take over the hold,2.1877561609760813e-05
+"pull back on omentum post-surgeon's end grasp, continue till fully straight in camera",2.0004482704815535e-05
+"pull back on colon post-surgeon's end grasp, continue till fully straight in camera",1.9854636392419915e-05
+re-orient and grasp the intact tissue block at the center use the right instrument,1.820112747651238e-05
+stop the grasper movement and stay,1.5883709113935933e-05
+retract the partially dissect tissue flap from the left side use the right instrument,1.5205057110008282e-05
+re-orient and grasp the intact tissue block at the right region use the right instrument,1.4006628963406644e-05
+"pull back on stomach post-surgeon's end grasp, continue till fully straight in camera",1.3186475490814735e-05
+retract the partially dissect tissue flap from the right side use the right instrument,1.2658397298479802e-05
+approach the omentum grasp by the surgeon and open your gripper to receive and take over the hold,1.1013703961078218e-05
+hemicolectomy. identify the inferior mesenteric artery and vein. artery coagulation,2.995706884177405e-07
+hemicolectomy. artery coagulation. resect the lymphatic tissue around the mesenteric artery and vein,2.995706884177405e-07
+hemicolectomy. resect the lymphatic tissue around the mesenteric artery and vein. dissect and staple of the mesocolon while separate it from the retroperitoneum,2.995706884177405e-07
+hemicolectomy. dissect and staple of the mesocolon while separate it from the retroperitoneum. prepare the colon part for anastomosis,2.995706884177405e-07
+hemicolectomy. prepare the colon part for anastomosis. create the first penetrating hole inside the colon for anastomosis,2.995706884177405e-07
+hemicolectomy. create the first penetrating hole inside the colon for anastomosis. create the second penetrating hole inside the colon for anastomosis,2.995706884177405e-07
+hemicolectomy. create the second penetrating hole inside the colon for anastomosis. lateral to lateral approximation,2.995706884177405e-07
+hemicolectomy. lateral to lateral approximation. suture,1.4978534420887024e-07
+hysterectomy. urinary bladder mobilization. identification of uterus and ovary,7.489267210443512e-08
+hysterectomy. identification of uterus and ovary. coagulation and dissect of the ovarian vessel,7.489267210443512e-08
+hysterectomy. coagulation and dissect of the ovarian vessel. error: surgeon cut an artery/vessel,7.489267210443512e-08
+hysterectomy. error: surgeon cut an artery/vessel. dissect of the broad ligament,7.489267210443512e-08
+hysterectomy. dissect of the broad ligament. pelvic lymphadenectomy,7.489267210443512e-08
+hysterectomy. pelvic lymphadenectomy. coagulation of the utterine vessel,7.489267210443512e-08
+hysterectomy. coagulation of the utterine vessel. pelvic lymphadenectomy,7.489267210443512e-08
+hysterectomy. pelvic lymphadenectomy. dissect of the vesicouterine fold,7.489267210443512e-08
+hysterectomy. dissect of the vesicouterine fold. uterus neck dissect,7.489267210443512e-08

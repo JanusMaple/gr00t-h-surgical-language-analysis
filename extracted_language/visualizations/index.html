@@ -1,0 +1,2608 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GR00T-H N1.7 Language Report</title>
+  <style>
+    :root { color-scheme: light; --bg:#F3F0E8; --ink:#18323E; --muted:#667780; --card:#FFFEFB; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.48 Inter,ui-sans-serif,system-ui,sans-serif; }
+    header { max-width:1260px; margin:0 auto; padding:38px 22px 18px; }
+    h1 { margin:0 0 8px; font-size:clamp(30px,4vw,48px); letter-spacing:-1.2px; line-height:1.05; }
+    header p { color:var(--muted); max-width:800px; font-size:15px; }
+    main { max-width:1260px; margin:auto; padding:8px 22px 48px; display:grid; gap:14px; }
+    .card { background:var(--card); border:1px solid #DCE3E1; border-radius:12px; overflow:hidden; box-shadow:0 6px 20px rgba(24,50,62,.045); }
+    .card.secondary { background:#FAF9F5; }
+    .section-summary { cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; gap:20px; padding:15px 18px; }
+    .section-summary::-webkit-details-marker { display:none; }
+    .section-summary:hover { background:#F0F5F2; }
+    .summary-copy { display:grid; gap:3px; }
+    .section-title { font-size:20px; font-weight:750; letter-spacing:-.15px; }
+    .section-description { color:var(--muted); font-size:13.5px; }
+    .section-toggle { flex:0 0 auto; width:24px; height:24px; border-radius:50%; border:1px solid #C9D7D3; position:relative; }
+    .section-toggle::before, .section-toggle::after { content:""; position:absolute; background:#176B66; left:6px; right:6px; top:11px; height:1.5px; }
+    .section-toggle::after { transform:rotate(90deg); transition:transform .15s ease; }
+    .card[open] > .section-summary .section-toggle::after { transform:rotate(0); }
+    .section-body { border-top:1px solid #E3E8E6; }
+    h3 { margin:0 0 6px; font-size:18px; }
+    p { margin:0; color:var(--muted); line-height:1.45; }
+    img { width:100%; display:block; }
+    .section-body > img + img { border-top:1px solid #E3E8E6; }
+    a { color:#176B66; text-underline-offset:3px; }
+    .verb-drilldown { border-top:1px solid #DCE3E1; padding:20px 22px 24px; }
+    .verb-intro { max-width:950px; }
+    .download { margin-top:6px; font-size:13px; }
+    .verb-buttons { display:flex; flex-wrap:wrap; gap:6px; margin:14px 0 0; }
+    .verb-button { appearance:none; border:1px solid #CDE0DB; color:#176B66; background:#E8F2EF; border-radius:999px; padding:5px 10px; font:650 13px/1.3 inherit; cursor:pointer; }
+    .verb-button:hover { background:#D9ECE7; }
+    .verb-button[aria-expanded="true"] { color:#fff; background:#176B66; border-color:#176B66; }
+    .verb-panel { border:1px solid #DCE3E1; border-radius:9px; background:#F9F8F3; margin-top:12px; overflow:hidden; }
+    .verb-panel[hidden] { display:none; }
+    .verb-panel-meta { display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center; padding:11px 13px; color:var(--muted); font-size:13px; }
+    .verb-name { font-size:16px; font-weight:750; color:#176B66; }
+    .relation-table-wrap { overflow-x:auto; padding:0 10px 10px; }
+    .relation-table { width:100%; border-collapse:collapse; background:var(--card); border:1px solid #E1E6E4; font-size:12.5px; }
+    .relation-table th { color:var(--muted); font-size:10.5px; text-transform:uppercase; letter-spacing:.04em; text-align:left; background:#F0F4F2; }
+    .relation-table th, .relation-table td { padding:8px 9px; border-bottom:1px solid #E1E6E4; vertical-align:top; }
+    .relation-table th:nth-child(2), .relation-table th:nth-child(3), .relation-table th:nth-child(4), .relation-table td:nth-child(2), .relation-table td:nth-child(3), .relation-table td:nth-child(4) { white-space:nowrap; }
+    .relation-examples { margin:0; padding-left:15px; min-width:280px; }
+    .relation-examples li { margin:0 0 4px; line-height:1.35; }
+    .no-relation { padding:0 12px 12px; }
+    .length-examples { border-top:1px solid #DCE3E1; padding:20px 22px 24px; }
+    .length-intro { margin-bottom:14px; max-width:950px; }
+    .length-control { max-width:780px; border:1px solid #D8E3DF; border-radius:9px; background:#F7FAF8; padding:12px 14px 9px; }
+    .length-control-heading { display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+    .length-control-heading label { font-weight:700; }
+    .length-control-heading output { color:#176B66; font-weight:750; }
+    #length-selector { width:100%; margin:10px 0 2px; accent-color:#176B66; cursor:pointer; }
+    .length-scale { display:flex; justify-content:space-between; gap:10px; color:var(--muted); font-size:11.5px; }
+    .length-panels { margin-top:12px; }
+    .length-panel { border:1px solid #DCE3E1; border-radius:9px; background:#F9F8F3; overflow:hidden; }
+    .length-panel[hidden] { display:none; }
+    .length-result-meta { display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center; padding:11px 12px; color:var(--muted); font-size:13px; }
+    .length-result-meta b { color:var(--ink); font-size:15px; }
+    .examples-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:10px; padding:0 10px 10px; }
+    .example { background:var(--card); border:1px solid #E1E6E4; border-radius:8px; padding:11px; min-width:0; }
+    .example-meta { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:9px; }
+    .example-meta span { background:#EDF2EF; color:var(--muted); border-radius:999px; padding:3px 6px; font-size:11px; overflow-wrap:anywhere; }
+    .example-meta .dataset { background:#D9ECE7; color:#175C58; font-weight:650; }
+    dl { margin:0; }
+    dt { color:var(--muted); font-size:11px; font-weight:650; margin:8px 0 2px; text-transform:uppercase; letter-spacing:.04em; }
+    dd { margin:0; line-height:1.4; overflow-wrap:anywhere; }
+    code { display:block; color:#663D34; background:#FAEAE5; border-radius:6px; padding:7px 8px; white-space:pre-wrap; overflow-wrap:anywhere; font-family:ui-monospace,SFMono-Regular,Consolas,monospace; font-size:12px; }
+    .source-detail { margin-top:9px; color:var(--muted); font-size:12px; }
+    .source-detail summary { cursor:pointer; }
+    .source-detail p { margin-top:5px; overflow-wrap:anywhere; }
+    .pipeline { padding:20px 22px 22px; background:#F7FAF8; }
+    .pipeline-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-top:12px; }
+    .pipeline-stage { min-width:0; border:1px solid #D8E3DF; border-radius:8px; background:var(--card); padding:11px; }
+    .pipeline-stage b { display:block; margin:7px 0 4px; font-size:14px; }
+    .pipeline-stage p { font-size:12.5px; }
+    .stage-number { display:grid; place-items:center; width:22px; height:22px; border-radius:50%; color:#fff; background:#176B66; font-size:11px; font-weight:750; }
+    .pipeline-note { margin-top:10px; font-size:12.5px; }
+    @media (max-width:800px) {
+      header, main { padding-left:14px; padding-right:14px; }
+      .section-description { display:none; }
+      .pipeline-grid { grid-template-columns:1fr 1fr; }
+    }
+    @media (max-width:480px) { .pipeline-grid { grid-template-columns:1fr; } }
+    footer { max-width:1260px; margin:auto; padding:0 22px 32px; color:var(--muted); font-size:12px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>GR00T-H N1.7 Language Report</h1>
+    <p>Training-mixture-weighted results from normalized task text, with VLA input retained for comparison and audit.</p>
+  </header>
+  <main>
+          <details class="card" id="task-distribution" open>
+            <summary class="section-summary">
+              <span class="summary-copy">
+                <span class="section-title">Normalized task distribution</span>
+                <span class="section-description">The task instructions with the greatest reconstructed training exposure.</span>
+              </span>
+              <span class="section-toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="section-body">
+              
+              <img src="02_semantic_prompt_distribution.svg" alt="Normalized task distribution" loading="eager">
+              
+            </div>
+          </details>
+        
+          <details class="card" id="lexical-overview">
+            <summary class="section-summary">
+              <span class="summary-copy">
+                <span class="section-title">Normalized vocabulary</span>
+                <span class="section-description">Weighted words, verbs, nouns, adjacent bigrams, and selectable verb–noun context.</span>
+              </span>
+              <span class="section-toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="section-body">
+              
+              <img src="03_lexical_overview.svg" alt="Normalized vocabulary" loading="lazy">
+              
+      <div class="verb-drilldown">
+        <div class="verb-intro">
+          <h3>What noun follows each verb?</h3>
+          <p>Select a verb to show its nearest following nouns in normalized task text. Matching stops at another verb or a hard clause boundary, so this answers questions such as “go where?” without claiming a grammatical dependency.</p>
+          <p class="download"><a href="../gr00t_h_n17_verb_following_noun.csv">Download all verb–noun statistics</a></p>
+        </div>
+        <div class="verb-buttons" role="group" aria-label="Select a verb"><button type="button" class="verb-button" data-verb-target="verb-go" aria-controls="verb-go" aria-expanded="false">go</button><button type="button" class="verb-button" data-verb-target="verb-create" aria-controls="verb-create" aria-expanded="false">create</button><button type="button" class="verb-button" data-verb-target="verb-make" aria-controls="verb-make" aria-expanded="false">make</button><button type="button" class="verb-button" data-verb-target="verb-shift" aria-controls="verb-shift" aria-expanded="false">shift</button><button type="button" class="verb-button" data-verb-target="verb-finish" aria-controls="verb-finish" aria-expanded="false">finish</button><button type="button" class="verb-button" data-verb-target="verb-extract" aria-controls="verb-extract" aria-expanded="false">extract</button><button type="button" class="verb-button" data-verb-target="verb-place" aria-controls="verb-place" aria-expanded="false">place</button><button type="button" class="verb-button" data-verb-target="verb-insert" aria-controls="verb-insert" aria-expanded="false">insert</button><button type="button" class="verb-button" data-verb-target="verb-resect" aria-controls="verb-resect" aria-expanded="false">resect</button><button type="button" class="verb-button" data-verb-target="verb-lift" aria-controls="verb-lift" aria-expanded="false">lift</button><button type="button" class="verb-button" data-verb-target="verb-perform" aria-controls="verb-perform" aria-expanded="false">perform</button><button type="button" class="verb-button" data-verb-target="verb-move" aria-controls="verb-move" aria-expanded="false">move</button><button type="button" class="verb-button" data-verb-target="verb-expose" aria-controls="verb-expose" aria-expanded="false">expose</button><button type="button" class="verb-button" data-verb-target="verb-identify" aria-controls="verb-identify" aria-expanded="false">identify</button><button type="button" class="verb-button" data-verb-target="verb-grasp" aria-controls="verb-grasp" aria-expanded="false">grasp</button><button type="button" class="verb-button" data-verb-target="verb-pick" aria-controls="verb-pick" aria-expanded="false">pick</button><button type="button" class="verb-button" data-verb-target="verb-cut" aria-controls="verb-cut" aria-expanded="false">cut</button><button type="button" class="verb-button" data-verb-target="verb-prepare" aria-controls="verb-prepare" aria-expanded="false">prepare</button><button type="button" class="verb-button" data-verb-target="verb-transfer" aria-controls="verb-transfer" aria-expanded="false">transfer</button><button type="button" class="verb-button" data-verb-target="verb-tie" aria-controls="verb-tie" aria-expanded="false">tie</button><button type="button" class="verb-button" data-verb-target="verb-keep" aria-controls="verb-keep" aria-expanded="false">keep</button><button type="button" class="verb-button" data-verb-target="verb-retract" aria-controls="verb-retract" aria-expanded="false">retract</button><button type="button" class="verb-button" data-verb-target="verb-use" aria-controls="verb-use" aria-expanded="false">use</button><button type="button" class="verb-button" data-verb-target="verb-remove" aria-controls="verb-remove" aria-expanded="false">remove</button><button type="button" class="verb-button" data-verb-target="verb-continue" aria-controls="verb-continue" aria-expanded="false">continue</button><button type="button" class="verb-button" data-verb-target="verb-till" aria-controls="verb-till" aria-expanded="false">till</button><button type="button" class="verb-button" data-verb-target="verb-straight" aria-controls="verb-straight" aria-expanded="false">straight</button><button type="button" class="verb-button" data-verb-target="verb-open" aria-controls="verb-open" aria-expanded="false">open</button><button type="button" class="verb-button" data-verb-target="verb-receive" aria-controls="verb-receive" aria-expanded="false">receive</button><button type="button" class="verb-button" data-verb-target="verb-take" aria-controls="verb-take" aria-expanded="false">take</button><button type="button" class="verb-button" data-verb-target="verb-peel" aria-controls="verb-peel" aria-expanded="false">peel</button><button type="button" class="verb-button" data-verb-target="verb-correct" aria-controls="verb-correct" aria-expanded="false">correct</button><button type="button" class="verb-button" data-verb-target="verb-stop" aria-controls="verb-stop" aria-expanded="false">stop</button><button type="button" class="verb-button" data-verb-target="verb-stay" aria-controls="verb-stay" aria-expanded="false">stay</button></div>
+        <div class="verb-panels">
+            <section class="verb-panel" id="verb-go" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">go</span>
+                <span>23.97% of verb tokens</span>
+                <span>100.0% matched to a following noun</span>
+                <span>top noun: <b>cut</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Nearest following noun</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>cut</b></td>
+                  <td>50.4%</td>
+                  <td>50.4%</td>
+                  <td>0.02949</td>
+                  <td><ul class="relation-examples"><li><b>jhu/imerse/srth_porcine_chole</b> — go to the cut position left tube</li><li><b>jhu/imerse/srth_porcine_chole</b> — go to the cut position right tube</li><li><b>jhu/imerse/srth_porcine_chole</b> — go back from the cut left tube</li></ul></td>
+                </tr>
+                
+                <tr>
+                  <td><b>clip</b></td>
+                  <td>49.6%</td>
+                  <td>49.6%</td>
+                  <td>0.02906</td>
+                  <td><ul class="relation-examples"><li><b>jhu/imerse/srth_porcine_chole</b> — go back first clip left tube</li><li><b>jhu/imerse/srth_porcine_chole</b> — go back second clip left tube</li><li><b>jhu/imerse/srth_porcine_chole</b> — go back third clip left tube</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
+            <section class="verb-panel" id="verb-create" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">create</span>
+                <span>8.83% of verb tokens</span>
+                <span>100.0% matched to a following noun</span>
+                <span>top noun: <b>suture</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Nearest following noun</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>suture</b></td>
+                  <td>87.3%</td>
+                  <td>87.3%</td>
+                  <td>0.01883</td>
+                  <td><ul class="relation-examples"><li><b>hamlyn/suturing_2</b> — make first right-to-left suture, shift needle holder, create second parallel suture</li></ul></td>
+                </tr>
+                
+                <tr>
+                  <td><b>hole</b></td>
+                  <td>12.7%</td>
+                  <td>12.7%</td>
+                  <td>0.00275</td>
+                  <td><ul class="relation-examples"><li><b>rob_surgical/all_merged_data</b> — hemicolectomy. create the first penetrating hole inside the colon for anastomosis</li><li><b>rob_surgical/all_merged_data</b> — hemicolectomy. create the second penetrating hole inside the colon for anastomosis</li><li><b>rob_surgical/all_merged_data</b> — hemicolectomy. create the first penetrating hole inside the colon for anastomosis. create the second penetrating hole inside the colon for anastomosis</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
+            <section class="verb-panel" id="verb-make" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">make</span>
+                <span>7.71% of verb tokens</span>
+                <span>100.0% matched to a following noun</span>
+                <span>top noun: <b>suture</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Nearest following noun</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>suture</b></td>
+                  <td>100.0%</td>
+                  <td>100.0%</td>
+                  <td>0.01883</td>
+                  <td><ul class="relation-examples"><li><b>hamlyn/suturing_2</b> — make first right-to-left suture, shift needle holder, create second parallel suture</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
+            <section class="verb-panel" id="verb-shift" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">shift</span>
+                <span>7.71% of verb tokens</span>
+                <span>100.0% matched to a following noun</span>
+                <span>top noun: <b>holder</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Nearest following noun</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>holder</b></td>
+                  <td>100.0%</td>
+                  <td>100.0%</td>
+                  <td>0.01883</td>
+                  <td><ul class="relation-examples"><li><b>hamlyn/suturing_2</b> — make first right-to-left suture, shift needle holder, create second parallel suture</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
+            <section class="verb-panel" id="verb-finish" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">finish</span>
+                <span>5.85% of verb tokens</span>
+                <span>100.0% matched to a following noun</span>
+                <span>top noun: <b>knot</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Nearest following noun</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>knot</b></td>
+                  <td>100.0%</td>
+                  <td>100.0%</td>
+                  <td>0.01430</td>
+                  <td><ul class="relation-examples"><li><b>turin/mitic_lerobot_plastic_pad_3dmed</b> — finish the knot tie on the plastic phantom</li><li><b>turin/mitic_lerobot_ex_vivo</b> — finish the knot tie on ex vivo tissue</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
+            <section class="verb-panel" id="verb-extract" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">extract</span>
+                <span>5.23% of verb tokens</span>
+                <span>100.0% matched to a following noun</span>
+                <span>top noun: <b>needle</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Nearest following noun</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>needle</b></td>
+                  <td>100.0%</td>
+                  <td>100.0%</td>
+                  <td>0.01278</td>
+                  <td><ul class="relation-examples"><li><b>turin/mitic_lerobot_plastic_pad</b> — extract the needle from the plastic phantom</li><li><b>turin/mitic_lerobot_ex_vivo</b> — extract the needle from the tissue</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
+            <section class="verb-panel" id="verb-place" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">place</span>
+                <span>5.15% of verb tokens</span>
+                <span>0.0% matched to a following noun</span>
+                <span>top noun: <b>none found</b></span>
+              </div>
+              <p class="no-relation">No noun occurs after this verb before another verb or hard clause boundary in the normalized task text.</p>
+            </section>
+            
+            <section class="verb-panel" id="verb-insert" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">insert</span>
+                <span>5.08% of verb tokens</span>
+                <span>100.0% matched to a following noun</span>
+                <span>top noun: <b>needle</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Nearest following noun</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>needle</b></td>
+                  <td>100.0%</td>
+                  <td>100.0%</td>
+                  <td>0.01241</td>
+                  <td><ul class="relation-examples"><li><b>turin/mitic_lerobot_plastic_pad</b> — insert the needle into the plastic phantom</li><li><b>turin/mitic_lerobot_ex_vivo</b> — insert the needle into the tissue</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
+            <section class="verb-panel" id="verb-resect" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">resect</span>
+                <span>4.24% of verb tokens</span>
+                <span>100.0% matched to a following noun</span>
+                <span>top noun: <b>tissue</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Nearest following noun</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>tissue</b></td>
+                  <td>68.8%</td>
+                  <td>68.8%</td>
+                  <td>0.00713</td>
+                  <td><ul class="relation-examples"><li><b>rob_surgical/all_merged_data</b> — hemicolectomy. resect the lymphatic tissue around the mesenteric artery and vein</li><li><b>rob_surgical/all_merged_data</b> — hemicolectomy. artery coagulation. resect the lymphatic tissue around the mesenteric artery and vein</li><li><b>rob_surgical/all_merged_data</b> — hemicolectomy. resect the lymphatic tissue around the mesenteric artery and vein. dissect and staple of the mesocolon while separate it from the retroperitoneum</li></ul></td>
+                </tr>
+                
+                <tr>
+                  <td><b>home</b></td>
+                  <td>31.2%</td>
+                  <td>31.2%</td>
+                  <td>0.00324</td>
+                  <td><ul class="relation-examples"><li><b>jhu/imerse/cao_cautery_combined</b> — resect home out</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
+            <section class="verb-panel" id="verb-lift" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">lift</span>
+                <span>3.27% of verb tokens</span>
+                <span>100.0% matched to a following noun</span>
+                <span>top noun: <b>tissue</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Nearest following noun</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>tissue</b></td>
+                  <td>52.9%</td>
+                  <td>52.9%</td>
+                  <td>0.00422</td>
+                  <td><ul class="relation-examples"><li><b>turin/mitic_lerobot_ex_vivo</b> — lift the tissue flap to expose the workspace</li><li><b>jhu/imerse/srt_tissue_lift</b> — lift the tissue</li><li><b>hamlyn/tissue_retraction</b> — lift the intact tissue block use the left instrument (center grasp)</li></ul></td>
+                </tr>
+                
+                <tr>
+                  <td><b>plastic</b></td>
+                  <td>47.1%</td>
+                  <td>47.1%</td>
+                  <td>0.00376</td>
+                  <td><ul class="relation-examples"><li><b>turin/mitic_lerobot_plastic_tube</b> — lift the plastic phantom to expose the workspace</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
+            <section class="verb-panel" id="verb-perform" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">perform</span>
+                <span>3.16% of verb tokens</span>
+                <span>100.0% matched to a following noun</span>
+                <span>top noun: <b>dissect</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Nearest following noun</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>dissect</b></td>
+                  <td>50.5%</td>
+                  <td>50.5%</td>
+                  <td>0.00390</td>
+                  <td><ul class="relation-examples"><li><b>jhu/lcsr/smarts/SurgSync-stitch-coldcut/P1</b> — perform cold-cut dissect on ex-vivo tissue by cut along pre-defined trace use non-energy surigal instrument</li><li><b>jhu/lcsr/smarts/SurgSync-stitch-coldcut/P2</b> — perform cold-cut dissect to partially peel skin from the underlying fat layer use non-energy instrument</li></ul></td>
+                </tr>
+                
+                <tr>
+                  <td><b>stitch</b></td>
+                  <td>49.5%</td>
+                  <td>49.5%</td>
+                  <td>0.00382</td>
+                  <td><ul class="relation-examples"><li><b>jhu/lcsr/smarts/SurgSync-stitch-coldcut/P1</b> — perform a simple interrupted stitch on ex-vivo tissue (occasionally on silicon suture training phantom); without cut the suture thread tail at the end</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
+            <section class="verb-panel" id="verb-move" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">move</span>
+                <span>3.13% of verb tokens</span>
+                <span>100.0% matched to a following noun</span>
+                <span>top noun: <b>orange</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Nearest following noun</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>orange</b></td>
+                  <td>41.0%</td>
+                  <td>41.0%</td>
+                  <td>0.00314</td>
+                  <td><ul class="relation-examples"><li><b>hamlyn/peg_transfer</b> — move the orange triangular peg to right</li><li><b>hamlyn/peg_transfer</b> — move the orange cylinder peg to right</li></ul></td>
+                </tr>
+                
+                <tr>
+                  <td><b>peg</b></td>
+                  <td>39.7%</td>
+                  <td>39.7%</td>
+                  <td>0.00304</td>
+                  <td><ul class="relation-examples"><li><b>hamlyn/peg_transfer</b> — move the black triangular peg to right</li><li><b>hamlyn/peg_transfer</b> — move the white triangular peg to right</li></ul></td>
+                </tr>
+                
+                <tr>
+                  <td><b>cylinder</b></td>
+                  <td>19.3%</td>
+                  <td>19.3%</td>
+                  <td>0.00148</td>
+                  <td><ul class="relation-examples"><li><b>hamlyn/peg_transfer</b> — move the green cylinder peg to right</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
+            <section class="verb-panel" id="verb-expose" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">expose</span>
+                <span>2.36% of verb tokens</span>
+                <span>100.0% matched to a following noun</span>
+                <span>top noun: <b>workspace</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Nearest following noun</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>workspace</b></td>
+                  <td>100.0%</td>
+                  <td>100.0%</td>
+                  <td>0.00577</td>
+                  <td><ul class="relation-examples"><li><b>turin/mitic_lerobot_plastic_tube</b> — lift the plastic phantom to expose the workspace</li><li><b>turin/mitic_lerobot_ex_vivo</b> — lift the tissue flap to expose the workspace</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
+            <section class="verb-panel" id="verb-identify" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">identify</span>
+                <span>2.01% of verb tokens</span>
+                <span>100.0% matched to a following noun</span>
+                <span>top noun: <b>artery</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Nearest following noun</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>artery</b></td>
+                  <td>100.0%</td>
+                  <td>100.0%</td>
+                  <td>0.00490</td>
+                  <td><ul class="relation-examples"><li><b>rob_surgical/all_merged_data</b> — hemicolectomy. identify the inferior mesenteric artery and vein</li><li><b>rob_surgical/all_merged_data</b> — hemicolectomy. identify the inferior mesenteric artery and vein. artery coagulation</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
+            <section class="verb-panel" id="verb-grasp" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">grasp</span>
+                <span>1.95% of verb tokens</span>
+                <span>100.0% matched to a following noun</span>
+                <span>top noun: <b>needle</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Nearest following noun</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>needle</b></td>
+                  <td>99.3%</td>
+                  <td>99.3%</td>
+                  <td>0.00473</td>
+                  <td><ul class="relation-examples"><li><b>hamlyn/needle_grasp_and_handover</b> — use the left-hand to grasp the needle from the table, then transfer the needle to the right hand</li><li><b>turin/mitic_lerobot_plastic_pad</b> — grasp the needle from the plastic phantom</li><li><b>hamlyn/needle_grasp_and_handover</b> — use the right hand instrument to grasp the needle from the table</li></ul></td>
+                </tr>
+                
+                <tr>
+                  <td><b>tissue</b></td>
+                  <td>0.7%</td>
+                  <td>0.7%</td>
+                  <td>0.00003</td>
+                  <td><ul class="relation-examples"><li><b>hamlyn/tissue_retraction</b> — re-orient and grasp the intact tissue block at the center use the right instrument</li><li><b>hamlyn/tissue_retraction</b> — re-orient and grasp the intact tissue block at the right region use the right instrument</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
+            <section class="verb-panel" id="verb-pick" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">pick</span>
+                <span>1.70% of verb tokens</span>
+                <span>100.0% matched to a following noun</span>
+                <span>top noun: <b>needle</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Nearest following noun</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>needle</b></td>
+                  <td>100.0%</td>
+                  <td>100.0%</td>
+                  <td>0.00416</td>
+                  <td><ul class="relation-examples"><li><b>jhu/imerse/srt_needle_pickup_handover</b> — pick up the needle and hand it to the other arm</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
+            <section class="verb-panel" id="verb-cut" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">cut</span>
+                <span>1.69% of verb tokens</span>
+                <span>92.5% matched to a following noun</span>
+                <span>top noun: <b>suture</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Nearest following noun</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>suture</b></td>
+                  <td>92.5%</td>
+                  <td>100.0%</td>
+                  <td>0.00382</td>
+                  <td><ul class="relation-examples"><li><b>jhu/lcsr/smarts/SurgSync-stitch-coldcut/P1</b> — perform a simple interrupted stitch on ex-vivo tissue (occasionally on silicon suture training phantom); without cut the suture thread tail at the end</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
+            <section class="verb-panel" id="verb-prepare" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">prepare</span>
+                <span>1.68% of verb tokens</span>
+                <span>100.0% matched to a following noun</span>
+                <span>top noun: <b>colon</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Nearest following noun</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>colon</b></td>
+                  <td>100.0%</td>
+                  <td>100.0%</td>
+                  <td>0.00410</td>
+                  <td><ul class="relation-examples"><li><b>rob_surgical/all_merged_data</b> — hemicolectomy. prepare the colon part for anastomosis</li><li><b>rob_surgical/all_merged_data</b> — hemicolectomy. dissect and staple of the mesocolon while separate it from the retroperitoneum. prepare the colon part for anastomosis</li><li><b>rob_surgical/all_merged_data</b> — hemicolectomy. prepare the colon part for anastomosis. create the first penetrating hole inside the colon for anastomosis</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
+            <section class="verb-panel" id="verb-transfer" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">transfer</span>
+                <span>1.50% of verb tokens</span>
+                <span>100.0% matched to a following noun</span>
+                <span>top noun: <b>needle</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Nearest following noun</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>needle</b></td>
+                  <td>100.0%</td>
+                  <td>100.0%</td>
+                  <td>0.00367</td>
+                  <td><ul class="relation-examples"><li><b>hamlyn/needle_grasp_and_handover</b> — use the left-hand to grasp the needle from the table, then transfer the needle to the right hand</li><li><b>turin/mitic_lerobot_plastic_pad</b> — transfer the needle from right to left arm</li><li><b>turin/mitic_lerobot_plastic_pad</b> — transfer the needle from left to right arm</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
+            <section class="verb-panel" id="verb-tie" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">tie</span>
+                <span>0.93% of verb tokens</span>
+                <span>100.0% matched to a following noun</span>
+                <span>top noun: <b>knot</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Nearest following noun</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>knot</b></td>
+                  <td>100.0%</td>
+                  <td>100.0%</td>
+                  <td>0.00226</td>
+                  <td><ul class="relation-examples"><li><b>hamlyn/knot_tying</b> — tie a surgical knot in the suture</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
+            <section class="verb-panel" id="verb-keep" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">keep</span>
+                <span>0.55% of verb tokens</span>
+                <span>100.0% matched to a following noun</span>
+                <span>top noun: <b>position</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Nearest following noun</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>position</b></td>
+                  <td>100.0%</td>
+                  <td>100.0%</td>
+                  <td>0.00134</td>
+                  <td><ul class="relation-examples"><li><b>tud/260131_tundra_dataset/grasping_retraction</b> — close down on the small intestine for hold. keep position await surgeon&#x27;s counterpart grasp</li><li><b>tud/260131_tundra_dataset/grasping_retraction</b> — close down on the colon for hold. keep position await surgeon&#x27;s counterpart grasp</li><li><b>tud/260131_tundra_dataset/grasping_retraction</b> — close down on the gallbladder for hold. keep position await surgeon&#x27;s counterpart grasp</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
+            <section class="verb-panel" id="verb-retract" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">retract</span>
+                <span>0.32% of verb tokens</span>
+                <span>100.0% matched to a following noun</span>
+                <span>top noun: <b>tissue</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Nearest following noun</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>tissue</b></td>
+                  <td>100.0%</td>
+                  <td>100.0%</td>
+                  <td>0.00078</td>
+                  <td><ul class="relation-examples"><li><b>hamlyn/tissue_retraction</b> — retract the partially dissect tissue flap use the right instrument (center grasp)</li><li><b>hamlyn/tissue_retraction</b> — retract the partially dissect tissue flap use the left instrument (center grasp)</li><li><b>hamlyn/tissue_retraction</b> — retract the partially dissect tissue flap use the left instrument (left-side grasp)</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
+            <section class="verb-panel" id="verb-use" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">use</span>
+                <span>0.26% of verb tokens</span>
+                <span>100.0% matched to a following noun</span>
+                <span>top noun: <b>instrument</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Nearest following noun</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>instrument</b></td>
+                  <td>100.0%</td>
+                  <td>100.0%</td>
+                  <td>0.00064</td>
+                  <td><ul class="relation-examples"><li><b>hamlyn/tissue_retraction</b> — retract the partially dissect tissue flap use the right instrument (center grasp)</li><li><b>hamlyn/tissue_retraction</b> — retract the partially dissect tissue flap use the right instrument (right-side grasp)</li><li><b>hamlyn/tissue_retraction</b> — retract the partially dissect tissue flap use the right instrument (left-side grasp)</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
+            <section class="verb-panel" id="verb-remove" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">remove</span>
+                <span>0.25% of verb tokens</span>
+                <span>100.0% matched to a following noun</span>
+                <span>top noun: <b>cap</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Nearest following noun</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>cap</b></td>
+                  <td>100.0%</td>
+                  <td>100.0%</td>
+                  <td>0.00060</td>
+                  <td><ul class="relation-examples"><li><b>jhu/imerse/nephfat/nephfat</b> — remove cap</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
+            <section class="verb-panel" id="verb-continue" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">continue</span>
+                <span>0.24% of verb tokens</span>
+                <span>0.0% matched to a following noun</span>
+                <span>top noun: <b>none found</b></span>
+              </div>
+              <p class="no-relation">No noun occurs after this verb before another verb or hard clause boundary in the normalized task text.</p>
+            </section>
+            
+            <section class="verb-panel" id="verb-till" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">till</span>
+                <span>0.24% of verb tokens</span>
+                <span>0.0% matched to a following noun</span>
+                <span>top noun: <b>none found</b></span>
+              </div>
+              <p class="no-relation">No noun occurs after this verb before another verb or hard clause boundary in the normalized task text.</p>
+            </section>
+            
+            <section class="verb-panel" id="verb-straight" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">straight</span>
+                <span>0.24% of verb tokens</span>
+                <span>100.0% matched to a following noun</span>
+                <span>top noun: <b>camera</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Nearest following noun</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>camera</b></td>
+                  <td>100.0%</td>
+                  <td>100.0%</td>
+                  <td>0.00059</td>
+                  <td><ul class="relation-examples"><li><b>tud/260131_tundra_dataset/grasping_retraction</b> — pull back on small intestine post-surgeon&#x27;s end grasp, continue till fully straight in camera</li><li><b>tud/260131_tundra_dataset/grasping_retraction</b> — pull back on gallbladder post-surgeon&#x27;s end grasp, continue till fully straight in camera</li><li><b>tud/260131_tundra_dataset/grasping_retraction</b> — pull back on omentum post-surgeon&#x27;s end grasp, continue till fully straight in camera</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
+            <section class="verb-panel" id="verb-open" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">open</span>
+                <span>0.21% of verb tokens</span>
+                <span>100.0% matched to a following noun</span>
+                <span>top noun: <b>gripper</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Nearest following noun</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>gripper</b></td>
+                  <td>100.0%</td>
+                  <td>100.0%</td>
+                  <td>0.00050</td>
+                  <td><ul class="relation-examples"><li><b>tud/260131_tundra_dataset/grasping_retraction</b> — approach the small intestine grasp by the surgeon and open your gripper to receive and take over the hold</li><li><b>tud/260131_tundra_dataset/grasping_retraction</b> — approach the gallbladder grasp by the surgeon and open your gripper to receive and take over the hold</li><li><b>tud/260131_tundra_dataset/grasping_retraction</b> — approach the colon grasp by the surgeon and open your gripper to receive and take over the hold</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
+            <section class="verb-panel" id="verb-receive" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">receive</span>
+                <span>0.21% of verb tokens</span>
+                <span>0.0% matched to a following noun</span>
+                <span>top noun: <b>none found</b></span>
+              </div>
+              <p class="no-relation">No noun occurs after this verb before another verb or hard clause boundary in the normalized task text.</p>
+            </section>
+            
+            <section class="verb-panel" id="verb-take" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">take</span>
+                <span>0.21% of verb tokens</span>
+                <span>100.0% matched to a following noun</span>
+                <span>top noun: <b>hold</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Nearest following noun</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>hold</b></td>
+                  <td>100.0%</td>
+                  <td>100.0%</td>
+                  <td>0.00050</td>
+                  <td><ul class="relation-examples"><li><b>tud/260131_tundra_dataset/grasping_retraction</b> — approach the small intestine grasp by the surgeon and open your gripper to receive and take over the hold</li><li><b>tud/260131_tundra_dataset/grasping_retraction</b> — approach the gallbladder grasp by the surgeon and open your gripper to receive and take over the hold</li><li><b>tud/260131_tundra_dataset/grasping_retraction</b> — approach the colon grasp by the surgeon and open your gripper to receive and take over the hold</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
+            <section class="verb-panel" id="verb-peel" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">peel</span>
+                <span>0.06% of verb tokens</span>
+                <span>100.0% matched to a following noun</span>
+                <span>top noun: <b>skin</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Nearest following noun</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>skin</b></td>
+                  <td>100.0%</td>
+                  <td>100.0%</td>
+                  <td>0.00016</td>
+                  <td><ul class="relation-examples"><li><b>jhu/lcsr/smarts/SurgSync-stitch-coldcut/P2</b> — perform cold-cut dissect to partially peel skin from the underlying fat layer use non-energy instrument</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
+            <section class="verb-panel" id="verb-correct" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">correct</span>
+                <span>0.04% of verb tokens</span>
+                <span>100.0% matched to a following noun</span>
+                <span>top noun: <b>movement</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Nearest following noun</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>movement</b></td>
+                  <td>100.0%</td>
+                  <td>100.0%</td>
+                  <td>0.00010</td>
+                  <td><ul class="relation-examples"><li><b>tud/260131_tundra_dataset/grasping_retraction</b> — correct the previous movement or position of the grasper</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
+            <section class="verb-panel" id="verb-stop" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">stop</span>
+                <span>0.01% of verb tokens</span>
+                <span>100.0% matched to a following noun</span>
+                <span>top noun: <b>movement</b></span>
+              </div>
+              
+              <div class="relation-table-wrap">
+                <table class="relation-table">
+                  <thead><tr>
+                    <th>Nearest following noun</th>
+                    <th>All uses of verb</th>
+                    <th>Matched uses only</th>
+                    <th>Expected / sample</th>
+                    <th>Representative instructions and datasets</th>
+                  </tr></thead>
+                  <tbody>
+                <tr>
+                  <td><b>movement</b></td>
+                  <td>100.0%</td>
+                  <td>100.0%</td>
+                  <td>0.00002</td>
+                  <td><ul class="relation-examples"><li><b>tud/260131_tundra_dataset/grasping_retraction</b> — stop the grasper movement and stay</li></ul></td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            
+            </section>
+            
+            <section class="verb-panel" id="verb-stay" hidden>
+              <div class="verb-panel-meta">
+                <span class="verb-name">stay</span>
+                <span>0.01% of verb tokens</span>
+                <span>0.0% matched to a following noun</span>
+                <span>top noun: <b>none found</b></span>
+              </div>
+              <p class="no-relation">No noun occurs after this verb before another verb or hard clause boundary in the normalized task text.</p>
+            </section>
+            </div>
+      </div>
+    
+            </div>
+          </details>
+        
+          <details class="card" id="instruction-lengths">
+            <summary class="section-summary">
+              <span class="summary-copy">
+                <span class="section-title">Instruction lengths</span>
+                <span class="section-description">VLA input compared with normalized task text, with dataset-labeled examples.</span>
+              </span>
+              <span class="section-toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="section-body">
+              
+              <img src="04_instruction_length_distribution.svg" alt="Instruction lengths" loading="lazy">
+              
+      <div class="length-examples">
+        <div class="length-intro">
+          <h3>Typical instructions at every normalized length</h3>
+          <p>Examples are distinct normalized task instructions ranked by training-mixture weight. <b>VLA input</b> is the model-facing string, <b>clean task text</b> removes templates and boundary artifacts, and <b>normalized task text</b> standardizes case and morphology for analysis. Lengths are alphabetic-word proxies, not tokenizer IDs.</p>
+        </div>
+        <div class="length-control">
+          <div class="length-control-heading">
+            <label for="length-selector">Select normalized task length</label>
+            <output id="length-output" for="length-selector" aria-live="polite">2 tokens</output>
+          </div>
+          <input id="length-selector" type="range" min="0" max="21"
+                 value="1" step="1" data-lengths="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,21,22,23">
+          <div class="length-scale">
+            <span>1 token</span>
+            <span>22 observed lengths</span>
+            <span>23 tokens</span>
+          </div>
+        </div>
+        <div class="length-panels">
+            <section class="length-panel" data-length="1" hidden>
+              <div class="length-result-meta">
+                <b>1 normalized token</b>
+                <span>24.665% of reconstructed language</span>
+                <span>3 representative examples</span>
+              </div>
+              <div class="examples-grid">
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · cmr_surgical/prostatectomy</span>
+                    <span>CMR State Prompt</span>
+                    <span>instruction weight 6.891%</span>
+                    <span>source weight 0.260%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>prostatectomy</dd>
+                    <dt>Clean task text</dt><dd>prostatectomy</dd>
+                    <dt>VLA input <small>(15 alphabetic tokens)</small></dt>
+                    <dd><code>arm left 1 left instrument tool 18 orange arm right 3 right instrument tool 9 blue do a prostatectomy</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> cmr-surgical-60hz/prostatectomy</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> arm left: 1. left instrument: Tool #18 (Orange). arm right: 3. right instrument: Tool #9 (Blue). do a prostatectomy</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · cmr_surgical/hysterectomy</span>
+                    <span>CMR State Prompt</span>
+                    <span>instruction weight 5.053%</span>
+                    <span>source weight 0.202%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>hysterectomy</dd>
+                    <dt>Clean task text</dt><dd>hysterectomy</dd>
+                    <dt>VLA input <small>(15 alphabetic tokens)</small></dt>
+                    <dd><code>arm left 1 left instrument tool 3 none arm right 1 right instrument tool 3 none do a hysterectomy</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> cmr-surgical-60hz/hysterectomy_phase_prompts_v1</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> arm left: -1. left instrument: Tool #3 (None). arm right: -1. right instrument: Tool #3 (None). do a hysterectomy</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · ucsd/surgical_learning_dataset</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 3.858%</span>
+                    <span>source weight 1.483%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>dissect</dd>
+                    <dt>Clean task text</dt><dd>dissection</dd>
+                    <dt>VLA input <small>(1 alphabetic tokens)</small></dt>
+                    <dd><code>dissection</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/UCSD/surgical_learning_dataset</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> dissection</p>
+                  </details>
+                </article>
+                </div>
+            </section>
+            
+            <section class="length-panel" data-length="2">
+              <div class="length-result-meta">
+                <b>2 normalized tokens</b>
+                <span>40.637% of reconstructed language</span>
+                <span>3 representative examples</span>
+              </div>
+              <div class="examples-grid">
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · jhu/imerse/wound_closure/point_labeled/fausto_0_1_jesse_0_1_2_labeled</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 13.426%</span>
+                    <span>source weight 13.426%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>wound closure</dd>
+                    <dt>Clean task text</dt><dd>Wound Closure</dd>
+                    <dt>VLA input <small>(2 alphabetic tokens)</small></dt>
+                    <dd><code>wound closure</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/JHU/Imerse/Wound_Closure/point_labeled</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> Wound Closure</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · jhu/imerse/suturebot</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 3.909%</span>
+                    <span>source weight 1.786%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>knot tie</dd>
+                    <dt>Clean task text</dt><dd>knot tying</dd>
+                    <dt>VLA input <small>(2 alphabetic tokens)</small></dt>
+                    <dd><code>knot tying</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/JHU/suturebot</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> knot tying</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · stanford/collaborative_haptics_and_robotics_in_medicine_lab/real_robot_dvrk/peg_transfer</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 3.607%</span>
+                    <span>source weight 2.012%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>peg transfer</dd>
+                    <dt>Clean task text</dt><dd>Peg Transfer</dd>
+                    <dt>VLA input <small>(2 alphabetic tokens)</small></dt>
+                    <dd><code>peg transfer</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/Stanford/Collaborative Haptics and Robotics in Medicine Lab/Real Robot (dVRK)/Peg Transfer</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> Peg Transfer</p>
+                  </details>
+                </article>
+                </div>
+            </section>
+            
+            <section class="length-panel" data-length="3" hidden>
+              <div class="length-result-meta">
+                <b>3 normalized tokens</b>
+                <span>5.925% of reconstructed language</span>
+                <span>3 representative examples</span>
+              </div>
+              <div class="examples-grid">
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · cmr_surgical/inguinal_hernia</span>
+                    <span>CMR State Prompt</span>
+                    <span>instruction weight 4.870%</span>
+                    <span>source weight 0.225%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>inguinal hernia repair</dd>
+                    <dt>Clean task text</dt><dd>inguinal hernia repair</dd>
+                    <dt>VLA input <small>(17 alphabetic tokens)</small></dt>
+                    <dd><code>arm left 1 left instrument tool 3 none arm right 1 right instrument tool 3 none do an inguinal hernia repair</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> cmr-surgical-60hz/inguinal_hernia</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> arm left: -1. left instrument: Tool #3 (None). arm right: -1. right instrument: Tool #3 (None). do an inguinal hernia repair</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · jhu/imerse/cao_cautery_combined</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 0.324%</span>
+                    <span>source weight 0.324%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>resect home out</dd>
+                    <dt>Clean task text</dt><dd>resect home out</dd>
+                    <dt>VLA input <small>(3 alphabetic tokens)</small></dt>
+                    <dd><code>resect home out</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/JHU/cao_cautery_combined</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> resect home out</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · rob_surgical/all_merged_data</span>
+                    <span>Rob Tool Prompt</span>
+                    <span>instruction weight 0.263%</span>
+                    <span>source weight 0.263%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>hysterectomy. pelvic lymphadenectomy</dd>
+                    <dt>Clean task text</dt><dd>hysterectomy. Pelvic lymphadenectomy</dd>
+                    <dt>VLA input <small>(13 alphabetic tokens)</small></dt>
+                    <dd><code>left tool bi_maryland_forceps right tool bi_maryland_forceps aux tool mono_round_scissors the surgery process is a hysterectomypelvic lymphadenectomy</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/Rob Surgical/all_merged_data</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> left tool: bi_maryland_forceps. right tool: bi_maryland_forceps. aux tool: mono_round_scissors. The surgery process is a hysterectomy.Pelvic lymphadenectomy</p>
+                  </details>
+                </article>
+                </div>
+            </section>
+            
+            <section class="length-panel" data-length="4" hidden>
+              <div class="length-result-meta">
+                <b>4 normalized tokens</b>
+                <span>0.134% of reconstructed language</span>
+                <span>2 representative examples</span>
+              </div>
+              <div class="examples-grid">
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · rob_surgical/all_merged_data</span>
+                    <span>Rob Tool Prompt</span>
+                    <span>instruction weight 0.105%</span>
+                    <span>source weight 0.105%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>hysterectomy. uterus neck dissect</dd>
+                    <dt>Clean task text</dt><dd>hysterectomy. Uterus neck dissection</dd>
+                    <dt>VLA input <small>(14 alphabetic tokens)</small></dt>
+                    <dd><code>left tool bi_maryland_forceps right tool bi_maryland_forceps aux tool mono_round_scissors the surgery process is a hysterectomyuterus neck dissection</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/Rob Surgical/all_merged_data</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> left tool: bi_maryland_forceps. right tool: bi_maryland_forceps. aux tool: mono_round_scissors. The surgery process is a hysterectomy.Uterus neck dissection</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · rob_surgical/all_merged_data</span>
+                    <span>Rob Tool Prompt</span>
+                    <span>instruction weight 0.029%</span>
+                    <span>source weight 0.029%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>hysterectomy. urinary bladder mobilization</dd>
+                    <dt>Clean task text</dt><dd>hysterectomy. Urinary bladder mobilization</dd>
+                    <dt>VLA input <small>(17 alphabetic tokens)</small></dt>
+                    <dd><code>left tool none right tool none aux tool none the surgery process is a hysterectomyurinary bladder mobilization</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/Rob Surgical/all_merged_data</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> left tool: none. right tool: none. aux tool: none. The surgery process is a hysterectomy.Urinary bladder mobilization</p>
+                  </details>
+                </article>
+                </div>
+            </section>
+            
+            <section class="length-panel" data-length="5" hidden>
+              <div class="length-result-meta">
+                <b>5 normalized tokens</b>
+                <span>8.596% of reconstructed language</span>
+                <span>3 representative examples</span>
+              </div>
+              <div class="examples-grid">
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · jhu/imerse/srth_porcine_chole</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 1.311%</span>
+                    <span>source weight 1.311%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>clip first clip left tube</dd>
+                    <dt>Clean task text</dt><dd>clipping first clip left tube</dd>
+                    <dt>VLA input <small>(5 alphabetic tokens)</small></dt>
+                    <dd><code>clipping first clip left tube</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/JHU/srth_porcine_chole_fix</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> clipping first clip left tube</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · jhu/imerse/srth_porcine_chole</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 1.302%</span>
+                    <span>source weight 1.302%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>clip third clip left tube</dd>
+                    <dt>Clean task text</dt><dd>clipping third clip left tube</dd>
+                    <dt>VLA input <small>(5 alphabetic tokens)</small></dt>
+                    <dd><code>clipping third clip left tube</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/JHU/srth_porcine_chole_fix</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> clipping third clip left tube</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · turin/mitic_lerobot_plastic_tube</span>
+                    <span>Direct Text:instruction.text</span>
+                    <span>instruction weight 1.268%</span>
+                    <span>source weight 0.433%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>position the needle for suture</dd>
+                    <dt>Clean task text</dt><dd>Position the needle for suturing</dd>
+                    <dt>VLA input <small>(5 alphabetic tokens)</small></dt>
+                    <dd><code>position the needle for suturing</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/Turin/mitic_lerobot_plastic_tube</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> Position the needle for suturing</p>
+                  </details>
+                </article>
+                </div>
+            </section>
+            
+            <section class="length-panel" data-length="6" hidden>
+              <div class="length-result-meta">
+                <b>6 normalized tokens</b>
+                <span>4.475% of reconstructed language</span>
+                <span>3 representative examples</span>
+              </div>
+              <div class="examples-grid">
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · turin/mitic_lerobot_ex_vivo</span>
+                    <span>Direct Text:instruction.text</span>
+                    <span>instruction weight 0.576%</span>
+                    <span>source weight 0.576%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>insert the needle into the tissue</dd>
+                    <dt>Clean task text</dt><dd>Insert the needle into the tissue</dd>
+                    <dt>VLA input <small>(6 alphabetic tokens)</small></dt>
+                    <dd><code>insert the needle into the tissue</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/Turin/mitic_lerobot_ex_vivo</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> Insert the needle into the tissue</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · jhu/imerse/srth_porcine_chole</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 0.571%</span>
+                    <span>source weight 0.571%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>go back first clip left tube</dd>
+                    <dt>Clean task text</dt><dd>going back first clip left tube</dd>
+                    <dt>VLA input <small>(6 alphabetic tokens)</small></dt>
+                    <dd><code>going back first clip left tube</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/JHU/srth_porcine_chole_fix</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> going back first clip left tube</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · jhu/imerse/srth_porcine_chole</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 0.563%</span>
+                    <span>source weight 0.563%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>go back second clip left tube</dd>
+                    <dt>Clean task text</dt><dd>going back second clip left tube</dd>
+                    <dt>VLA input <small>(6 alphabetic tokens)</small></dt>
+                    <dd><code>going back second clip left tube</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/JHU/srth_porcine_chole_fix</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> going back second clip left tube</p>
+                  </details>
+                </article>
+                </div>
+            </section>
+            
+            <section class="length-panel" data-length="7" hidden>
+              <div class="length-result-meta">
+                <b>7 normalized tokens</b>
+                <span>6.034% of reconstructed language</span>
+                <span>3 representative examples</span>
+              </div>
+              <div class="examples-grid">
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · jhu/imerse/srth_porcine_chole</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 1.190%</span>
+                    <span>source weight 1.190%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>go to the cut position left tube</dd>
+                    <dt>Clean task text</dt><dd>go to the cutting position left tube</dd>
+                    <dt>VLA input <small>(7 alphabetic tokens)</small></dt>
+                    <dd><code>go to the cutting position left tube</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/JHU/srth_porcine_chole_fix</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> go to the cutting position left tube</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · jhu/imerse/srth_porcine_chole</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 0.900%</span>
+                    <span>source weight 0.900%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>go to the cut position right tube</dd>
+                    <dt>Clean task text</dt><dd>go to the cutting position right tube</dd>
+                    <dt>VLA input <small>(7 alphabetic tokens)</small></dt>
+                    <dd><code>go to the cutting position right tube</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/JHU/srth_porcine_chole_fix</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> go to the cutting position right tube</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · turin/mitic_lerobot_plastic_pad</span>
+                    <span>Direct Text:instruction.text</span>
+                    <span>instruction weight 0.895%</span>
+                    <span>source weight 0.361%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>extract the needle from the plastic phantom</dd>
+                    <dt>Clean task text</dt><dd>Extract the needle from the plastic phantom</dd>
+                    <dt>VLA input <small>(7 alphabetic tokens)</small></dt>
+                    <dd><code>extract the needle from the plastic phantom</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/Turin/mitic_lerobot_plastic_pad</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> Extract the needle from the plastic phantom</p>
+                  </details>
+                </article>
+                </div>
+            </section>
+            
+            <section class="length-panel" data-length="8" hidden>
+              <div class="length-result-meta">
+                <b>8 normalized tokens</b>
+                <span>3.694% of reconstructed language</span>
+                <span>3 representative examples</span>
+              </div>
+              <div class="examples-grid">
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · turin/mitic_lerobot_plastic_pad_3dmed</span>
+                    <span>Direct Text:instruction.text</span>
+                    <span>instruction weight 0.726%</span>
+                    <span>source weight 0.389%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>finish the knot tie on the plastic phantom</dd>
+                    <dt>Clean task text</dt><dd>Finish the knot tying on the plastic phantom</dd>
+                    <dt>VLA input <small>(8 alphabetic tokens)</small></dt>
+                    <dd><code>finish the knot tying on the plastic phantom</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/Turin/mitic_lerobot_plastic_pad_3DMED</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> Finish the knot tying on the plastic phantom</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · turin/mitic_lerobot_ex_vivo</span>
+                    <span>Direct Text:instruction.text</span>
+                    <span>instruction weight 0.704%</span>
+                    <span>source weight 0.704%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>finish the knot tie on ex vivo tissue</dd>
+                    <dt>Clean task text</dt><dd>Finish the knot tying on ex vivo tissue</dd>
+                    <dt>VLA input <small>(8 alphabetic tokens)</small></dt>
+                    <dd><code>finish the knot tying on ex vivo tissue</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/Turin/mitic_lerobot_ex_vivo</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> Finish the knot tying on ex vivo tissue</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · turin/mitic_lerobot_ex_vivo</span>
+                    <span>Direct Text:instruction.text</span>
+                    <span>instruction weight 0.542%</span>
+                    <span>source weight 0.542%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>perform base knot tie on ex vivo tissue</dd>
+                    <dt>Clean task text</dt><dd>Perform base knot tying on ex vivo tissue</dd>
+                    <dt>VLA input <small>(8 alphabetic tokens)</small></dt>
+                    <dd><code>perform base knot tying on ex vivo tissue</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/Turin/mitic_lerobot_ex_vivo</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> Perform base knot tying on ex vivo tissue</p>
+                  </details>
+                </article>
+                </div>
+            </section>
+            
+            <section class="length-panel" data-length="9" hidden>
+              <div class="length-result-meta">
+                <b>9 normalized tokens</b>
+                <span>0.010% of reconstructed language</span>
+                <span>3 representative examples</span>
+              </div>
+              <div class="examples-grid">
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · tud/260131_tundra_dataset/grasping_retraction</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 0.010%</span>
+                    <span>source weight 0.010%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>correct the previous movement or position of the grasper</dd>
+                    <dt>Clean task text</dt><dd>Correct the previous movement or position of the grasper.</dd>
+                    <dt>VLA input <small>(9 alphabetic tokens)</small></dt>
+                    <dd><code>correct the previous movement or position of the grasper</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/TUD/260131_TUNDRA_dataset/grasping_retraction</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> Correct the previous movement or position of the grasper.</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · rob_surgical/all_merged_data</span>
+                    <span>Rob Tool Prompt</span>
+                    <span>instruction weight 0.000%</span>
+                    <span>source weight 0.000%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>hysterectomy. urinary bladder mobilization. identification of uterus and ovary</dd>
+                    <dt>Clean task text</dt><dd>hysterectomy. Urinary bladder mobilization. Identification of uterus and ovaries</dd>
+                    <dt>VLA input <small>(21 alphabetic tokens)</small></dt>
+                    <dd><code>left tool none right tool none aux tool none the surgery process is a hysterectomyurinary bladder mobilizationidentification of uterus and ovaries</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/Rob Surgical/all_merged_data</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> left tool: none. right tool: none. aux tool: none. The surgery process is a hysterectomy.Urinary bladder mobilizationIdentification of uterus and ovaries</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · rob_surgical/all_merged_data</span>
+                    <span>Rob Tool Prompt</span>
+                    <span>instruction weight 0.000%</span>
+                    <span>source weight 0.000%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>hysterectomy. dissect of the vesicouterine fold. uterus neck dissect</dd>
+                    <dt>Clean task text</dt><dd>hysterectomy. Dissection of the vesicouterine fold. Uterus neck dissection</dd>
+                    <dt>VLA input <small>(18 alphabetic tokens)</small></dt>
+                    <dd><code>left tool bi_maryland_forceps right tool bi_maryland_forceps aux tool mono_round_scissors the surgery process is a hysterectomydissection of the vesicouterine folduterus neck dissection</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/Rob Surgical/all_merged_data</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> left tool: bi_maryland_forceps. right tool: bi_maryland_forceps. aux tool: mono_round_scissors. The surgery process is a hysterectomy.Dissection of the vesicouterine foldUterus neck dissection</p>
+                  </details>
+                </article>
+                </div>
+            </section>
+            
+            <section class="length-panel" data-length="10" hidden>
+              <div class="length-result-meta">
+                <b>10 normalized tokens</b>
+                <span>1.895% of reconstructed language</span>
+                <span>3 representative examples</span>
+              </div>
+              <div class="examples-grid">
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · hamlyn/suturing_2</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 1.883%</span>
+                    <span>source weight 1.883%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>make first right-to-left suture, shift needle holder, create second parallel suture</dd>
+                    <dt>Clean task text</dt><dd>Make first right-to-left suture, shift needle holder, create second parallel suture.</dd>
+                    <dt>VLA input <small>(11 alphabetic tokens)</small></dt>
+                    <dd><code>make first righttoleft suture shift needle holder create second parallel suture</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/Hamlyn/Suturing-2</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> Make first right-to-left suture, shift needle holder, create second parallel suture.</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · hamlyn/tissue_retraction</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 0.004%</span>
+                    <span>source weight 0.004%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>lift the intact tissue block use the right instrument (right-side grasp)</dd>
+                    <dt>Clean task text</dt><dd>Lift the intact tissue block using the right instrument (right-side grasp).</dd>
+                    <dt>VLA input <small>(11 alphabetic tokens)</small></dt>
+                    <dd><code>lift the intact tissue block using the right instrument rightside grasp</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/Hamlyn/Tissue_Retraction</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> Lift the intact tissue block using the right instrument (right-side grasp).</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · hamlyn/tissue_retraction</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 0.004%</span>
+                    <span>source weight 0.004%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>lift the intact tissue block use the right instrument (left-side grasp)</dd>
+                    <dt>Clean task text</dt><dd>Lift the intact tissue block using the right instrument (left-side grasp).</dd>
+                    <dt>VLA input <small>(11 alphabetic tokens)</small></dt>
+                    <dd><code>lift the intact tissue block using the right instrument leftside grasp</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/Hamlyn/Tissue_Retraction</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> Lift the intact tissue block using the right instrument (left-side grasp).</p>
+                  </details>
+                </article>
+                </div>
+            </section>
+            
+            <section class="length-panel" data-length="11" hidden>
+              <div class="length-result-meta">
+                <b>11 normalized tokens</b>
+                <span>2.577% of reconstructed language</span>
+                <span>3 representative examples</span>
+              </div>
+              <div class="examples-grid">
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · hamlyn/suturing_1</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 0.750%</span>
+                    <span>source weight 0.750%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>drive needle from right edge through both layer to left side</dd>
+                    <dt>Clean task text</dt><dd>Drive needle from right edge through both layers to left side.</dd>
+                    <dt>VLA input <small>(11 alphabetic tokens)</small></dt>
+                    <dd><code>drive needle from right edge through both layers to left side</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/Hamlyn/Suturing-1</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> Drive needle from right edge through both layers to left side.</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · rob_surgical/all_merged_data</span>
+                    <span>Rob Tool Prompt</span>
+                    <span>instruction weight 0.713%</span>
+                    <span>source weight 0.372%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>hemicolectomy. resect the lymphatic tissue around the mesenteric artery and vein</dd>
+                    <dt>Clean task text</dt><dd>hemicolectomy. Resect the lymphatic tissue around the mesenteric artery and vein</dd>
+                    <dt>VLA input <small>(22 alphabetic tokens)</small></dt>
+                    <dd><code>left tool mono_hook right tool forceps aux tool bi_maryland_forceps the surgery process is a hemicolectomyresect the lymphatic tissue around the mesenteric artery and vein</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/Rob Surgical/all_merged_data</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> left tool: mono_hook. right tool: forceps. aux tool: bi_maryland_forceps. The surgery process is a hemicolectomy.Resect the lymphatic tissue around the mesenteric artery and vein</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · jhu/imerse/srt_needle_pickup_handover</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 0.416%</span>
+                    <span>source weight 0.416%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>pick up the needle and hand it to the other arm</dd>
+                    <dt>Clean task text</dt><dd>pick up the needle and hand it to the other arm</dd>
+                    <dt>VLA input <small>(11 alphabetic tokens)</small></dt>
+                    <dd><code>pick up the needle and hand it to the other arm</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/JHU/srt_needle_pickup+handover</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> pick up the needle and hand it to the other arm</p>
+                  </details>
+                </article>
+                </div>
+            </section>
+            
+            <section class="length-panel" data-length="12" hidden>
+              <div class="length-result-meta">
+                <b>12 normalized tokens</b>
+                <span>0.126% of reconstructed language</span>
+                <span>3 representative examples</span>
+              </div>
+              <div class="examples-grid">
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · hamlyn/needle_grasp_and_handover</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 0.075%</span>
+                    <span>source weight 0.075%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>use the right hand instrument to grasp the needle from the table</dd>
+                    <dt>Clean task text</dt><dd>Using the right hand instrument to grasp the needle from the table.</dd>
+                    <dt>VLA input <small>(12 alphabetic tokens)</small></dt>
+                    <dd><code>using the right hand instrument to grasp the needle from the table</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/Hamlyn/needle_grasp_and_handover</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> Using the right hand instrument to grasp the needle from the table.</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · hamlyn/tissue_retraction</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 0.019%</span>
+                    <span>source weight 0.019%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>retract the partially dissect tissue flap use the right instrument (center grasp)</dd>
+                    <dt>Clean task text</dt><dd>Retract the partially dissected tissue flap using the right instrument (center grasp).</dd>
+                    <dt>VLA input <small>(12 alphabetic tokens)</small></dt>
+                    <dd><code>retract the partially dissected tissue flap using the right instrument center grasp</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/Hamlyn/Tissue_Retraction</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> Retract the partially dissected tissue flap using the right instrument (center grasp).</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · hamlyn/tissue_retraction</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 0.018%</span>
+                    <span>source weight 0.018%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>retract the partially dissect tissue flap use the left instrument (center grasp)</dd>
+                    <dt>Clean task text</dt><dd>Retract the partially dissected tissue flap using the left instrument (center grasp).</dd>
+                    <dt>VLA input <small>(12 alphabetic tokens)</small></dt>
+                    <dd><code>retract the partially dissected tissue flap using the left instrument center grasp</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/Hamlyn/Tissue_Retraction</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> Retract the partially dissected tissue flap using the left instrument (center grasp).</p>
+                  </details>
+                </article>
+                </div>
+            </section>
+            
+            <section class="length-panel" data-length="13" hidden>
+              <div class="length-result-meta">
+                <b>13 normalized tokens</b>
+                <span>0.341% of reconstructed language</span>
+                <span>3 representative examples</span>
+              </div>
+              <div class="examples-grid">
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · rob_surgical/all_merged_data</span>
+                    <span>Rob Tool Prompt</span>
+                    <span>instruction weight 0.258%</span>
+                    <span>source weight 0.107%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>hemicolectomy. dissect and staple of the mesocolon while separate it from the retroperitoneum</dd>
+                    <dt>Clean task text</dt><dd>hemicolectomy. Dissection and staple of the mesocolon while separating it from the retroperitoneum</dd>
+                    <dt>VLA input <small>(24 alphabetic tokens)</small></dt>
+                    <dd><code>left tool mono_hook right tool forceps aux tool bi_maryland_forceps the surgery process is a hemicolectomydissection and staple of the mesocolon while separating it from the retroperitoneum</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/Rob Surgical/all_merged_data</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> left tool: mono_hook. right tool: forceps. aux tool: bi_maryland_forceps. The surgery process is a hemicolectomy.Dissection and staple of the mesocolon while separating it from the retroperitoneum</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · tud/260131_tundra_dataset/grasping_retraction</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 0.044%</span>
+                    <span>source weight 0.044%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>pull back on small intestine post-surgeon&#x27;s end grasp, continue till fully straight in camera</dd>
+                    <dt>Clean task text</dt><dd>Pull back on small intestine post-surgeon&#x27;s end grasp, continuing till fully straight in camera.</dd>
+                    <dt>VLA input <small>(14 alphabetic tokens)</small></dt>
+                    <dd><code>pull back on small intestine postsurgeons end grasp continuing till fully straight in camera</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/TUD/260131_TUNDRA_dataset/grasping_retraction</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> Pull back on small intestine post-surgeon&#x27;s end grasp, continuing till fully straight in camera.</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · jhu/lcsr/smarts/SurgSync-stitch-coldcut/P2</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 0.016%</span>
+                    <span>source weight 0.016%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>perform cold-cut dissect to partially peel skin from the underlying fat layer use non-energy instrument</dd>
+                    <dt>Clean task text</dt><dd>perform cold-cut dissection to partially peel skin from the underlying fat layer using non-energy instruments</dd>
+                    <dt>VLA input <small>(15 alphabetic tokens)</small></dt>
+                    <dd><code>perform coldcut dissection to partially peel skin from the underlying fat layer using nonenergy instruments</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/JHU/LSCR/SMARTS/offline_recorder_extracted/offline_data_part2</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> perform cold-cut dissection to partially peel skin from the underlying fat layer using non-energy instruments</p>
+                  </details>
+                </article>
+                </div>
+            </section>
+            
+            <section class="length-panel" data-length="14" hidden>
+              <div class="length-result-meta">
+                <b>14 normalized tokens</b>
+                <span>0.117% of reconstructed language</span>
+                <span>3 representative examples</span>
+              </div>
+              <div class="examples-grid">
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · tud/260131_tundra_dataset/grasping_retraction</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 0.113%</span>
+                    <span>source weight 0.113%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>close down on the small intestine for hold. keep position await surgeon&#x27;s counterpart grasp</dd>
+                    <dt>Clean task text</dt><dd>Close down on the small intestine for hold. Keep position awaiting surgeon&#x27;s counterpart grasp.</dd>
+                    <dt>VLA input <small>(14 alphabetic tokens)</small></dt>
+                    <dd><code>close down on the small intestine for hold keep position awaiting surgeons counterpart grasp</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/TUD/260131_TUNDRA_dataset/grasping_retraction</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> Close down on the small intestine for hold. Keep position awaiting surgeon&#x27;s counterpart grasp.</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · hamlyn/tissue_retraction</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 0.002%</span>
+                    <span>source weight 0.002%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>retract the partially dissect tissue flap from the left side use the right instrument</dd>
+                    <dt>Clean task text</dt><dd>Retract the partially dissected tissue flap from the left side using the right instrument.</dd>
+                    <dt>VLA input <small>(14 alphabetic tokens)</small></dt>
+                    <dd><code>retract the partially dissected tissue flap from the left side using the right instrument</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/Hamlyn/Tissue_Retraction</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> Retract the partially dissected tissue flap from the left side using the right instrument.</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · hamlyn/tissue_retraction</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 0.001%</span>
+                    <span>source weight 0.001%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>re-orient and grasp the intact tissue block at the right region use the right instrument</dd>
+                    <dt>Clean task text</dt><dd>Re-orient and grasp the intact tissue block at the right region using the right instrument.</dd>
+                    <dt>VLA input <small>(15 alphabetic tokens)</small></dt>
+                    <dd><code>reorient and grasp the intact tissue block at the right region using the right instrument</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/Hamlyn/Tissue_Retraction</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> Re-orient and grasp the intact tissue block at the right region using the right instrument.</p>
+                  </details>
+                </article>
+                </div>
+            </section>
+            
+            <section class="length-panel" data-length="15" hidden>
+              <div class="length-result-meta">
+                <b>15 normalized tokens</b>
+                <span>0.000% of reconstructed language</span>
+                <span>1 representative example</span>
+              </div>
+              <div class="examples-grid">
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · rob_surgical/all_merged_data</span>
+                    <span>Rob Tool Prompt</span>
+                    <span>instruction weight 0.000%</span>
+                    <span>source weight 0.000%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>hemicolectomy. create the second penetrating hole inside the colon for anastomosis. lateral to lateral approximation</dd>
+                    <dt>Clean task text</dt><dd>hemicolectomy. Create the second penetrating hole inside the colon for anastomosis. Lateral to lateral approximation</dd>
+                    <dt>VLA input <small>(24 alphabetic tokens)</small></dt>
+                    <dd><code>left tool mono_hook right tool bi_maryland_forceps aux tool bi_maryland_forceps the surgery process is a hemicolectomycreate the second penetrating hole inside the colon for anastomosislateral to lateral approximation</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/Rob Surgical/all_merged_data</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> left tool: mono_hook. right tool: bi_maryland_forceps. aux tool: bi_maryland_forceps. The surgery process is a hemicolectomy.Create the second penetrating hole inside the colon for anastomosisLateral to lateral approximation</p>
+                  </details>
+                </article>
+                </div>
+            </section>
+            
+            <section class="length-panel" data-length="16" hidden>
+              <div class="length-result-meta">
+                <b>16 normalized tokens</b>
+                <span>0.014% of reconstructed language</span>
+                <span>3 representative examples</span>
+              </div>
+              <div class="examples-grid">
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · tud/260131_tundra_dataset/grasping_retraction</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 0.005%</span>
+                    <span>source weight 0.005%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>remain position until the surgeon pick up the colon and position it for your robotic grasp</dd>
+                    <dt>Clean task text</dt><dd>Remain positioned until the surgeon picks up the colon and positions it for your robotic grasp.</dd>
+                    <dt>VLA input <small>(16 alphabetic tokens)</small></dt>
+                    <dd><code>remain positioned until the surgeon picks up the colon and positions it for your robotic grasp</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/TUD/260131_TUNDRA_dataset/grasping_retraction</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> Remain positioned until the surgeon picks up the colon and positions it for your robotic grasp.</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · tud/260131_tundra_dataset/grasping_retraction</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 0.004%</span>
+                    <span>source weight 0.004%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>remain position until the surgeon pick up the gallbladder and position it for your robotic grasp</dd>
+                    <dt>Clean task text</dt><dd>Remain positioned until the surgeon picks up the gallbladder and positions it for your robotic grasp.</dd>
+                    <dt>VLA input <small>(16 alphabetic tokens)</small></dt>
+                    <dd><code>remain positioned until the surgeon picks up the gallbladder and positions it for your robotic grasp</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/TUD/260131_TUNDRA_dataset/grasping_retraction</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> Remain positioned until the surgeon picks up the gallbladder and positions it for your robotic grasp.</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · tud/260131_tundra_dataset/grasping_retraction</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 0.002%</span>
+                    <span>source weight 0.002%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>remain position until the surgeon pick up the stomach and position it for your robotic grasp</dd>
+                    <dt>Clean task text</dt><dd>Remain positioned until the surgeon picks up the stomach and positions it for your robotic grasp.</dd>
+                    <dt>VLA input <small>(16 alphabetic tokens)</small></dt>
+                    <dd><code>remain positioned until the surgeon picks up the stomach and positions it for your robotic grasp</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/TUD/260131_TUNDRA_dataset/grasping_retraction</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> Remain positioned until the surgeon picks up the stomach and positions it for your robotic grasp.</p>
+                  </details>
+                </article>
+                </div>
+            </section>
+            
+            <section class="length-panel" data-length="17" hidden>
+              <div class="length-result-meta">
+                <b>17 normalized tokens</b>
+                <span>0.326% of reconstructed language</span>
+                <span>3 representative examples</span>
+              </div>
+              <div class="examples-grid">
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · hamlyn/needle_grasp_and_handover</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 0.274%</span>
+                    <span>source weight 0.274%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>use the left-hand to grasp the needle from the table, then transfer the needle to the right hand</dd>
+                    <dt>Clean task text</dt><dd>Use the left-hand to grasp the needle from the table, then transfer the needle to the right hand.</dd>
+                    <dt>VLA input <small>(18 alphabetic tokens)</small></dt>
+                    <dd><code>use the lefthand to grasp the needle from the table then transfer the needle to the right hand</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/Hamlyn/needle_grasp_and_handover</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> Use the left-hand to grasp the needle from the table, then transfer the needle to the right hand.</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · tud/260131_tundra_dataset/grasping_retraction</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 0.052%</span>
+                    <span>source weight 0.052%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>remain position until the surgeon pick up the small intestine and position it for your robotic grasp</dd>
+                    <dt>Clean task text</dt><dd>Remain positioned until the surgeon picks up the small intestine and positions it for your robotic grasp.</dd>
+                    <dt>VLA input <small>(17 alphabetic tokens)</small></dt>
+                    <dd><code>remain positioned until the surgeon picks up the small intestine and positions it for your robotic grasp</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/TUD/260131_TUNDRA_dataset/grasping_retraction</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> Remain positioned until the surgeon picks up the small intestine and positions it for your robotic grasp.</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · rob_surgical/all_merged_data</span>
+                    <span>Rob Tool Prompt</span>
+                    <span>instruction weight 0.000%</span>
+                    <span>source weight 0.000%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>hemicolectomy. prepare the colon part for anastomosis. create the first penetrating hole inside the colon for anastomosis</dd>
+                    <dt>Clean task text</dt><dd>hemicolectomy. Preparing the colon part for anastomosis. Create the first penetrating hole inside the colon for anastomosis</dd>
+                    <dt>VLA input <small>(26 alphabetic tokens)</small></dt>
+                    <dd><code>left tool mono_hook right tool bi_maryland_forceps aux tool bi_maryland_forceps the surgery process is a hemicolectomypreparing the colon part for anastomosiscreate the first penetrating hole inside the colon for anastomosis</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/Rob Surgical/all_merged_data</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> left tool: mono_hook. right tool: bi_maryland_forceps. aux tool: bi_maryland_forceps. The surgery process is a hemicolectomy.Preparing the colon part for anastomosisCreate the first penetrating hole inside the colon for anastomosis</p>
+                  </details>
+                </article>
+                </div>
+            </section>
+            
+            <section class="length-panel" data-length="18" hidden>
+              <div class="length-result-meta">
+                <b>18 normalized tokens</b>
+                <span>0.014% of reconstructed language</span>
+                <span>3 representative examples</span>
+              </div>
+              <div class="examples-grid">
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · tud/260131_tundra_dataset/grasping_retraction</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 0.006%</span>
+                    <span>source weight 0.006%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>approach the gallbladder grasp by the surgeon and open your gripper to receive and take over the hold</dd>
+                    <dt>Clean task text</dt><dd>Approach the gallbladder grasped by the surgeon and open your gripper to receive and take over the hold.</dd>
+                    <dt>VLA input <small>(18 alphabetic tokens)</small></dt>
+                    <dd><code>approach the gallbladder grasped by the surgeon  and open your gripper to receive and take over the hold</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/TUD/260131_TUNDRA_dataset/grasping_retraction</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> Approach the gallbladder grasped by the surgeon  and open your gripper to receive and take over the hold.</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · tud/260131_tundra_dataset/grasping_retraction</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 0.005%</span>
+                    <span>source weight 0.005%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>approach the colon grasp by the surgeon and open your gripper to receive and take over the hold</dd>
+                    <dt>Clean task text</dt><dd>Approach the colon grasped by the surgeon and open your gripper to receive and take over the hold.</dd>
+                    <dt>VLA input <small>(18 alphabetic tokens)</small></dt>
+                    <dd><code>approach the colon grasped by the surgeon  and open your gripper to receive and take over the hold</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/TUD/260131_TUNDRA_dataset/grasping_retraction</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> Approach the colon grasped by the surgeon  and open your gripper to receive and take over the hold.</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · tud/260131_tundra_dataset/grasping_retraction</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 0.002%</span>
+                    <span>source weight 0.002%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>approach the stomach grasp by the surgeon and open your gripper to receive and take over the hold</dd>
+                    <dt>Clean task text</dt><dd>Approach the stomach grasped by the surgeon and open your gripper to receive and take over the hold.</dd>
+                    <dt>VLA input <small>(18 alphabetic tokens)</small></dt>
+                    <dd><code>approach the stomach grasped by the surgeon  and open your gripper to receive and take over the hold</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/TUD/260131_TUNDRA_dataset/grasping_retraction</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> Approach the stomach grasped by the surgeon  and open your gripper to receive and take over the hold.</p>
+                  </details>
+                </article>
+                </div>
+            </section>
+            
+            <section class="length-panel" data-length="19" hidden>
+              <div class="length-result-meta">
+                <b>19 normalized tokens</b>
+                <span>0.037% of reconstructed language</span>
+                <span>2 representative examples</span>
+              </div>
+              <div class="examples-grid">
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · tud/260131_tundra_dataset/grasping_retraction</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 0.036%</span>
+                    <span>source weight 0.036%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>approach the small intestine grasp by the surgeon and open your gripper to receive and take over the hold</dd>
+                    <dt>Clean task text</dt><dd>Approach the small intestine grasped by the surgeon and open your gripper to receive and take over the hold.</dd>
+                    <dt>VLA input <small>(19 alphabetic tokens)</small></dt>
+                    <dd><code>approach the small intestine grasped by the surgeon  and open your gripper to receive and take over the hold</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/TUD/260131_TUNDRA_dataset/grasping_retraction</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> Approach the small intestine grasped by the surgeon  and open your gripper to receive and take over the hold.</p>
+                  </details>
+                </article>
+                
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · rob_surgical/all_merged_data</span>
+                    <span>Rob Tool Prompt</span>
+                    <span>instruction weight 0.000%</span>
+                    <span>source weight 0.000%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>hemicolectomy. dissect and staple of the mesocolon while separate it from the retroperitoneum. prepare the colon part for anastomosis</dd>
+                    <dt>Clean task text</dt><dd>hemicolectomy. Dissection and staple of the mesocolon while separating it from the retroperitoneum. Preparing the colon part for anastomosis</dd>
+                    <dt>VLA input <small>(28 alphabetic tokens)</small></dt>
+                    <dd><code>left tool mono_hook right tool bi_maryland_forceps aux tool bi_maryland_forceps the surgery process is a hemicolectomydissection and staple of the mesocolon while separating it from the retroperitoneumpreparing the colon part for anastomosis</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/Rob Surgical/all_merged_data</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> left tool: mono_hook. right tool: bi_maryland_forceps. aux tool: bi_maryland_forceps. The surgery process is a hemicolectomy.Dissection and staple of the mesocolon while separating it from the retroperitoneumPreparing the colon part for anastomosis</p>
+                  </details>
+                </article>
+                </div>
+            </section>
+            
+            <section class="length-panel" data-length="21" hidden>
+              <div class="length-result-meta">
+                <b>21 normalized tokens</b>
+                <span>0.000% of reconstructed language</span>
+                <span>1 representative example</span>
+              </div>
+              <div class="examples-grid">
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · rob_surgical/all_merged_data</span>
+                    <span>Rob Tool Prompt</span>
+                    <span>instruction weight 0.000%</span>
+                    <span>source weight 0.000%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>hemicolectomy. create the first penetrating hole inside the colon for anastomosis. create the second penetrating hole inside the colon for anastomosis</dd>
+                    <dt>Clean task text</dt><dd>hemicolectomy. Create the first penetrating hole inside the colon for anastomosis. Create the second penetrating hole inside the colon for anastomosis</dd>
+                    <dt>VLA input <small>(30 alphabetic tokens)</small></dt>
+                    <dd><code>left tool mono_hook right tool bi_maryland_forceps aux tool bi_maryland_forceps the surgery process is a hemicolectomycreate the first penetrating hole inside the colon for anastomosiscreate the second penetrating hole inside the colon for anastomosis</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/Rob Surgical/all_merged_data</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> left tool: mono_hook. right tool: bi_maryland_forceps. aux tool: bi_maryland_forceps. The surgery process is a hemicolectomy.Create the first penetrating hole inside the colon for anastomosisCreate the second penetrating hole inside the colon for anastomosis</p>
+                  </details>
+                </article>
+                </div>
+            </section>
+            
+            <section class="length-panel" data-length="22" hidden>
+              <div class="length-result-meta">
+                <b>22 normalized tokens</b>
+                <span>0.382% of reconstructed language</span>
+                <span>1 representative example</span>
+              </div>
+              <div class="examples-grid">
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · jhu/lcsr/smarts/SurgSync-stitch-coldcut/P1</span>
+                    <span>Task Index</span>
+                    <span>instruction weight 0.382%</span>
+                    <span>source weight 0.209%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>perform a simple interrupted stitch on ex-vivo tissue (occasionally on silicon suture training phantom); without cut the suture thread tail at the end</dd>
+                    <dt>Clean task text</dt><dd>perform a simple interrupted stitch on ex-vivo tissue (occasionally on silicon suturing training phantom) ; without cutting the suture thread tail at the end</dd>
+                    <dt>VLA input <small>(23 alphabetic tokens)</small></dt>
+                    <dd><code>perform a simple interrupted stitch on exvivo tissue occasionally on silicon suturing training phantom  without cutting the suture thread tail at the end</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/JHU/LSCR/SMARTS/offline_recorder_extracted/offline_data_part1</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> perform a simple interrupted stitch on ex-vivo tissue (occasionally on silicon suturing training phantom) ; without cutting the suture thread tail at the end</p>
+                  </details>
+                </article>
+                </div>
+            </section>
+            
+            <section class="length-panel" data-length="23" hidden>
+              <div class="length-result-meta">
+                <b>23 normalized tokens</b>
+                <span>0.000% of reconstructed language</span>
+                <span>1 representative example</span>
+              </div>
+              <div class="examples-grid">
+                <article class="example">
+                  <div class="example-meta">
+                    <span class="dataset">Dataset · rob_surgical/all_merged_data</span>
+                    <span>Rob Tool Prompt</span>
+                    <span>instruction weight 0.000%</span>
+                    <span>source weight 0.000%</span>
+                  </div>
+                  <dl>
+                    <dt>Normalized task text</dt><dd>hemicolectomy. resect the lymphatic tissue around the mesenteric artery and vein. dissect and staple of the mesocolon while separate it from the retroperitoneum</dd>
+                    <dt>Clean task text</dt><dd>hemicolectomy. Resect the lymphatic tissue around the mesenteric artery and vein. Dissection and staple of the mesocolon while separating it from the retroperitoneum</dd>
+                    <dt>VLA input <small>(32 alphabetic tokens)</small></dt>
+                    <dd><code>left tool mono_hook right tool bi_maryland_forceps aux tool bi_maryland_forceps the surgery process is a hemicolectomyresect the lymphatic tissue around the mesenteric artery and veindissection and staple of the mesocolon while separating it from the retroperitoneum</code></dd>
+                  </dl>
+                  <details class="source-detail">
+                    <summary>Source prompt and provenance</summary>
+                    <p><b>Historical training path:</b> Surgical/Rob Surgical/all_merged_data</p>
+                    <p><b>Extracted prompt before VLA formalization:</b> left tool: mono_hook. right tool: bi_maryland_forceps. aux tool: bi_maryland_forceps. The surgery process is a hemicolectomy.Resect the lymphatic tissue around the mesenteric artery and veinDissection and staple of the mesocolon while separating it from the retroperitoneum</p>
+                  </details>
+                </article>
+                </div>
+            </section>
+            </div>
+      </div>
+    
+            </div>
+          </details>
+        
+          <details class="card secondary" id="reconstruction-notes">
+            <summary class="section-summary">
+              <span class="summary-copy">
+                <span class="section-title">Data reconstruction notes</span>
+                <span class="section-description">Supporting audit of mapped training entries, mixture weights, coverage, and known gaps.</span>
+              </span>
+              <span class="section-toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="section-body">
+              
+              <img src="05_training_entry_contributions.svg" alt="Reconstructed training-entry contributions" loading="lazy"><img src="01_training_mixture_and_coverage.svg" alt="Training reconstruction audit" loading="lazy">
+              
+            </div>
+          </details>
+        
+          <details class="card secondary" id="cleaning-pipeline">
+            <summary class="section-summary">
+              <span class="summary-copy">
+                <span class="section-title">Data cleaning pipeline</span>
+                <span class="section-description">How VLA input becomes normalized task text before weighted language analysis.</span>
+              </span>
+              <span class="section-toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="section-body">
+              
+      <div class="pipeline">
+        <h3>From model input to reported statistics</h3>
+        <div class="pipeline-grid">
+          <div class="pipeline-stage">
+            <span class="stage-number">1</span>
+            <b>VLA input</b>
+            <p>The actual formalized language string paired with images and passed into the VLM.</p>
+          </div>
+          <div class="pipeline-stage">
+            <span class="stage-number">2</span>
+            <b>Clean task text</b>
+            <p>State/tool templates, carrier phrases, run IDs, and token-boundary artifacts are removed.</p>
+          </div>
+          <div class="pipeline-stage">
+            <span class="stage-number">3</span>
+            <b>Normalized task text</b>
+            <p>Case and morphology are standardized, with explicit compound, action, and POS rules.</p>
+          </div>
+          <div class="pipeline-stage">
+            <span class="stage-number">4</span>
+            <b>Weighted statistics</b>
+            <p>NLTK counts are aggregated using reconstructed GR00T-H training-mixture weights.</p>
+          </div>
+        </div>
+        <p class="pipeline-note">The source prompt, every intermediate text view, each applied rule, and all weights remain available in the row-level audit CSV.</p>
+      </div>
+    
+              <img src="06_normalization_audit.svg" alt="Data cleaning pipeline audit" loading="lazy">
+              
+            </div>
+          </details>
+        </main>
+  <footer>Generated by visualize_language_analysis.py. Results are reconstructed from mapped public data and the N1.7 training recipe.</footer>
+  <script>
+    if (window.location.hash) {
+      const requestedSection = document.querySelector(window.location.hash);
+      if (requestedSection?.matches('details.card')) {
+        document.querySelectorAll('main > details.card').forEach((section) => {
+          section.open = false;
+        });
+        requestedSection.open = true;
+      }
+    }
+    const verbButtons = [...document.querySelectorAll('.verb-button')];
+    const verbPanels = [...document.querySelectorAll('.verb-panel')];
+    verbButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const shouldOpen = button.getAttribute('aria-expanded') !== 'true';
+        verbButtons.forEach((item) => item.setAttribute('aria-expanded', 'false'));
+        verbPanels.forEach((panel) => { panel.hidden = true; });
+        if (shouldOpen) {
+          const target = document.getElementById(button.dataset.verbTarget);
+          if (target) {
+            target.hidden = false;
+            button.setAttribute('aria-expanded', 'true');
+          }
+        }
+      });
+    });
+    const lengthSelector = document.getElementById('length-selector');
+    const lengthOutput = document.getElementById('length-output');
+    const lengthPanels = [...document.querySelectorAll('.length-panel')];
+    if (lengthSelector && lengthOutput) {
+      const observedLengths = lengthSelector.dataset.lengths.split(',');
+      const showSelectedLength = () => {
+        const selectedLength = observedLengths[Number(lengthSelector.value)];
+        const unit = selectedLength === '1' ? 'token' : 'tokens';
+        lengthOutput.value = `${selectedLength} ${unit}`;
+        lengthPanels.forEach((panel) => {
+          panel.hidden = panel.dataset.length !== selectedLength;
+        });
+      };
+      lengthSelector.addEventListener('input', showSelectedLength);
+      showSelectedLength();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+GR00T-H N1.7 language reconstruction summary
+==========================================
+
+Training recipe:
+- 57 training entries in gr00t_h_config.yaml
+- 56 unique historical paths
+- Surgical/JHU/suturebot appears twice under different embodiment configs
+- YAML summary comment says 58 datasets, but actual path list has 57
+
+Resolved mechanisms:
+- CMR: NVIDIA instruction.text_with_state reconstruction; N1.6->N1.7 semantics unchanged
+- Rob Surgical: NVIDIA instruction.text_with_tool reconstruction
+- Turin: raw instruction.text
+- Most other mapped entries: task_index -> tasks.jsonl
+
+Known gaps:
+- 7 USTC entries (3.69% group mix): current public data absent; exact instruction.text unavailable
+- 3 JHU historical SutureBot-family entries: exact public mapping unavailable
+  Assumption for lexical interpretation only: vocabulary likely subset of {knot tying, needle pickup, needle throw}
+  Exact frequency is not fabricated.
+
+Important frequency caveat:
+- normalized_training_mixture_weight applies the exact normalized YAML group mix ratios.
+- Within each represented group, language proportions are estimated from mapped current-public rows.
+- episode_sampling_rate=0.1 is common to all datasets and therefore cancels from relative weights.
+- Some historical snapshots and exclude_splits cannot be reconstructed exactly from current public data.
+- USTC has no reconstructed language, so normalized_reconstructed_weight conditions on represented groups.
+- Represented mixture mass before that final normalization: 0.963094980917.

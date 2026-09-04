@@ -1,0 +1,23 @@
+# Local source checkouts and datasets
+/open_h_subset/
+/gr00t_h/
+/gr00_h/
+
+# Superseded extraction output
+/extracted_language/gr00t_h_surgical_language_*.csv
+/extracted_language/gr00t_h_surgical_language_*.txt
+
+# Python environments and caches
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Editors and operating systems
+.idea/
+.DS_Store
+
+# Local configuration
+.env
+.env.*
+!.env.example

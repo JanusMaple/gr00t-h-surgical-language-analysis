@@ -1,0 +1,222 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1580" height="1000" viewBox="0 0 1580 1000" role="img">
+<rect width="1580" height="1000" fill="#F3F0E8"/>
+<style>
+text { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif; fill: #18323E; }
+.title { font-size: 29px; font-weight: 750; letter-spacing: -0.4px; }
+.subtitle { font-size: 14px; fill: #667780; }
+.panel-title { font-size: 17px; font-weight: 700; }
+.label { font-size: 12px; }
+.small { font-size: 10.5px; fill: #667780; }
+.value { font-size: 11.5px; font-weight: 650; }
+</style>
+<text x="58.00" y="62.00" class="title" text-anchor="start">Normalized vocabulary</text>
+<text x="58.00" y="90.00" class="subtitle" text-anchor="start">Weighted statistics from normalized task text; bigrams contain only adjacent words.</text>
+<line x1="58.00" y1="112.00" x2="1522.00" y2="112.00" stroke="#DCE3E1" stroke-width="1"/>
+<rect x="50.00" y="120.00" width="725.00" height="390.00" rx="14.00" fill="#FFFEFB" stroke="#DCE3E1"/>
+<text x="74.00" y="155.00" class="panel-title" text-anchor="start">Content words</text>
+<text x="74.00" y="177.00" class="small" text-anchor="start">Share of non-stopword occurrences</text>
+<text x="267.00" y="214.08" class="label" text-anchor="end">clip</text>
+<rect x="279.00" y="204.28" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="279.00" y="204.28" width="412.00" height="11.60" rx="6.00" fill="#17736D"/>
+<text x="701.00" y="214.08" class="value" text-anchor="start">5.7%</text>
+<text x="267.00" y="238.25" class="label" text-anchor="end">needle</text>
+<rect x="279.00" y="228.45" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="279.00" y="228.45" width="393.86" height="11.60" rx="6.00" fill="#17736D"/>
+<text x="701.00" y="238.25" class="value" text-anchor="start">5.5%</text>
+<text x="267.00" y="262.42" class="label" text-anchor="end">wound</text>
+<rect x="279.00" y="252.62" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="279.00" y="252.62" width="336.96" height="11.60" rx="6.00" fill="#17736D"/>
+<text x="701.00" y="262.42" class="value" text-anchor="start">4.7%</text>
+<text x="267.00" y="286.58" class="label" text-anchor="end">closure</text>
+<rect x="279.00" y="276.78" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="279.00" y="276.78" width="336.96" height="11.60" rx="6.00" fill="#17736D"/>
+<text x="701.00" y="286.58" class="value" text-anchor="start">4.7%</text>
+<text x="267.00" y="310.75" class="label" text-anchor="end">tube</text>
+<rect x="279.00" y="300.95" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="279.00" y="300.95" width="316.47" height="11.60" rx="6.00" fill="#17736D"/>
+<text x="701.00" y="310.75" class="value" text-anchor="start">4.4%</text>
+<text x="267.00" y="334.92" class="label" text-anchor="end">suture</text>
+<rect x="279.00" y="325.12" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="279.00" y="325.12" width="284.18" height="11.60" rx="6.00" fill="#17736D"/>
+<text x="701.00" y="334.92" class="value" text-anchor="start">3.9%</text>
+<text x="267.00" y="359.08" class="label" text-anchor="end">left</text>
+<rect x="279.00" y="349.28" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="279.00" y="349.28" width="203.61" height="11.60" rx="6.00" fill="#17736D"/>
+<text x="701.00" y="359.08" class="value" text-anchor="start">2.8%</text>
+<text x="267.00" y="383.25" class="label" text-anchor="end">right</text>
+<rect x="279.00" y="373.45" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="279.00" y="373.45" width="185.88" height="11.60" rx="6.00" fill="#17736D"/>
+<text x="701.00" y="383.25" class="value" text-anchor="start">2.6%</text>
+<text x="267.00" y="407.42" class="label" text-anchor="end">prostatectomy</text>
+<rect x="279.00" y="397.62" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="279.00" y="397.62" width="172.94" height="11.60" rx="6.00" fill="#17736D"/>
+<text x="701.00" y="407.42" class="value" text-anchor="start">2.4%</text>
+<text x="267.00" y="431.58" class="label" text-anchor="end">knot</text>
+<rect x="279.00" y="421.78" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="279.00" y="421.78" width="170.28" height="11.60" rx="6.00" fill="#17736D"/>
+<text x="701.00" y="431.58" class="value" text-anchor="start">2.4%</text>
+<text x="267.00" y="455.75" class="label" text-anchor="end">tie</text>
+<rect x="279.00" y="445.95" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="279.00" y="445.95" width="165.93" height="11.60" rx="6.00" fill="#17736D"/>
+<text x="701.00" y="455.75" class="value" text-anchor="start">2.3%</text>
+<text x="267.00" y="479.92" class="label" text-anchor="end">hemicolectomy</text>
+<rect x="279.00" y="470.12" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="279.00" y="470.12" width="161.98" height="11.60" rx="6.00" fill="#17736D"/>
+<text x="701.00" y="479.92" class="value" text-anchor="start">2.2%</text>
+<rect x="805.00" y="120.00" width="725.00" height="390.00" rx="14.00" fill="#FFFEFB" stroke="#DCE3E1"/>
+<text x="829.00" y="155.00" class="panel-title" text-anchor="start">Verbs</text>
+<text x="829.00" y="177.00" class="small" text-anchor="start">Share of lemmatized verb occurrences</text>
+<text x="1022.00" y="214.08" class="label" text-anchor="end">go</text>
+<rect x="1034.00" y="204.28" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="1034.00" y="204.28" width="412.00" height="11.60" rx="6.00" fill="#DC765F"/>
+<text x="1456.00" y="214.08" class="value" text-anchor="start">24.0%</text>
+<text x="1022.00" y="238.25" class="label" text-anchor="end">create</text>
+<rect x="1034.00" y="228.45" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="1034.00" y="228.45" width="151.85" height="11.60" rx="6.00" fill="#DC765F"/>
+<text x="1456.00" y="238.25" class="value" text-anchor="start">8.8%</text>
+<text x="1022.00" y="262.42" class="label" text-anchor="end">make</text>
+<rect x="1034.00" y="252.62" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="1034.00" y="252.62" width="132.49" height="11.60" rx="6.00" fill="#DC765F"/>
+<text x="1456.00" y="262.42" class="value" text-anchor="start">7.7%</text>
+<text x="1022.00" y="286.58" class="label" text-anchor="end">shift</text>
+<rect x="1034.00" y="276.78" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="1034.00" y="276.78" width="132.49" height="11.60" rx="6.00" fill="#DC765F"/>
+<text x="1456.00" y="286.58" class="value" text-anchor="start">7.7%</text>
+<text x="1022.00" y="310.75" class="label" text-anchor="end">finish</text>
+<rect x="1034.00" y="300.95" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="1034.00" y="300.95" width="100.61" height="11.60" rx="6.00" fill="#DC765F"/>
+<text x="1456.00" y="310.75" class="value" text-anchor="start">5.9%</text>
+<text x="1022.00" y="334.92" class="label" text-anchor="end">extract</text>
+<rect x="1034.00" y="325.12" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="1034.00" y="325.12" width="89.92" height="11.60" rx="6.00" fill="#DC765F"/>
+<text x="1456.00" y="334.92" class="value" text-anchor="start">5.2%</text>
+<text x="1022.00" y="359.08" class="label" text-anchor="end">place</text>
+<rect x="1034.00" y="349.28" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="1034.00" y="349.28" width="88.52" height="11.60" rx="6.00" fill="#DC765F"/>
+<text x="1456.00" y="359.08" class="value" text-anchor="start">5.2%</text>
+<text x="1022.00" y="383.25" class="label" text-anchor="end">insert</text>
+<rect x="1034.00" y="373.45" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="1034.00" y="373.45" width="87.34" height="11.60" rx="6.00" fill="#DC765F"/>
+<text x="1456.00" y="383.25" class="value" text-anchor="start">5.1%</text>
+<text x="1022.00" y="407.42" class="label" text-anchor="end">resect</text>
+<rect x="1034.00" y="397.62" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="1034.00" y="397.62" width="72.96" height="11.60" rx="6.00" fill="#DC765F"/>
+<text x="1456.00" y="407.42" class="value" text-anchor="start">4.2%</text>
+<text x="1022.00" y="431.58" class="label" text-anchor="end">lift</text>
+<rect x="1034.00" y="421.78" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="1034.00" y="421.78" width="56.14" height="11.60" rx="6.00" fill="#DC765F"/>
+<text x="1456.00" y="431.58" class="value" text-anchor="start">3.3%</text>
+<text x="1022.00" y="455.75" class="label" text-anchor="end">perform</text>
+<rect x="1034.00" y="445.95" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="1034.00" y="445.95" width="54.30" height="11.60" rx="6.00" fill="#DC765F"/>
+<text x="1456.00" y="455.75" class="value" text-anchor="start">3.2%</text>
+<text x="1022.00" y="479.92" class="label" text-anchor="end">move</text>
+<rect x="1034.00" y="470.12" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="1034.00" y="470.12" width="53.86" height="11.60" rx="6.00" fill="#DC765F"/>
+<text x="1456.00" y="479.92" class="value" text-anchor="start">3.1%</text>
+<rect x="50.00" y="545.00" width="725.00" height="390.00" rx="14.00" fill="#FFFEFB" stroke="#DCE3E1"/>
+<text x="74.00" y="580.00" class="panel-title" text-anchor="start">Nouns</text>
+<text x="74.00" y="602.00" class="small" text-anchor="start">Share of lemmatized noun occurrences</text>
+<text x="267.00" y="639.08" class="label" text-anchor="end">wound</text>
+<rect x="279.00" y="629.28" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="279.00" y="629.28" width="412.00" height="11.60" rx="6.00" fill="#477EA8"/>
+<text x="701.00" y="639.08" class="value" text-anchor="start">6.8%</text>
+<text x="267.00" y="663.25" class="label" text-anchor="end">closure</text>
+<rect x="279.00" y="653.45" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="279.00" y="653.45" width="412.00" height="11.60" rx="6.00" fill="#477EA8"/>
+<text x="701.00" y="663.25" class="value" text-anchor="start">6.8%</text>
+<text x="267.00" y="687.42" class="label" text-anchor="end">clip</text>
+<rect x="279.00" y="677.62" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="279.00" y="677.62" width="405.93" height="11.60" rx="6.00" fill="#477EA8"/>
+<text x="701.00" y="687.42" class="value" text-anchor="start">6.7%</text>
+<text x="267.00" y="711.58" class="label" text-anchor="end">tube</text>
+<rect x="279.00" y="701.78" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="279.00" y="701.78" width="386.94" height="11.60" rx="6.00" fill="#477EA8"/>
+<text x="701.00" y="711.58" class="value" text-anchor="start">6.4%</text>
+<text x="267.00" y="735.75" class="label" text-anchor="end">suture</text>
+<rect x="279.00" y="725.95" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="279.00" y="725.95" width="347.46" height="11.60" rx="6.00" fill="#477EA8"/>
+<text x="701.00" y="735.75" class="value" text-anchor="start">5.8%</text>
+<text x="267.00" y="759.92" class="label" text-anchor="end">prostatectomy</text>
+<rect x="279.00" y="750.12" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="279.00" y="750.12" width="211.45" height="11.60" rx="6.00" fill="#477EA8"/>
+<text x="701.00" y="759.92" class="value" text-anchor="start">3.5%</text>
+<text x="267.00" y="784.08" class="label" text-anchor="end">knot</text>
+<rect x="279.00" y="774.28" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="279.00" y="774.28" width="208.20" height="11.60" rx="6.00" fill="#477EA8"/>
+<text x="701.00" y="784.08" class="value" text-anchor="start">3.5%</text>
+<text x="267.00" y="808.25" class="label" text-anchor="end">hemicolectomy</text>
+<rect x="279.00" y="798.45" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="279.00" y="798.45" width="198.05" height="11.60" rx="6.00" fill="#477EA8"/>
+<text x="701.00" y="808.25" class="value" text-anchor="start">3.3%</text>
+<text x="267.00" y="832.42" class="label" text-anchor="end">tie</text>
+<rect x="279.00" y="822.62" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="279.00" y="822.62" width="195.93" height="11.60" rx="6.00" fill="#477EA8"/>
+<text x="701.00" y="832.42" class="value" text-anchor="start">3.3%</text>
+<text x="267.00" y="856.58" class="label" text-anchor="end">tissue</text>
+<rect x="279.00" y="846.78" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="279.00" y="846.78" width="195.22" height="11.60" rx="6.00" fill="#477EA8"/>
+<text x="701.00" y="856.58" class="value" text-anchor="start">3.2%</text>
+<text x="267.00" y="880.75" class="label" text-anchor="end">hysterectomy</text>
+<rect x="279.00" y="870.95" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="279.00" y="870.95" width="185.40" height="11.60" rx="6.00" fill="#477EA8"/>
+<text x="701.00" y="880.75" class="value" text-anchor="start">3.1%</text>
+<text x="267.00" y="904.92" class="label" text-anchor="end">transfer</text>
+<rect x="279.00" y="895.12" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="279.00" y="895.12" width="182.82" height="11.60" rx="6.00" fill="#477EA8"/>
+<text x="701.00" y="904.92" class="value" text-anchor="start">3.0%</text>
+<rect x="805.00" y="545.00" width="725.00" height="390.00" rx="14.00" fill="#FFFEFB" stroke="#DCE3E1"/>
+<text x="829.00" y="580.00" class="panel-title" text-anchor="start">Adjacent bigrams</text>
+<text x="829.00" y="602.00" class="small" text-anchor="start">No stopword, punctuation, or sentence bridging</text>
+<text x="1022.00" y="639.08" class="label" text-anchor="end">wound closure</text>
+<rect x="1034.00" y="629.28" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="1034.00" y="629.28" width="412.00" height="11.60" rx="6.00" fill="#796DAA"/>
+<text x="1456.00" y="639.08" class="value" text-anchor="start">9.8%</text>
+<text x="1022.00" y="663.25" class="label" text-anchor="end">left tube</text>
+<rect x="1034.00" y="653.45" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="1034.00" y="653.45" width="221.57" height="11.60" rx="6.00" fill="#796DAA"/>
+<text x="1456.00" y="663.25" class="value" text-anchor="start">5.3%</text>
+<text x="1022.00" y="687.42" class="label" text-anchor="end">knot tie</text>
+<rect x="1034.00" y="677.62" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="1034.00" y="677.62" width="195.93" height="11.60" rx="6.00" fill="#796DAA"/>
+<text x="1456.00" y="687.42" class="value" text-anchor="start">4.7%</text>
+<text x="1022.00" y="711.58" class="label" text-anchor="end">clip left</text>
+<rect x="1034.00" y="701.78" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="1034.00" y="701.78" width="169.99" height="11.60" rx="6.00" fill="#796DAA"/>
+<text x="1456.00" y="711.58" class="value" text-anchor="start">4.1%</text>
+<text x="1022.00" y="735.75" class="label" text-anchor="end">right tube</text>
+<rect x="1034.00" y="725.95" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="1034.00" y="725.95" width="165.38" height="11.60" rx="6.00" fill="#796DAA"/>
+<text x="1456.00" y="735.75" class="value" text-anchor="start">3.9%</text>
+<text x="1022.00" y="759.92" class="label" text-anchor="end">inguinal hernia</text>
+<rect x="1034.00" y="750.12" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="1034.00" y="750.12" width="149.44" height="11.60" rx="6.00" fill="#796DAA"/>
+<text x="1456.00" y="759.92" class="value" text-anchor="start">3.6%</text>
+<text x="1022.00" y="784.08" class="label" text-anchor="end">hernia repair</text>
+<rect x="1034.00" y="774.28" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="1034.00" y="774.28" width="149.44" height="11.60" rx="6.00" fill="#796DAA"/>
+<text x="1456.00" y="784.08" class="value" text-anchor="start">3.6%</text>
+<text x="1022.00" y="808.25" class="label" text-anchor="end">clip right</text>
+<rect x="1034.00" y="798.45" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="1034.00" y="798.45" width="126.47" height="11.60" rx="6.00" fill="#796DAA"/>
+<text x="1456.00" y="808.25" class="value" text-anchor="start">3.0%</text>
+<text x="1022.00" y="832.42" class="label" text-anchor="end">go back</text>
+<rect x="1034.00" y="822.62" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="1034.00" y="822.62" width="115.52" height="11.60" rx="6.00" fill="#796DAA"/>
+<text x="1456.00" y="832.42" class="value" text-anchor="start">2.8%</text>
+<text x="1022.00" y="856.58" class="label" text-anchor="end">peg transfer</text>
+<rect x="1034.00" y="846.78" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="1034.00" y="846.78" width="110.69" height="11.60" rx="6.00" fill="#796DAA"/>
+<text x="1456.00" y="856.58" class="value" text-anchor="start">2.6%</text>
+<text x="1022.00" y="880.75" class="label" text-anchor="end">plastic phantom</text>
+<rect x="1034.00" y="870.95" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="1034.00" y="870.95" width="100.97" height="11.60" rx="6.00" fill="#796DAA"/>
+<text x="1456.00" y="880.75" class="value" text-anchor="start">2.4%</text>
+<text x="1022.00" y="904.92" class="label" text-anchor="end">first clip</text>
+<rect x="1034.00" y="895.12" width="412.00" height="11.60" rx="6.00" fill="#E9EEEC"/>
+<rect x="1034.00" y="895.12" width="100.20" height="11.60" rx="6.00" fill="#796DAA"/>
+<text x="1456.00" y="904.92" class="value" text-anchor="start">2.4%</text>
+<line x1="58.00" y1="956.00" x2="1522.00" y2="956.00" stroke="#DCE3E1" stroke-width="1"/>
+<text x="58.00" y="980.00" class="small" text-anchor="start">Directional left/right terms remain content words but are excluded from verb/noun counts by audited POS rules.</text>
+<text x="1522.00" y="980.00" class="small" text-anchor="end">GR00T-H N1.7 language report</text>
+</svg>

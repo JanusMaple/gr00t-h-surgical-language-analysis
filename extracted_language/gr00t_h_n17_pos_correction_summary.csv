@@ -1,0 +1,11 @@
+rule,word,nltk_tag,corrected_tag,unique_semantic_occurrences,expected_corrections_per_training_sample
+pos_override_directional_left_right,left,VBD,JJ,8,0.07220320661372498
+pos_override_directional_left_right,right,NN,JJ,7,0.03182768620592794
+pos_override_corpus_adjective,penetrating,NN,JJ,6,0.0027506580610516924
+pos_override_directional_left_right,right,VB,JJ,6,0.008072533041464646
+pos_override_directional_left_right,left,NN,JJ,5,0.0004849888905778504
+pos_override_directional_left_right,right,RB,JJ,1,0.008997669722998085
+pos_override_corpus_adjective,training,VBG,JJ,1,0.003820807914974772
+pos_override_corpus_adjective,underlying,VBG,JJ,1,0.0001587134786291763
+pos_override_directional_left_right,left,VBN,JJ,1,0.00041854697791579614
+pos_override_directional_left_right,left,VB,JJ,1,0.0005109837640151448

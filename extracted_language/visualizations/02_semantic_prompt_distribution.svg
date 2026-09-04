@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="743" viewBox="0 0 1500 743" role="img">
+<rect width="1500" height="743" fill="#F3F0E8"/>
+<style>
+text { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif; fill: #18323E; }
+.title { font-size: 29px; font-weight: 750; letter-spacing: -0.4px; }
+.subtitle { font-size: 14px; fill: #667780; }
+.panel-title { font-size: 17px; font-weight: 700; }
+.label { font-size: 12px; }
+.small { font-size: 10.5px; fill: #667780; }
+.value { font-size: 11.5px; font-weight: 650; }
+</style>
+<text x="58.00" y="62.00" class="title" text-anchor="start">Most common normalized task instructions</text>
+<text x="58.00" y="90.00" class="subtitle" text-anchor="start">Training-mixture share after VLA input is converted to normalized task text.</text>
+<line x1="58.00" y1="112.00" x2="1442.00" y2="112.00" stroke="#DCE3E1" stroke-width="1"/>
+<text x="592.00" y="159.00" class="label" text-anchor="end">wound closure</text>
+<rect x="610.00" y="147.00" width="690.00" height="13.00" rx="6.00" fill="#E2E9E6"/>
+<rect x="610.00" y="147.00" width="690.00" height="13.00" rx="6.00" fill="#17736D"/>
+<text x="1314.00" y="158.00" class="value" text-anchor="start">13.43%</text>
+<text x="592.00" y="193.00" class="label" text-anchor="end">prostatectomy</text>
+<rect x="610.00" y="181.00" width="690.00" height="13.00" rx="6.00" fill="#E2E9E6"/>
+<rect x="610.00" y="181.00" width="354.14" height="13.00" rx="6.00" fill="#17736D"/>
+<text x="1314.00" y="192.00" class="value" text-anchor="start">6.89%</text>
+<text x="592.00" y="227.00" class="label" text-anchor="end">hysterectomy</text>
+<rect x="610.00" y="215.00" width="690.00" height="13.00" rx="6.00" fill="#E2E9E6"/>
+<rect x="610.00" y="215.00" width="259.70" height="13.00" rx="6.00" fill="#17736D"/>
+<text x="1314.00" y="226.00" class="value" text-anchor="start">5.05%</text>
+<text x="592.00" y="261.00" class="label" text-anchor="end">inguinal hernia repair</text>
+<rect x="610.00" y="249.00" width="690.00" height="13.00" rx="6.00" fill="#E2E9E6"/>
+<rect x="610.00" y="249.00" width="250.28" height="13.00" rx="6.00" fill="#17736D"/>
+<text x="1314.00" y="260.00" class="value" text-anchor="start">4.87%</text>
+<text x="592.00" y="295.00" class="label" text-anchor="end">knot tie</text>
+<rect x="610.00" y="283.00" width="690.00" height="13.00" rx="6.00" fill="#E2E9E6"/>
+<rect x="610.00" y="283.00" width="200.88" height="13.00" rx="6.00" fill="#17736D"/>
+<text x="1314.00" y="294.00" class="value" text-anchor="start">3.91%</text>
+<text x="592.00" y="329.00" class="label" text-anchor="end">dissect</text>
+<rect x="610.00" y="317.00" width="690.00" height="13.00" rx="6.00" fill="#E2E9E6"/>
+<rect x="610.00" y="317.00" width="198.28" height="13.00" rx="6.00" fill="#17736D"/>
+<text x="1314.00" y="328.00" class="value" text-anchor="start">3.86%</text>
+<text x="592.00" y="363.00" class="label" text-anchor="end">peg transfer</text>
+<rect x="610.00" y="351.00" width="690.00" height="13.00" rx="6.00" fill="#E2E9E6"/>
+<rect x="610.00" y="351.00" width="185.38" height="13.00" rx="6.00" fill="#17736D"/>
+<text x="1314.00" y="362.00" class="value" text-anchor="start">3.61%</text>
+<text x="592.00" y="397.00" class="label" text-anchor="end">cholecystectomy</text>
+<rect x="610.00" y="385.00" width="690.00" height="13.00" rx="6.00" fill="#E2E9E6"/>
+<rect x="610.00" y="385.00" width="164.86" height="13.00" rx="6.00" fill="#17736D"/>
+<text x="1314.00" y="396.00" class="value" text-anchor="start">3.21%</text>
+<text x="592.00" y="431.00" class="label" text-anchor="end">hemicolectomy. suture</text>
+<rect x="610.00" y="419.00" width="690.00" height="13.00" rx="6.00" fill="#E2E9E6"/>
+<rect x="610.00" y="419.00" width="156.49" height="13.00" rx="6.00" fill="#17736D"/>
+<text x="1314.00" y="430.00" class="value" text-anchor="start">3.05%</text>
+<text x="592.00" y="465.00" class="label" text-anchor="end">needle throw</text>
+<rect x="610.00" y="453.00" width="690.00" height="13.00" rx="6.00" fill="#E2E9E6"/>
+<rect x="610.00" y="453.00" width="122.53" height="13.00" rx="6.00" fill="#17736D"/>
+<text x="1314.00" y="464.00" class="value" text-anchor="start">2.38%</text>
+<text x="592.00" y="499.00" class="label" text-anchor="end">needle transfer</text>
+<rect x="610.00" y="487.00" width="690.00" height="13.00" rx="6.00" fill="#E2E9E6"/>
+<rect x="610.00" y="487.00" width="120.80" height="13.00" rx="6.00" fill="#17736D"/>
+<text x="1314.00" y="498.00" class="value" text-anchor="start">2.35%</text>
+<text x="592.00" y="533.00" class="label" text-anchor="end">tissue retract</text>
+<rect x="610.00" y="521.00" width="690.00" height="13.00" rx="6.00" fill="#E2E9E6"/>
+<rect x="610.00" y="521.00" width="112.31" height="13.00" rx="6.00" fill="#17736D"/>
+<text x="1314.00" y="532.00" class="value" text-anchor="start">2.19%</text>
+<text x="592.00" y="567.00" class="label" text-anchor="end">seaspike</text>
+<rect x="610.00" y="555.00" width="690.00" height="13.00" rx="6.00" fill="#E2E9E6"/>
+<rect x="610.00" y="555.00" width="100.00" height="13.00" rx="6.00" fill="#17736D"/>
+<text x="1314.00" y="566.00" class="value" text-anchor="start">1.95%</text>
+<text x="592.00" y="601.00" class="label" text-anchor="end">make first right-to-left suture, shift needle holder, create</text>
+<rect x="610.00" y="589.00" width="690.00" height="13.00" rx="6.00" fill="#E2E9E6"/>
+<rect x="610.00" y="589.00" width="96.76" height="13.00" rx="6.00" fill="#17736D"/>
+<text x="1314.00" y="600.00" class="value" text-anchor="start">1.88%</text>
+<text x="592.00" y="635.00" class="label" text-anchor="end">needle pickup</text>
+<rect x="610.00" y="623.00" width="690.00" height="13.00" rx="6.00" fill="#E2E9E6"/>
+<rect x="610.00" y="623.00" width="86.18" height="13.00" rx="6.00" fill="#17736D"/>
+<text x="1314.00" y="634.00" class="value" text-anchor="start">1.68%</text>
+<text x="60.00" y="685.00" class="subtitle" text-anchor="start">Top 15 instructions account for 60.3% of normalized language exposure.</text>
+<line x1="58.00" y1="699.00" x2="1442.00" y2="699.00" stroke="#DCE3E1" stroke-width="1"/>
+<text x="58.00" y="723.00" class="small" text-anchor="start">Long labels are truncated only in the chart; source CSV retains full text.</text>
+<text x="1442.00" y="723.00" class="small" text-anchor="end">GR00T-H N1.7 language report</text>
+</svg>

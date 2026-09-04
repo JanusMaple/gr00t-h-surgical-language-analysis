@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1540" height="1164" viewBox="0 0 1540 1164" role="img">
+<rect width="1540" height="1164" fill="#F3F0E8"/>
+<style>
+text { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif; fill: #18323E; }
+.title { font-size: 29px; font-weight: 750; letter-spacing: -0.4px; }
+.subtitle { font-size: 14px; fill: #667780; }
+.panel-title { font-size: 17px; font-weight: 700; }
+.label { font-size: 12px; }
+.small { font-size: 10.5px; fill: #667780; }
+.value { font-size: 11.5px; font-weight: 650; }
+</style>
+<text x="58.00" y="62.00" class="title" text-anchor="start">Training mixture &amp; reconstruction coverage</text>
+<text x="58.00" y="90.00" class="subtitle" text-anchor="start">Exact YAML mixture weights alongside current-public row coverage; &gt;100% flags snapshot/filter differences.</text>
+<line x1="58.00" y1="112.00" x2="1482.00" y2="112.00" stroke="#DCE3E1" stroke-width="1"/>
+<text x="62.00" y="145.00" class="small" text-anchor="start">Training group</text>
+<text x="390.00" y="145.00" class="small" text-anchor="start">Normalized mixture weight</text>
+<text x="980.00" y="145.00" class="small" text-anchor="start">Public rows ÷ expected training rows</text>
+<text x="1480.00" y="145.00" class="small" text-anchor="end">Gaps</text>
+<text x="62.00" y="195.00" class="label" text-anchor="start">JHU Imerse dVRK</text>
+<text x="62.00" y="214.00" class="small" text-anchor="start">9 mapped entries</text>
+<rect x="390.00" y="182.00" width="410.00" height="16.00" rx="7.00" fill="#E2E9E6"/>
+<rect x="390.00" y="182.00" width="410.00" height="16.00" rx="7.00" fill="#17736D"/>
+<text x="812.00" y="195.00" class="value" text-anchor="start">34.98%</text>
+<rect x="980.00" y="182.00" width="290.00" height="16.00" rx="7.00" fill="#E2E9E6"/>
+<rect x="980.00" y="182.00" width="140.28" height="16.00" rx="7.00" fill="#477EA8"/>
+<line x1="1125.00" y1="178.00" x2="1125.00" y2="203.00" stroke="#18323E" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="1282.00" y="195.00" class="value" text-anchor="start">96.7%</text>
+<text x="980.00" y="216.00" class="small" text-anchor="start">5.1M public / 5.3M expected</text>
+<text x="1480.00" y="195.00" class="value" text-anchor="end" fill="#DC765F">3 missing</text>
+<text x="62.00" y="261.00" class="label" text-anchor="start">CMR Versius</text>
+<text x="62.00" y="280.00" class="small" text-anchor="start">4 mapped entries</text>
+<rect x="390.00" y="248.00" width="410.00" height="16.00" rx="7.00" fill="#E2E9E6"/>
+<rect x="390.00" y="248.00" width="225.09" height="16.00" rx="7.00" fill="#17736D"/>
+<text x="812.00" y="261.00" class="value" text-anchor="start">19.20%</text>
+<rect x="980.00" y="248.00" width="290.00" height="16.00" rx="7.00" fill="#E2E9E6"/>
+<rect x="980.00" y="248.00" width="144.66" height="16.00" rx="7.00" fill="#477EA8"/>
+<line x1="1125.00" y1="244.00" x2="1125.00" y2="269.00" stroke="#18323E" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="1282.00" y="261.00" class="value" text-anchor="start">99.8%</text>
+<text x="980.00" y="282.00" class="small" text-anchor="start">105.7M public / 105.9M expected</text>
+<text x="1480.00" y="261.00" class="value" text-anchor="end" fill="#17736D">complete mapping</text>
+<text x="62.00" y="327.00" class="label" text-anchor="start">Obuda dVRK</text>
+<text x="62.00" y="346.00" class="small" text-anchor="start">11 mapped entries</text>
+<rect x="390.00" y="314.00" width="410.00" height="16.00" rx="7.00" fill="#E2E9E6"/>
+<rect x="390.00" y="314.00" width="97.76" height="16.00" rx="7.00" fill="#17736D"/>
+<text x="812.00" y="327.00" class="value" text-anchor="start">8.34%</text>
+<rect x="980.00" y="314.00" width="290.00" height="16.00" rx="7.00" fill="#E2E9E6"/>
+<rect x="980.00" y="314.00" width="145.00" height="16.00" rx="7.00" fill="#477EA8"/>
+<line x1="1125.00" y1="310.00" x2="1125.00" y2="335.00" stroke="#18323E" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="1282.00" y="327.00" class="value" text-anchor="start">100.0%</text>
+<text x="980.00" y="348.00" class="small" text-anchor="start">1.2M public / 1.2M expected</text>
+<text x="1480.00" y="327.00" class="value" text-anchor="end" fill="#17736D">complete mapping</text>
+<text x="62.00" y="393.00" class="label" text-anchor="start">Rob Surgical Bitrack</text>
+<text x="62.00" y="412.00" class="small" text-anchor="start">1 mapped entries</text>
+<rect x="390.00" y="380.00" width="410.00" height="16.00" rx="7.00" fill="#E2E9E6"/>
+<rect x="390.00" y="380.00" width="84.84" height="16.00" rx="7.00" fill="#17736D"/>
+<text x="812.00" y="393.00" class="value" text-anchor="start">7.24%</text>
+<rect x="980.00" y="380.00" width="290.00" height="16.00" rx="7.00" fill="#E2E9E6"/>
+<rect x="980.00" y="380.00" width="145.00" height="16.00" rx="7.00" fill="#477EA8"/>
+<line x1="1125.00" y1="376.00" x2="1125.00" y2="401.00" stroke="#18323E" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="1282.00" y="393.00" class="value" text-anchor="start">100.0%</text>
+<text x="980.00" y="414.00" class="small" text-anchor="start">1.0M public / 1.0M expected</text>
+<text x="1480.00" y="393.00" class="value" text-anchor="end" fill="#17736D">complete mapping</text>
+<text x="62.00" y="459.00" class="label" text-anchor="start">Turin Mitic Ex Vivo</text>
+<text x="62.00" y="478.00" class="small" text-anchor="start">4 mapped entries</text>
+<rect x="390.00" y="446.00" width="410.00" height="16.00" rx="7.00" fill="#E2E9E6"/>
+<rect x="390.00" y="446.00" width="79.64" height="16.00" rx="7.00" fill="#17736D"/>
+<text x="812.00" y="459.00" class="value" text-anchor="start">6.79%</text>
+<rect x="980.00" y="446.00" width="290.00" height="16.00" rx="7.00" fill="#E2E9E6"/>
+<rect x="980.00" y="446.00" width="145.00" height="16.00" rx="7.00" fill="#477EA8"/>
+<line x1="1125.00" y1="442.00" x2="1125.00" y2="467.00" stroke="#18323E" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="1282.00" y="459.00" class="value" text-anchor="start">100.0%</text>
+<text x="980.00" y="480.00" class="small" text-anchor="start">997.8K public / 997.8K expected</text>
+<text x="1480.00" y="459.00" class="value" text-anchor="end" fill="#17736D">complete mapping</text>
+<text x="62.00" y="525.00" class="label" text-anchor="start">Stanford dVRK Real</text>
+<text x="62.00" y="544.00" class="small" text-anchor="start">3 mapped entries</text>
+<rect x="390.00" y="512.00" width="410.00" height="16.00" rx="7.00" fill="#E2E9E6"/>
+<rect x="390.00" y="512.00" width="73.90" height="16.00" rx="7.00" fill="#17736D"/>
+<text x="812.00" y="525.00" class="value" text-anchor="start">6.30%</text>
+<rect x="980.00" y="512.00" width="290.00" height="16.00" rx="7.00" fill="#E2E9E6"/>
+<rect x="980.00" y="512.00" width="145.00" height="16.00" rx="7.00" fill="#477EA8"/>
+<line x1="1125.00" y1="508.00" x2="1125.00" y2="533.00" stroke="#18323E" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="1282.00" y="525.00" class="value" text-anchor="start">100.0%</text>
+<text x="980.00" y="546.00" class="small" text-anchor="start">874.4K public / 874.4K expected</text>
+<text x="1480.00" y="525.00" class="value" text-anchor="end" fill="#17736D">complete mapping</text>
+<text x="62.00" y="591.00" class="label" text-anchor="start">Hamlyn dVRK 30hz</text>
+<text x="62.00" y="610.00" class="small" text-anchor="start">6 mapped entries</text>
+<rect x="390.00" y="578.00" width="410.00" height="16.00" rx="7.00" fill="#E2E9E6"/>
+<rect x="390.00" y="578.00" width="46.03" height="16.00" rx="7.00" fill="#17736D"/>
+<text x="812.00" y="591.00" class="value" text-anchor="start">3.93%</text>
+<rect x="980.00" y="578.00" width="290.00" height="16.00" rx="7.00" fill="#E2E9E6"/>
+<rect x="980.00" y="578.00" width="145.00" height="16.00" rx="7.00" fill="#477EA8"/>
+<line x1="1125.00" y1="574.00" x2="1125.00" y2="599.00" stroke="#18323E" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="1282.00" y="591.00" class="value" text-anchor="start">100.0%</text>
+<text x="980.00" y="612.00" class="small" text-anchor="start">544.6K public / 544.6K expected</text>
+<text x="1480.00" y="591.00" class="value" text-anchor="end" fill="#17736D">complete mapping</text>
+<text x="62.00" y="657.00" class="label" text-anchor="start">JHU Imerse dVRK Mono</text>
+<text x="62.00" y="676.00" class="small" text-anchor="start">1 mapped entries</text>
+<rect x="390.00" y="644.00" width="410.00" height="16.00" rx="7.00" fill="#E2E9E6"/>
+<rect x="390.00" y="644.00" width="43.64" height="16.00" rx="7.00" fill="#17736D"/>
+<text x="812.00" y="657.00" class="value" text-anchor="start">3.72%</text>
+<rect x="980.00" y="644.00" width="290.00" height="16.00" rx="7.00" fill="#E2E9E6"/>
+<rect x="980.00" y="644.00" width="145.00" height="16.00" rx="7.00" fill="#477EA8"/>
+<line x1="1125.00" y1="640.00" x2="1125.00" y2="665.00" stroke="#18323E" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="1282.00" y="657.00" class="value" text-anchor="start">100.0%</text>
+<text x="980.00" y="678.00" class="small" text-anchor="start">516.3K public / 516.3K expected</text>
+<text x="1480.00" y="657.00" class="value" text-anchor="end" fill="#17736D">complete mapping</text>
+<text x="62.00" y="723.00" class="label" text-anchor="start">USTC Torin Tuodao</text>
+<text x="62.00" y="742.00" class="small" text-anchor="start">0 mapped entries</text>
+<rect x="390.00" y="710.00" width="410.00" height="16.00" rx="7.00" fill="#E2E9E6"/>
+<rect x="390.00" y="710.00" width="43.26" height="16.00" rx="7.00" fill="#DC765F"/>
+<text x="812.00" y="723.00" class="value" text-anchor="start">3.69%</text>
+<rect x="980.00" y="710.00" width="290.00" height="16.00" rx="7.00" fill="#E2E9E6"/>
+<rect x="980.00" y="710.00" width="0.00" height="16.00" rx="7.00" fill="#477EA8"/>
+<line x1="1125.00" y1="706.00" x2="1125.00" y2="731.00" stroke="#18323E" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="1282.00" y="723.00" class="value" text-anchor="start">0.0%</text>
+<text x="980.00" y="744.00" class="small" text-anchor="start">0 public / 512.0K expected</text>
+<text x="1480.00" y="723.00" class="value" text-anchor="end" fill="#DC765F">7 missing</text>
+<text x="62.00" y="789.00" class="label" text-anchor="start">UCSD dVRK</text>
+<text x="62.00" y="808.00" class="small" text-anchor="start">2 mapped entries</text>
+<rect x="390.00" y="776.00" width="410.00" height="16.00" rx="7.00" fill="#E2E9E6"/>
+<rect x="390.00" y="776.00" width="26.62" height="16.00" rx="7.00" fill="#17736D"/>
+<text x="812.00" y="789.00" class="value" text-anchor="start">2.27%</text>
+<rect x="980.00" y="776.00" width="290.00" height="16.00" rx="7.00" fill="#E2E9E6"/>
+<rect x="980.00" y="776.00" width="145.00" height="16.00" rx="7.00" fill="#477EA8"/>
+<line x1="1125.00" y1="772.00" x2="1125.00" y2="797.00" stroke="#18323E" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="1282.00" y="789.00" class="value" text-anchor="start">100.0%</text>
+<text x="980.00" y="810.00" class="small" text-anchor="start">314.9K public / 314.9K expected</text>
+<text x="1480.00" y="789.00" class="value" text-anchor="end" fill="#17736D">complete mapping</text>
+<text x="62.00" y="855.00" class="label" text-anchor="start">UC Berkeley dVRK</text>
+<text x="62.00" y="874.00" class="small" text-anchor="start">1 mapped entries</text>
+<rect x="390.00" y="842.00" width="410.00" height="16.00" rx="7.00" fill="#E2E9E6"/>
+<rect x="390.00" y="842.00" width="18.75" height="16.00" rx="7.00" fill="#17736D"/>
+<text x="812.00" y="855.00" class="value" text-anchor="start">1.60%</text>
+<rect x="980.00" y="842.00" width="290.00" height="16.00" rx="7.00" fill="#E2E9E6"/>
+<rect x="980.00" y="842.00" width="145.00" height="16.00" rx="7.00" fill="#477EA8"/>
+<line x1="1125.00" y1="838.00" x2="1125.00" y2="863.00" stroke="#18323E" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="1282.00" y="855.00" class="value" text-anchor="start">100.0%</text>
+<text x="980.00" y="876.00" class="small" text-anchor="start">221.9K public / 221.9K expected</text>
+<text x="1480.00" y="855.00" class="value" text-anchor="end" fill="#17736D">complete mapping</text>
+<text x="62.00" y="921.00" class="label" text-anchor="start">JHU Imerse Star Il</text>
+<text x="62.00" y="940.00" class="small" text-anchor="start">1 mapped entries</text>
+<rect x="390.00" y="908.00" width="410.00" height="16.00" rx="7.00" fill="#E2E9E6"/>
+<rect x="390.00" y="908.00" width="9.90" height="16.00" rx="7.00" fill="#17736D"/>
+<text x="812.00" y="921.00" class="value" text-anchor="start">0.84%</text>
+<rect x="980.00" y="908.00" width="290.00" height="16.00" rx="7.00" fill="#E2E9E6"/>
+<rect x="980.00" y="908.00" width="267.30" height="16.00" rx="7.00" fill="#DEA94A"/>
+<line x1="1125.00" y1="904.00" x2="1125.00" y2="929.00" stroke="#18323E" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="1282.00" y="921.00" class="value" text-anchor="start">184.3%</text>
+<text x="980.00" y="942.00" class="small" text-anchor="start">216.1K public / 117.2K expected</text>
+<text x="1480.00" y="921.00" class="value" text-anchor="end" fill="#17736D">complete mapping</text>
+<text x="62.00" y="987.00" class="label" text-anchor="start">JHU LSCR dVRK Smarts</text>
+<text x="62.00" y="1006.00" class="small" text-anchor="start">3 mapped entries</text>
+<rect x="390.00" y="974.00" width="410.00" height="16.00" rx="7.00" fill="#E2E9E6"/>
+<rect x="390.00" y="974.00" width="8.71" height="16.00" rx="7.00" fill="#17736D"/>
+<text x="812.00" y="987.00" class="value" text-anchor="start">0.74%</text>
+<rect x="980.00" y="974.00" width="290.00" height="16.00" rx="7.00" fill="#E2E9E6"/>
+<rect x="980.00" y="974.00" width="145.00" height="16.00" rx="7.00" fill="#477EA8"/>
+<line x1="1125.00" y1="970.00" x2="1125.00" y2="995.00" stroke="#18323E" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="1282.00" y="987.00" class="value" text-anchor="start">100.0%</text>
+<text x="980.00" y="1008.00" class="small" text-anchor="start">103.0K public / 103.0K expected</text>
+<text x="1480.00" y="987.00" class="value" text-anchor="end" fill="#17736D">complete mapping</text>
+<text x="62.00" y="1053.00" class="label" text-anchor="start">TUD Tundra Ur5e</text>
+<text x="62.00" y="1072.00" class="small" text-anchor="start">1 mapped entries</text>
+<rect x="390.00" y="1040.00" width="410.00" height="16.00" rx="7.00" fill="#E2E9E6"/>
+<rect x="390.00" y="1040.00" width="4.04" height="16.00" rx="7.00" fill="#17736D"/>
+<text x="812.00" y="1053.00" class="value" text-anchor="start">0.34%</text>
+<rect x="980.00" y="1040.00" width="290.00" height="16.00" rx="7.00" fill="#E2E9E6"/>
+<rect x="980.00" y="1040.00" width="145.00" height="16.00" rx="7.00" fill="#477EA8"/>
+<line x1="1125.00" y1="1036.00" x2="1125.00" y2="1061.00" stroke="#18323E" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="1282.00" y="1053.00" class="value" text-anchor="start">100.0%</text>
+<text x="980.00" y="1074.00" class="small" text-anchor="start">47.8K public / 47.8K expected</text>
+<text x="1480.00" y="1053.00" class="value" text-anchor="end" fill="#17736D">complete mapping</text>
+<line x1="58.00" y1="1120.00" x2="1482.00" y2="1120.00" stroke="#DCE3E1" stroke-width="1"/>
+<text x="58.00" y="1144.00" class="small" text-anchor="start">Dashed marker = 100% row coverage. Mixture bars use exact normalized mix_ratio values, not rounded comments.</text>
+<text x="1482.00" y="1144.00" class="small" text-anchor="end">GR00T-H N1.7 language report</text>
+</svg>
